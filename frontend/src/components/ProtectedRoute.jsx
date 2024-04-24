@@ -35,15 +35,6 @@ function ProtectedRoute({children}){
         }
     };
 
-
-
-
-
-
-
-
-
-
     const auth = async () => {
         //get access token from the local storage
         const token = localStorage.getItem(ACCESS_TOKEN)
