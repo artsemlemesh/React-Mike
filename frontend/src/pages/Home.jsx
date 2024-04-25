@@ -21,9 +21,66 @@ function Home(){
         .catch((err) => alert(err));
     }
 
+
+    const deleteNote = (id) => {
+        api.delete(`/api/notes/delete/${id}/`).then((res) => {
+            if(res.status === 204) alert('note deleted')
+            else alert('failed to delete note;');
+            getNotes()
+        }).catch((error) => alert(error))
+    };
+
+    const createNote = (e) => {
+        e.preventDefauld();
+        api
+        .post('/api/notes/', {content, title})
+        .then((res) => {
+            if(res.status === 201) alert('note has been created')
+            else alsert('failed to make note');
+        getNotes()
+        })
+        .catch((err) => alert(err))
+    }
+
    
    
-    return 
+    return <div>
+        <div>
+            <h2>Notes</h2>
+            {notes.map((note) => (
+                <Note
+                    note={note}
+                    onDelete={deleteNote}
+                    key={note.id}
+                />
+            ))}
+        </div>
+        <h2>Create note</h2>
+        <form onSubmit={createNote}>
+            <label htmlFor="title">Title:</label>
+            <br/>
+            <input
+                type='text'
+                id='title'
+                name='title'
+                required
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+            />
+
+            <label htmlFor="content">Content:</label>
+            <br/>
+            <textarea
+                id='content'
+                name='content'
+                required
+                value={content}
+                onChange={(e) => setContend(e.target.value)}
+            ></textarea>
+            <br/>
+            <input type="submit" value='Submit'></input>
+        </form>
+    </div>
 
 }
 
