@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import RandomColor from './random-color'
-import MandomColor from './my'
+import StarRating from './stars'
 
 
 function App() {
@@ -10,8 +10,7 @@ function App() {
 
       {/* <RandomColor/> */}
 
-      {/* my */}
-      <MandomColor/>
+      <StarRating noOfStars={10}/>
 
     </div>
   )
