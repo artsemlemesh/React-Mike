@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import RandomColor from './random-color'
 import StarRating from './stars'
+import LoadMoreData from './load-more-data'
 
 
 function App() {
@@ -10,8 +11,9 @@ function App() {
 
       {/* <RandomColor/> */}
 
-      <StarRating noOfStars={10}/>
+      {/* <StarRating noOfStars={10}/> */}
 
+      <LoadMoreData/>
     </div>
   )
 }
