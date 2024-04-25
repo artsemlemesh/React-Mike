@@ -4,6 +4,8 @@ from .models import Note
 from .serializers import NoteSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 class NoteListCreate(generics.ListCreateAPIView):
@@ -33,7 +35,7 @@ class NoteDelete(generics.DestroyAPIView):
     
 
 class CreateUserView(generics.CreateAPIView):
-    queryset = get_user_model()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     
