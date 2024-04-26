@@ -6,6 +6,7 @@ import LoadData from './load-more-data/mike'
 import TreeView from './tree-veiw'
 import menus from './tree-veiw/data'
 import BushView from './mike-tree-view'
+import QRCodeGenerator from './qr-code'
 
 function App() {
 
@@ -21,7 +22,9 @@ function App() {
 
       {/* <TreeView menus={menus} /> */}
 
-      <BushView menu={menus} />
+      {/* <BushView menu={menus} /> */}
+
+      <QRCodeGenerator size='400' />
 
     </div>
   )
