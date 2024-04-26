@@ -1,7 +1,6 @@
 // import { useState, useEffect } from "react";
 // import './scroll.css'
 
-
 // export default function ScrollIndicator({ url }) {
 //   const [data, setData] = useState([]);
 //   const [loading, setLoading] = useState(false);
@@ -78,3 +77,4 @@
 //     </div>
 //   );
 // }
+
