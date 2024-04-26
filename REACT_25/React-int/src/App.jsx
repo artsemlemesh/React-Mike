@@ -8,6 +8,7 @@ import menus from './tree-veiw/data'
 import BushView from './mike-tree-view'
 import QRCodeGenerator from './qr-code'
 import LightDarkMode from './light-dark-mode'
+import ScrollIndicator from './scroll-indicator'
 
 
 
@@ -29,7 +30,9 @@ function App() {
 
       {/* <QRCodeGenerator size='400' /> */}
 
-      <LightDarkMode/>
+      {/* <LightDarkMode/> */}
+
+      <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} />
 
     </div>
   )
