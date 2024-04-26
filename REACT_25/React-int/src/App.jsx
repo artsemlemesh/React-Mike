@@ -7,6 +7,9 @@ import TreeView from './tree-veiw'
 import menus from './tree-veiw/data'
 import BushView from './mike-tree-view'
 import QRCodeGenerator from './qr-code'
+import LightDarkMode from './light-dark-mode'
+
+
 
 function App() {
 
@@ -24,7 +27,9 @@ function App() {
 
       {/* <BushView menu={menus} /> */}
 
-      <QRCodeGenerator size='400' />
+      {/* <QRCodeGenerator size='400' /> */}
+
+      <LightDarkMode/>
 
     </div>
   )
