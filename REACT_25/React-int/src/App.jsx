@@ -10,6 +10,7 @@ import QRCodeGenerator from './qr-code'
 import LightDarkMode from './light-dark-mode'
 import ScrollIndicator from './scroll-indicator'
 import TabTest from './tabs/tab-test'
+import TabsMike from './mike-tabs/tab-test'
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
 
       {/* <TabTest/> */}
 
-      
+      <TabsMike/>
 
     </div>
   )
