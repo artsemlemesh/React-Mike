@@ -11,7 +11,7 @@ import LightDarkMode from './light-dark-mode'
 import ScrollIndicator from './scroll-indicator'
 import TabTest from './tabs/tab-test'
 import TabsMike from './mike-tabs/tab-test'
-
+import ModalTest from './custom-modal-popup/modal-test'
 
 function App() {
 
@@ -37,7 +37,10 @@ function App() {
 
       {/* <TabTest/> */}
 
-      <TabsMike/>
+      {/* <TabsMike/> */}
+
+
+      <ModalTest/>
 
     </div>
   )
