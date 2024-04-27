@@ -34,7 +34,9 @@ function App() {
 
       {/* <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} /> */}
 
-      <TabTest/>
+      {/* <TabTest/> */}
+
+      
 
     </div>
   )
