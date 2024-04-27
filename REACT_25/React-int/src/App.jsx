@@ -9,7 +9,7 @@ import BushView from './mike-tree-view'
 import QRCodeGenerator from './qr-code'
 import LightDarkMode from './light-dark-mode'
 import ScrollIndicator from './scroll-indicator'
-
+import TabTest from './tabs/tab-test'
 
 
 function App() {
@@ -32,7 +32,9 @@ function App() {
 
       {/* <LightDarkMode/> */}
 
-      <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} />
+      {/* <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} /> */}
+
+      <TabTest/>
 
     </div>
   )
