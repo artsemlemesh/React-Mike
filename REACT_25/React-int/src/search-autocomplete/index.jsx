@@ -30,6 +30,7 @@ export default function SearchAutoComplete() {
     setSearchParam(e.target.innerText)
     setFilteredUsers('')
   }
+  d
 
   async function fetchListUsers() {
     try {
