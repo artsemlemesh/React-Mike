@@ -12,6 +12,8 @@ import ScrollIndicator from './scroll-indicator'
 import TabTest from './tabs/tab-test'
 import TabsMike from './mike-tabs/tab-test'
 import ModalTest from './custom-modal-popup/modal-test'
+import GitProfileFinder from './github-profile-finder'
+import GitHub from './mike-github-practice/myindex'
 
 function App() {
 
@@ -39,8 +41,11 @@ function App() {
 
       {/* <TabsMike/> */}
 
+      {/* <ModalTest/> */}
 
-      <ModalTest/>
+    {/* <GitProfileFinder/> */}
+
+    <GitHub/>
 
     </div>
   )
