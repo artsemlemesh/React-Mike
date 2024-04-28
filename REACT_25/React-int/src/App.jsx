@@ -45,13 +45,13 @@ function App() {
 
       {/* <ModalTest/> */}
 
-    {/* <GitProfileFinder/> */}
+    <GitProfileFinder/>
 
     {/* <GitHub/> */}
 
     {/* <SearchAutoComplete/> */}
 
-    <TicTacToe/>
+    {/* <TicTacToe/> */}
 
     </div>
   )
