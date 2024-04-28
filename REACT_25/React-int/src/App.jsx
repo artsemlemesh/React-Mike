@@ -14,6 +14,7 @@ import TabsMike from './mike-tabs/tab-test'
 import ModalTest from './custom-modal-popup/modal-test'
 import GitProfileFinder from './github-profile-finder'
 import GitHub from './mike-github-practice/myindex'
+import SearchAutoComplete from './search-autocomplete'
 
 function App() {
 
@@ -45,7 +46,10 @@ function App() {
 
     {/* <GitProfileFinder/> */}
 
-    <GitHub/>
+    {/* <GitHub/> */}
+
+    <SearchAutoComplete/>
+
 
     </div>
   )
