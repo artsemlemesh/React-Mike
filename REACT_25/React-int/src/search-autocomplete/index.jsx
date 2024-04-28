@@ -57,7 +57,6 @@ export default function SearchAutoComplete() {
   }, []);
 
   console.log(users, filteredUsers);
-  console.log(users, filteredUsers);
 
   return (
     <div className="search-autocomplete-container">
