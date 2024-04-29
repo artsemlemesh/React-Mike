@@ -16,6 +16,8 @@ import GitProfileFinder from './github-profile-finder'
 import GitHub from './mike-github-practice/myindex'
 import SearchAutoComplete from './search-autocomplete'
 import TicTacToe from './tic-tac-toe/index'
+import FeatureFlagGlobalState from './feature-flag/context'
+import FeatureFlags from './feature-flag'
 
 function App() {
 
@@ -45,13 +47,17 @@ function App() {
 
       {/* <ModalTest/> */}
 
-    <GitProfileFinder/>
+    {/* <GitProfileFinder/> */}
 
     {/* <GitHub/> */}
 
     {/* <SearchAutoComplete/> */}
 
     {/* <TicTacToe/> */}
+
+    <FeatureFlagGlobalState>
+      <FeatureFlags/>
+    </FeatureFlagGlobalState>
 
     </div>
   )
