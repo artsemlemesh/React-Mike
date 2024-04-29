@@ -11,7 +11,7 @@ export default function FeatureFlagGlobalState({ children }){
     async function fetchFeatureFlags(){
         try{
             setLoading(true)
-            const response = await featureFlagData();
+            const response = await featureFlagData();//simply returns an object dummyApiResponse which is async processed first by the JS and then by the React
             console.log(response)
             setEnabledFlags(response)
             setLoading(false)
@@ -23,12 +23,14 @@ export default function FeatureFlagGlobalState({ children }){
         }
     }
 
+    //after the object has been fetched it loads it with the first load of the page and when [] changes
     useEffect(()=> {
         fetchFeatureFlags()
     }, [])
 
     return (
-        <FeatureFlagsContext.Provider value={{loading, enabledFlags}}>
+        <FeatureFlagsContext.Provider value={{loading, enabledFlags}}>            {/* takes 2 variables that need  to be passed down the tree and sends (in our case) to another index.jsx*/}
+
             {children}
         </FeatureFlagsContext.Provider   >
     )

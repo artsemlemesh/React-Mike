@@ -31,7 +31,7 @@ export default function FeatureFlags(){
     ]
 
     function checkEnabledFlags(getCurrentKey){
-        return enabledFlags[getCurrentKey]
+        return enabledFlags[getCurrentKey]  //checks whether a specific key exists in enabledFlags variable
     }
 
     if(loading) return  <h1>Loading data. please wait</h1>

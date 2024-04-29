@@ -20,3 +20,4 @@ function featureFlagData(){
 }
 
 export default featureFlagData
+//this function simply returns dummyApiResponse object {}, because its JS we use Promise... its asynchronous func, the same as async await in React, it simply handles operation in non blocking way
