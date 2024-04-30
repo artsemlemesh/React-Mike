@@ -20,6 +20,7 @@ import FeatureFlagGlobalState from './feature-flag/context'
 import FeatureFlags from './feature-flag'
 import MyFeatureFlags from './mike-feature-flag'
 import MyFeatureFlagGlobalState from './mike-feature-flag/context'
+import UseFetchHookTest from './use-fetch/test'
 
 function App() {
 
@@ -61,9 +62,11 @@ function App() {
       <FeatureFlags/>
     </FeatureFlagGlobalState> */}
 
-    <MyFeatureFlagGlobalState>
+    {/* <MyFeatureFlagGlobalState>
       <MyFeatureFlags/>
-    </MyFeatureFlagGlobalState>
+    </MyFeatureFlagGlobalState> */}
+
+    <UseFetchHookTest/>
 
     </div>
   )
