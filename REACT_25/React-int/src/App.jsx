@@ -23,6 +23,7 @@ import MyFeatureFlagGlobalState from './mike-feature-flag/context'
 import UseFetchHookTest from './use-fetch/test'
 import UseOnclickOutsideTest from './use-outside-click/test'
 import UseWindowResizeTest from './use-window-resize/test'
+import ScrollTotopAndBottom from './scroll-to-top-bottom'
 
 
 function App() {
@@ -74,7 +75,9 @@ function App() {
     {/* <UseOnclickOutsideTest/> */}
 
 
-    <UseWindowResizeTest/>
+    {/* <UseWindowResizeTest/> */}
+
+    <ScrollTotopAndBottom/>
 
     </div>
   )
