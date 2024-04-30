@@ -9,11 +9,7 @@ export default function ScrollTotopAndBottom() {
 
   const bottomRef = useRef(null) //for bottom scrolling
 
-  const certainRef = useRef(null)
-
-  function handleCertain(){
-    certainRef.current.scrollIntoView({behavior: 'smooth'})
-  }
+  
 
   function handleScrollTotop(){
     window.scrollTo({
@@ -42,7 +38,6 @@ export default function ScrollTotopAndBottom() {
       <h1>scroll to top and bottom</h1>
       <h3>top section</h3>
       <button onClick={handleScrollToBottom}>scroll to bottom</button>
-            <div ref={certainRef}> certain place</div>
         
       <ul>
         {data && data.products && data.products.length
@@ -50,7 +45,6 @@ export default function ScrollTotopAndBottom() {
           : null}
       </ul>
 
-        <button onClick={handleCertain}>scroll to a certain place</button>
       <button onClick= {handleScrollTotop}>scroll to top</button>
       <div ref={bottomRef}></div>
       <h3>this is the bottom of the page</h3>
