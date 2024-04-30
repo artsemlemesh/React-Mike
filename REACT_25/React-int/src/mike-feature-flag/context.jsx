@@ -4,16 +4,21 @@ import myFeatureFlagData from "./mydata";
 
 //this func creates new context object.
 //if a component tries to access the context without being wrapped in a provider it will default to 'null'
-export const FeatureFlagsContext = createContext(null);
+export const myFeatureFlagsContext = createContext(null);
 //export makes this func available for other files to import and use
 
 
-export default function myFeatureFlagGlobalState({children}){
+export default function MyFeatureFlagGlobalState({children}){
     const [loading, setLoading] = useState(false);
     const [enableFlags, setEnableFlags] = useState({})
 
     async function fetchFF(){
         try{
+            setLoading(true)
+            const response = await myFeatureFlagData();
+            console.log(response)
+            setEnableFlags(response)
+            setLoading(false)
 
         } catch(e) {
             
@@ -33,12 +38,12 @@ export default function myFeatureFlagGlobalState({children}){
     }, [])
 
     return (
-        <FeatureFlagsContext.Provider value={{loading, enableFlags}}>
+        <myFeatureFlagsContext.Provider value={{loading, enableFlags}}>
             {/* accepts a 'value' prop that will be accessible to all components that are descendants of this provider
             'loading' and 'enableFlags' will be passed down to any components that use useContent(FeatureFlagsContext) */}
             {children}
             {/* {children} is a special prop in React that represents the child components of the 'Provider', it allows you to wrap other components with this provider, so they can access its context */}
-        </FeatureFlagsContext.Provider>
+        </myFeatureFlagsContext.Provider>
     )
 }
 

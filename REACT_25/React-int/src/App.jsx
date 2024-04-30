@@ -18,6 +18,8 @@ import SearchAutoComplete from './search-autocomplete'
 import TicTacToe from './tic-tac-toe/index'
 import FeatureFlagGlobalState from './feature-flag/context'
 import FeatureFlags from './feature-flag'
+import MyFeatureFlags from './mike-feature-flag'
+import MyFeatureFlagGlobalState from './mike-feature-flag/context'
 
 function App() {
 
@@ -55,9 +57,13 @@ function App() {
 
     {/* <TicTacToe/> */}
 
-    <FeatureFlagGlobalState>
+    {/* <FeatureFlagGlobalState>
       <FeatureFlags/>
-    </FeatureFlagGlobalState>
+    </FeatureFlagGlobalState> */}
+
+    <MyFeatureFlagGlobalState>
+      <MyFeatureFlags/>
+    </MyFeatureFlagGlobalState>
 
     </div>
   )
