@@ -22,6 +22,8 @@ import MyFeatureFlags from './mike-feature-flag'
 import MyFeatureFlagGlobalState from './mike-feature-flag/context'
 import UseFetchHookTest from './use-fetch/test'
 import UseOnclickOutsideTest from './use-outside-click/test'
+import UseWindowResizeTest from './use-window-resize/test'
+
 
 function App() {
 
@@ -69,9 +71,10 @@ function App() {
 
     {/* <UseFetchHookTest/> */}
 
-    <UseOnclickOutsideTest/>
+    {/* <UseOnclickOutsideTest/> */}
 
 
+    <UseWindowResizeTest/>
 
     </div>
   )
