@@ -26,6 +26,7 @@ export default function FeatureFlagGlobalState({ children }){
     //after the object has been fetched it loads it with the first load of the page and when [] changes
     useEffect(()=> {
         fetchFeatureFlags()
+        
     }, [])
 
     return (
