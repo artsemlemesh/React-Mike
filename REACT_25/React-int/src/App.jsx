@@ -21,6 +21,7 @@ import FeatureFlags from './feature-flag'
 import MyFeatureFlags from './mike-feature-flag'
 import MyFeatureFlagGlobalState from './mike-feature-flag/context'
 import UseFetchHookTest from './use-fetch/test'
+import UseOnclickOutsideTest from './use-outside-click/test'
 
 function App() {
 
@@ -66,7 +67,11 @@ function App() {
       <MyFeatureFlags/>
     </MyFeatureFlagGlobalState> */}
 
-    <UseFetchHookTest/>
+    {/* <UseFetchHookTest/> */}
+
+    <UseOnclickOutsideTest/>
+
+
 
     </div>
   )
