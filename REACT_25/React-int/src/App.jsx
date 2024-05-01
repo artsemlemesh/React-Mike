@@ -25,7 +25,7 @@ import UseOnclickOutsideTest from './use-outside-click/test'
 import UseWindowResizeTest from './use-window-resize/test'
 import ScrollTotopAndBottom from './scroll-to-top-bottom'
 import ScrollToSection from './scroll-to-particular-section/scroll-to-section'
-
+import Appp from './test'
 
 function App() {
 
@@ -80,7 +80,9 @@ function App() {
 
     {/* <ScrollTotopAndBottom/> */}
 
-    <ScrollToSection/>
+    {/* <ScrollToSection/> */}
+
+    <Appp/>
 
     </div>
   )
