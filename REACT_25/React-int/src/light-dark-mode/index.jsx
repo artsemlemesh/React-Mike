@@ -3,6 +3,7 @@ import './theme.css'
 
 export default function LightDarkMode(){
 
+    //here we are using custom hook. 'theme'- key under which the theme val will be stored in local storage, 'dark'-default value
     const [theme, setTheme] = useLocalStorage('theme', 'dark')
 
 
