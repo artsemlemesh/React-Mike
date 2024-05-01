@@ -1,22 +1,53 @@
-import UseLS from './localStorage'
-
+import { useEffect, useState } from "react";
+import User from "./user";
 
 export default function Appp() {
+    const [user, setUser] = useState('artsemlemesh');
+    const [data, setData] = useState('');
+    const [loading, setLoading] = useState(false)
 
-    const [theme, setTheme] = UseLS('theme', 'dark')
+    async function fetchData(){
+        try{
+            setLoading(true)
+            const response = await fetch(`https://api.github.com/users/${user}`)
+            const data = await response.json()
+            setData(data)
+            setLoading(false)
+            setUser('')
 
-    function changeClolr(){
-        setTheme(theme === 'light' ? 'dark': 'light')
+
+            console.log(data)
+
+        } catch(e){
+            console.log(e)
+            setLoading(false)
+            setUser('')
+
+        }
     }
 
+    function handleSubmit(){
+        fetchData()
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    if(loading){
+        return <h1>loading.wait</h1>
+    }
 
     return (
-        <div className='light-dark-mode' data-theme={theme}>
-            <div className='container'>
-                <p>mike</p>
-            <button onClick={changeClolr}>Change</button>
-            </div>
-            
-        </div>
+        <>
+            <div>
+                <input value={user} onChange={(e) => setUser(e.target.value)}/>
+                <button onClick={handleSubmit}> Search </button>
+            </div> 
+            {data !== null ? <User user={data}/> : null}
+        </>
     )
+
+
+
 }
