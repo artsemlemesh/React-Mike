@@ -64,6 +64,7 @@ export default function Weather() {
           <div className="date">
             <span>{getCurrentDate()}</span>
           </div>
+          {/* weatherData?.main?.temp- in this case ? is optional operator, the way to access nested props without worrying about whether intermediate props are null or undefined */}
           <div className="temp">{weatherData?.main?.temp}</div>
           <p className="description">
             {weatherData &&
