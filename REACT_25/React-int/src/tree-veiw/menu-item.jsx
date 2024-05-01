@@ -7,7 +7,7 @@ export default function MenuItem({item}){
 
     function toggleChildren(getCurrentLabel){
         setCurrChild({
-            ...currChild,
+            ...currChild, //spread the current state to preserve other child states
             [getCurrentLabel]: !currChild[getCurrentLabel],
         })
     }
