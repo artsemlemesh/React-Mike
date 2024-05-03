@@ -31,6 +31,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
+      {/* whatever we passed to GlobalState context we will have in descendants funcitons */}
       <GlobalState>
         <div className="min-h-screen p-6 bg-white text-gray-600 text-lg">
           <Navbar />
