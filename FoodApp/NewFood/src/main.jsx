@@ -6,7 +6,6 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  BrowserRouter,
 } from "react-router-dom";
 import Home from "./pages/home/index.jsx";
 import Favourites from "./pages/favourites/index.jsx";

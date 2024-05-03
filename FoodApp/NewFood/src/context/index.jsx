@@ -1,16 +1,41 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
-  const [searchParam, setSearchParam] = useState("");
+  const [searchParam, setSearchParam] = useState("apple");
   const [loading, setLoading] = useState(false);
   const [recipeList, setRecipeList] = useState([]);
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
   const [favList, setFavList] = useState([])//after we worked with our detail page, we need to set up favorite funciton
 
   // const navigate = useNavigate()//whenever we search smth on other pages, we get redirected to the homepage navigate('/')
+
+
+
+
+
+  useEffect(() => {
+    const storedFavList = JSON.parse(localStorage.getItem("favList"));
+    if (storedFavList) {
+      setFavList(storedFavList);
+    }
+  }, []);
+
+  // Save favorites to localStorage whenever favList changes
+  useEffect(() => {
+    localStorage.setItem("favList", JSON.stringify(favList));
+  }, [favList]);
+
+
+
+
+
+
+
+
+
 
   async function handleSubmit(e) {
     e.preventDefault(); //bcz form gets submitted initially, so we have to remove this property
@@ -34,6 +59,26 @@ export default function GlobalState({ children }) {
     }
   }
 
+
+
+
+
+  // function handleAddtoFav(getCurrItem) {
+  //   const index = favList.findIndex((item) => item.id === getCurrItem.id);
+  //   if (index === -1) {
+  //     setFavList([...favList, getCurrItem]);
+  //   } else {
+  //     const updatedFavList = favList.filter((item) => item.id !== getCurrItem.id);
+  //     setFavList(updatedFavList);
+  //   }
+  // }
+
+
+
+
+
+
+
   function handleAddtoFav(getCurrItem){
     console.log(getCurrItem)
     let copyFavList = [...favList]; //shallow copy of favList array, ensures that modifications to it do not affect the original 'favList'
@@ -48,6 +93,8 @@ export default function GlobalState({ children }) {
     setFavList(copyFavList)
   }
   console.log(favList, 'favList')
+  console.log(recipeList, 'recipeList')
+
 
 
   return (

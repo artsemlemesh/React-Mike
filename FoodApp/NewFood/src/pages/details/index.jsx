@@ -54,11 +54,11 @@ export default function Details() {
             : "Add to fav"}
         </button>
       </div>
-      <div>
+      <div >
         <span className="text-2xl font-semibold text-black">Ingredients:</span>
-        <ul className="flex flex-col gap-3">
+        <ul  className="flex flex-col gap-3">
           {recipeDetailsData?.recipe?.ingredients.map((ingredient) => (
-            <li>
+            <li >
               <span className="text-2xl font-semibold text-black">
                 {ingredient.quantity}
                 {ingredient.unit}{" "}
