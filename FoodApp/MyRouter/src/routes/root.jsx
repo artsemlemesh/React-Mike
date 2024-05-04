@@ -23,7 +23,7 @@ export default function Root() {
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
-          <Form id="search-form" role="search">
+          <form id="search-form" role="search">
             <input
               id="q"
               aria-label="Search contacts"
@@ -33,10 +33,10 @@ export default function Root() {
             />
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
-          </Form>
-          <form method="post">
-            <button type="submit">New</button>
           </form>
+          <Form method="post">
+            <button type="submit">New</button>
+          </Form>
         </div>
         <nav>
           
