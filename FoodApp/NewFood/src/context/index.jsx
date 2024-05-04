@@ -15,7 +15,6 @@ export default function GlobalState({ children }) {
 
 
 
-
   useEffect(() => {
     const storedFavList = JSON.parse(localStorage.getItem("favList"));
     if (storedFavList) {
