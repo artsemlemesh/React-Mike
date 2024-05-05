@@ -9,6 +9,7 @@ import Root, {
 import ErrorPage from "./error-page";
 import Contact, {
   loader as contactLoader,
+  action as contactAction,
 } from "./routes/contact";
 import EditContact, {
   action as editAction
@@ -17,7 +18,14 @@ import {action as destroyAction} from './routes/destroy'
 import Index from "./routes/index";
 
 
+// routes can be configured this way: 
+  // createRoutesFromElements(
+  //     <Route
+  //     path="/",
+  //     ...
+  //but there is no difference, just stylistic preference
 
+  
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,12 +35,26 @@ const router = createBrowserRouter([
     action: rootAction,
     children: [
       {
+        //when any errors are thrown in child routes, our new pathless route will catch it and render, preserving the root route's UI
+        errorElement: <ErrorPage/>,
+        children:[
+          {index: true, element: <Index/>},
+          {
+            path: 'contacts/:contactId',
+            element: <Contact/>,
+            loader: contactLoader,
+            action: contactAction,
+          }
+        ]
+      },
+      {
         index: true, element: <Index/>  // (eliminates blank page if no links are active) index: true instead of path:''. this tells the router to match and render this route when the user is at the parent route's exact path, so there are no other child to render in the <Outlet/>
       },
       {
         path: "contacts/:contactId",
         element: <Contact />,
         loader: contactLoader,
+        action: contactAction, //seemingly for toggling favorites true/false
       },
       {
         path: 'contacts/:contactId/edit',

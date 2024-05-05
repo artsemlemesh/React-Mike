@@ -61,7 +61,7 @@ export default function EditContact() {
       <p>
         <button type="submit">Save</button>
         <button
-          type="button"
+          type="button" // prevents button from submitting the form
           onClick={() => {
             navigate(-1); // when a user hits 'Cancel' they'll be sent back one entry in the browser's history
           }}
