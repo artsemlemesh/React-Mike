@@ -1,7 +1,14 @@
-import { useLoaderData } from "react-router-dom"
-import { getContact } from "../contacts";
+import { Form, useLoaderData } from "react-router-dom"
+import { getContact, updateContact } from "../contacts";
 
 
+
+// export async function action({request, params}){
+//     let formData = await request.formData()
+//     return updateContact(params.contactId, {
+//         favorite: formData.get('favorite') === 'true'
+//     })
+// }
 
 export async function loader({params}){
     const contact = await getContact(params.contactId)
@@ -39,6 +46,25 @@ export default function Contact(){
                     )} {' '}
                     {/* <Favorite contact={contact}/> */}
                 </h1>
+
+                {contact.twitter && (
+                    <p>
+                        <a
+                        target="_blank"
+                        href={`https://twitter.com/${contact.twitter}`}
+                        >
+                            {contact.twitter}
+                        </a>
+                    </p>
+                )}
+
+                {contact.notes && <p>{contact.notes}</p>}
+
+                <div>
+                    <Form action='edit'>
+                        <button type='submit'>Edit</button>
+                    </Form>
+                </div>
             </div>
         </div>
     )
