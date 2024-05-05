@@ -1,0 +1,11 @@
+#sidebar {
+  flex-direction: column;
+  display: flex;
+  border: 1px solid;
+}
+
+#detail {
+  margin-top: 10px;
+  display: flex;
+  border: 1px solid blue;
+}

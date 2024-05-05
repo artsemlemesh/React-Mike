@@ -71,7 +71,7 @@ export default function Root() {
               onChange={(e) => {
                 const isFirstSearch = q == null;
                 submit(e.currentTarget.form, {
-                  replace: !isFirstSearch, //fixes the history stack/ each key stroke no longer creates new entries, click back only once to return back
+                  replace: !isFirstSearch, //fixes the history stack/ each key stroke no longer creates new entries, click back only once to return a
                 }) //as you type the form is submitted automatically
               }}
             />
