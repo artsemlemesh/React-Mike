@@ -50,9 +50,13 @@ export default function Contact() {
           <Form action="edit">
             <button type="submit">Edit</button>
           </Form>
+        
+        {/* 1)when the user hit submit: Form prevents the default browser behavior of sending a new POST request to the server, but instead emulates the browser by creating a POST request with client side routing */}
           <Form
             method="post"
-            action="destroy"
+            action="destroy" //2)matches the new route at 'contacts/:contactId/destroy' and sends it the request
+            //3) after the action redirects, React Router calls all of the loaders for the data on the page to get the latest values(revalidation) . useLoaderData returns new values and causes the components to updata
+            //add a form, add an action, React Router does the rest
             onSubmit={(event) => {
               if (
                 !confirm(
