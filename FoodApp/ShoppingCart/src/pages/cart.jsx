@@ -1,32 +1,34 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 
 export default function Cart(){
     const [totalCart, setTotalCart] =useState(0)
 
 
-    const cart = useSelector(state=>state.cart)
+    const cartt = useSelector(state => state.cart.items)
+    console.log(cartt, 'cartt' )
+    console.log(totalCart, 'totalCart')
 
     useEffect(() => {
 
-        if (!cart) return;
+        if (!cartt) return;
 
-        setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0))
-    },[cart])
+        setTotalCart(cartt.reduce((acc, curr) => acc + curr.price, 0))
+    },[cartt])
 
-    console.log(cart, 'cart' )
 
     return (
         <div>
-            <h2>Cart</h2>
+            Cart
+            {/* <h2>Cart</h2>
             {cart.map(item => (
                 <div key={item.id}>
                     <p>{item.name} - ${item.price}</p>
                 </div>
             ))}
-            <p>Total: ${totalCart}</p>
+            <p>Total: ${totalCart}</p> */}
         </div>
     );
 }
