@@ -1,18 +1,35 @@
 import { useState, useRef, useEffect } from "react";
 import "./chat.css";
 import EmojiPicker from "emoji-picker-react";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../lib/firebase";
 
 const Chat = () => {
+    const[chat, setChat] = useState();
   const [open, setOpen] = useState(false); //for show/hide Emoji
   const [text, setText] = useState("");
 
     const endRef = useRef(null)
-
+    //to scroll to the beginning of the page when the page first loads
     useEffect(()=>{
         endRef.current?.scrollIntoView({behavior: 'smooth'})
     }, [])
+    
 
-  console.log(text)
+    useEffect(()=>{
+        const unSub = onSnapshot(doc(db, 'chats', '58KJwSVk9ScSJuYbMBcz'), (res)=>{
+            setChat(res.data())
+        } )
+
+            // cleanup func
+        return () => {
+            unSub()
+        }
+    },[])
+
+
+
+  console.log(chat)
   const handleEmoji = (e) => {
     setText(prev=> prev+e.emoji)
     setOpen(false)
