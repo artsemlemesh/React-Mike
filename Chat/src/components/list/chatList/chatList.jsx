@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./chatList.css";
 import AddUser from "../../addUser/addUser";
 import { useUserStore } from "../../../lib/userStore";
@@ -7,12 +7,44 @@ import { db } from "../../../lib/firebase";
 import { useChatStore } from "../../../lib/chatStore";
 
 const ChatList = () => {
-  const [addMode, setAddMode] = useState(false); //for changing dynamically + for -
   const [chats, setChats] = useState([]);
   const [input, setInput] = useState("");
 
   const { currentUser } = useUserStore(); //zustand
   const { chatId, changeChat } = useChatStore();
+
+  //
+  const [showContent, setShowContent] = useState(false);//for showing/hiding content when click outside the pop-up window and dynamic + and -
+  //
+
+  //
+  const ref = useRef();
+  //
+
+  //define function for clicking outside the area
+  function useOutsideClick(ref, handler) {
+    useEffect(() => {
+      function listener(e) {
+        if (!ref.current || ref.current.contains(e.target)) {
+          return; //ignore clicks inside the specified element
+        }
+        handler(e); // if outside the designated area- calls handler
+      }
+
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        //remove after using, clean memory
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [handler, ref]);
+  }
+
+  
+  useOutsideClick(ref, ()=> setShowContent(false)); //CALL THE FUNC, ALSO ADD PROPS LATER
+/////
+
 
   useEffect(() => {
     const unSub = onSnapshot(
@@ -81,10 +113,10 @@ const ChatList = () => {
           />
         </div>
         <img
-          src={addMode ? "./minus.png" : "./plus.png"}
+          src={showContent ? "./minus.png" : "./plus.png"}
           alt=""
           className="add"
-          onClick={() => setAddMode((prev) => !prev)} //change + for - on click
+          onClick={() => setShowContent((prev) => !prev)} //change + for - on click
         />
       </div>
       {filteredChats.map((chat) => (
@@ -114,7 +146,10 @@ const ChatList = () => {
           </div>
         </div>
       ))}
-      {addMode && <AddUser />}{" "}
+      {showContent && <div ref={ref}>
+        <AddUser />
+        </div> }
+      {/* // {addMode && <AddUser />}{" "} */}
     </div>
   );
 };
