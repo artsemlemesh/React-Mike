@@ -141,6 +141,10 @@
     font-size: 16px;
 }
 
+.chat .bottom input:disabled{
+    cursor: not-allowed;
+}
+
 .chat .bottom .sendButton{
     background-color: #5183fe;
     color: white;
@@ -150,6 +154,10 @@
     cursor: pointer;
 }
 
+.chat .bottom .sendButton:disabled{
+    background-color: #5182feb4;
+    cursor: not-allowed;
+}
 .chat .bottom .emoji{
     position: relative;
 }

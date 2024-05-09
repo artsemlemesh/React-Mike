@@ -23,7 +23,8 @@ const Chat = () => {
     url: "",
   });
 
-  const { chatId, user } = useChatStore();
+  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
+    useChatStore();
   const { currentUser } = useUserStore();
 
   const endRef = useRef(null);
@@ -124,9 +125,9 @@ const Chat = () => {
     <div className="chat">
       <div className="top">
         <div className="user">
-          <img src="./avatar.png" alt="" />
+          <img src={user?.avatar || "./avatar.png"} alt="" />
           <div className="texts">
-            <span>Mike Scof</span>
+            <span>{user?.username}</span>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
         </div>
@@ -182,9 +183,14 @@ const Chat = () => {
         </div>
         <input
           type="text"
-          placeholder="Type a msg"
+          placeholder={
+            isCurrentUserBlocked || isReceiverBlocked
+              ? "You can't send messages"
+              : "Type a msg"
+          }
           value={text} //to display emoji in input string
           onChange={(e) => setText(e.target.value)}
+          disabled={isCurrentUserBlocked || isReceiverBlocked}
         />
         <div className="emoji">
           <img
@@ -197,7 +203,11 @@ const Chat = () => {
             {/*display emoji */}
           </div>
         </div>
-        <button className="sendButton" onClick={handleSend}>
+        <button
+          className="sendButton"
+          onClick={handleSend}
+          disabled={isCurrentUserBlocked || isReceiverBlocked}
+        >
           Send
         </button>
       </div>
