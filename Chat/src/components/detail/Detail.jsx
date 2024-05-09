@@ -39,10 +39,12 @@ const Detail = () => {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
+
+
         <div className="option">
           <div className="title">
             <span>Shared photos</span>
-            <img src="./arrowDown.png" alt="" />
+            <img src="./arrowDown.png"  alt="" />
           </div>
           <div className="photos">
             <div className="photoItem">
@@ -57,6 +59,9 @@ const Detail = () => {
             </div>
           </div>
         </div>
+
+
+
         <div className="option">
           <div className="title">
             <span>Shared files</span>

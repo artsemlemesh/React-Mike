@@ -1,3 +1,17 @@
+:root{
+  --background : rgba(17, 25, 40, 0.75);
+  --text-primary : #000;
+  --button-bg : rgba(17, 25, 40, 0.25);
+  --button-text : #fff;
+}
+
+[data-theme='dark'] {
+  --background : rgba(17, 25, 40, 0.25);
+  --text-primary : #fff;
+  --button-bg : rgba(17, 25, 40, 0.25);
+  --button-text : #000;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +32,7 @@ body {
 .container{
   width: 90vw;
   height: 90vh;
-  background-color: rgba(17, 25, 40, 0.75);
+  background-color: var(--background);
   backdrop-filter: blur(19px) saturate(180%);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -33,3 +47,13 @@ body {
   background-color: rgba(17, 25, 40, 0.9);
 }
 
+.container button{
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-bg);
+  color: var(--button-text);
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+
+}

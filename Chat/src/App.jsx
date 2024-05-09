@@ -8,6 +8,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./lib/firebase";
 import { useUserStore } from "./lib/userStore";
 import { useChatStore } from "./lib/chatStore";
+import useLocalStorage from "./components/localStorage/useLocalStorage";
+import './index.css'
 
 const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
@@ -26,13 +28,24 @@ const App = () => {
 
   console.log(currentUser)
 
+  const [theme, setTheme] = useLocalStorage ('theme', 'dark')
+
+  function handleToggleTheme(){
+    setTheme(theme === 'light' ? 'dark':'light')
+}
+
   if (isLoading) return <div className="loading">Loading...</div>;
 
   return (
-    <div className="container">
+    <div className="container"  data-theme={theme}>
+
       {currentUser ? (
         <>
+          <button onClick={handleToggleTheme}></button>
+          {/* <button>sdf</button> */}
+
           <List />
+          
           {chatId && <Chat />}
           {chatId &&<Detail />}
         </>

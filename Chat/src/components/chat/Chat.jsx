@@ -31,7 +31,7 @@ const Chat = () => {
   //to scroll to the beginning of the page when the page first loads
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  }, [text]);
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
@@ -53,7 +53,6 @@ const Chat = () => {
 
   const handleImg = (e) => {
     //taken from uploading image while registering
-    console.log("hello");
     if (e.target.files[0]) {
       setImg({
         file: e.target.files[0],
@@ -128,7 +127,6 @@ const Chat = () => {
           <img src={user?.avatar || "./avatar.png"} alt="" />
           <div className="texts">
             <span>{user?.username}</span>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
         </div>
         <div className="icons">

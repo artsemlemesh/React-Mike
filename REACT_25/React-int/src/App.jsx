@@ -73,12 +73,12 @@ function App() {
 
     {/* <UseFetchHookTest/> */}
 
-    <UseOnclickOutsideTest/>
+    {/* <UseOnclickOutsideTest/> */}
 
 
     {/* <UseWindowResizeTest/> */}
 
-    {/* <ScrollTotopAndBottom/> */}
+    <ScrollTotopAndBottom/>
 
     {/* <ScrollToSection/> */}
 
