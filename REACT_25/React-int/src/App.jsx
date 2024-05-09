@@ -73,7 +73,7 @@ function App() {
 
     {/* <UseFetchHookTest/> */}
 
-    {/* <UseOnclickOutsideTest/> */}
+    <UseOnclickOutsideTest/>
 
 
     {/* <UseWindowResizeTest/> */}
@@ -82,7 +82,7 @@ function App() {
 
     {/* <ScrollToSection/> */}
 
-    <Appp/>
+    {/* <Appp/> */}
 
     </div>
   )
