@@ -15,7 +15,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
 
   const handleAvatar = (e) => {
-    console.log('hello')
     if (e.target.files[0]) {
       setAvatar({
         file: e.target.files[0],

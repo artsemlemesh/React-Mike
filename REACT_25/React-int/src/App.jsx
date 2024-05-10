@@ -78,7 +78,7 @@ function App() {
 
     {/* <UseWindowResizeTest/> */}
 
-    <ScrollTotopAndBottom/>
+    {/* <ScrollTotopAndBottom/> */}
 
     {/* <ScrollToSection/> */}
 

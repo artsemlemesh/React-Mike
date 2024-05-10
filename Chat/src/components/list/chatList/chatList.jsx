@@ -18,7 +18,7 @@ const ChatList = () => {
   //
 
   //
-  const ref = useRef();
+  const ref = useRef();//to store a reference to a DOM element
   //
 
   //define function for clicking outside the area
@@ -47,22 +47,23 @@ const ChatList = () => {
 
 
   useEffect(() => {
-    const unSub = onSnapshot(
+    const unSub = onSnapshot(//provides real time updates on the 'userchats' doc for the curr user(currentUser.id)
       doc(db, "userchats", currentUser.id),
       async (res) => {
-        const items = res.data().chats;
+        const items = res.data().chats; //retreves the chats data from the doc 
 
-        const promises = items.map(async (item) => {
-          const userDocRef = doc(db, "users", item.receiverId);
+        const promises = items.map(async (item) => { //iterates through each chat
+          const userDocRef = doc(db, "users", item.receiverId);// gets receiverId from chat item
           const userDocSnap = await getDoc(userDocRef);
 
-          const user = userDocSnap.data();
+          const user = userDocSnap.data();//fetches complete user data using getDoc based on the receiverId
 
-          return { ...item, user };
+          return { ...item, user }; //combines the chats and user data
         });
 
-        const chatData = await Promise.all(promises);
+        const chatData = await Promise.all(promises);//waits for all the user data to be fetched
         setChats(chatData.sort((a, b) => b.updatedAt - a.updatedAt)); //sorts in descending order based on updatedAt property
+        //line above updates chats and sorts them
       }
     );
 

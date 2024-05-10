@@ -8,12 +8,9 @@ export default function GlobalState({ children }) {
   const [loading, setLoading] = useState(false);
   const [recipeList, setRecipeList] = useState([]);
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
-  const [favList, setFavList] = useState([])//after we worked with our detail page, we need to set up favorite funciton
+  const [favList, setFavList] = useState([]); //after we worked with our detail page, we need to set up favorite funciton
 
   // const navigate = useNavigate()//whenever we search smth on other pages, we get redirected to the homepage navigate('/')
-
-
-
 
   useEffect(() => {
     const storedFavList = JSON.parse(localStorage.getItem("favList"));
@@ -26,15 +23,6 @@ export default function GlobalState({ children }) {
   useEffect(() => {
     localStorage.setItem("favList", JSON.stringify(favList));
   }, [favList]);
-
-
-
-
-
-
-
-
-
 
   async function handleSubmit(e) {
     e.preventDefault(); //bcz form gets submitted initially, so we have to remove this property
@@ -58,10 +46,6 @@ export default function GlobalState({ children }) {
     }
   }
 
-
-
-
-
   // function handleAddtoFav(getCurrItem) {
   //   const index = favList.findIndex((item) => item.id === getCurrItem.id);
   //   if (index === -1) {
@@ -72,29 +56,22 @@ export default function GlobalState({ children }) {
   //   }
   // }
 
-
-
-
-
-
-
-  function handleAddtoFav(getCurrItem){
-    console.log(getCurrItem)
+  function handleAddtoFav(getCurrItem) {
+    console.log(getCurrItem);
     let copyFavList = [...favList]; //shallow copy of favList array, ensures that modifications to it do not affect the original 'favList'
-    const index = copyFavList.findIndex(item => item.id === getCurrItem.id) 
+    const index = copyFavList.findIndex((item) => item.id === getCurrItem.id);
     //finds the index of the item with the same '===' 'id' as 'getCurrentItem' in the 'copyFaveList'
     //findIndex returns the index of the first element in the array that satisfies the provided test function. if no such element, it returns '-1'
-    if(index === -1){ // -1 means that item isnt present in the list
-      copyFavList.push(getCurrItem)//adds
+    if (index === -1) {
+      // -1 means that item isnt present in the list
+      copyFavList.push(getCurrItem); //adds
     } else {
-      copyFavList.splice(index)//removes
+      copyFavList.splice(index); //removes
     }
-    setFavList(copyFavList)
+    setFavList(copyFavList);
   }
-  console.log(favList, 'favList')
-  console.log(recipeList, 'recipeList')
-
-
+  console.log(favList, "favList");
+  console.log(recipeList, "recipeList");
 
   return (
     <GlobalContext.Provider

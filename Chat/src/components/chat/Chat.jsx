@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, createContext } from "react";
 import "./chat.css";
 import EmojiPicker from "emoji-picker-react";
 import {
@@ -12,8 +12,13 @@ import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+
 
 const Chat = () => {
+
+
   const [chat, setChat] = useState();
   const [open, setOpen] = useState(false); //for show/hide Emoji
   const [text, setText] = useState("");
@@ -22,6 +27,9 @@ const Chat = () => {
     file: null,
     url: "",
   });
+
+
+  
 
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
     useChatStore();
@@ -60,6 +68,12 @@ const Chat = () => {
       });
     }
   };
+
+  // const storage = getStorage()
+  // const storageRef = ref(storage, `images/`)
+
+
+ 
 
   const handleSend = async () => {
     if (text === "") return;
@@ -133,6 +147,8 @@ const Chat = () => {
           <img src="./phone.png" alt="" />
           <img src="./video.png" alt="" />
           <img src="./info.png" alt="" />
+
+          
         </div>
       </div>
       <div className="center">
@@ -152,6 +168,7 @@ const Chat = () => {
           </div>
         ))}
 
+
         {img.url && (
           <div className="messages own">
             <div className="texts">
@@ -162,7 +179,7 @@ const Chat = () => {
 
         <div ref={endRef}>
           {" "}
-          {/* ref along with useEffect lets jump to the part of the page */}
+          {/* ref along with useEffect lets us jump to the part of the page */}
         </div>
       </div>
       <div className="bottom">
@@ -202,6 +219,8 @@ const Chat = () => {
           </div>
         </div>
         <button
+
+
           className="sendButton"
           onClick={handleSend}
           disabled={isCurrentUserBlocked || isReceiverBlocked}
@@ -210,7 +229,7 @@ const Chat = () => {
         </button>
       </div>
     </div>
-  );
+    );
 };
 
 export default Chat;
