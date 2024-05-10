@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Chat from "./components/chat/Chat";
 import Detail from "./components/detail/Detail";
 import List from "./components/list/List";
@@ -11,7 +11,46 @@ import { useChatStore } from "./lib/chatStore";
 import useLocalStorage from "./components/localStorage/useLocalStorage";
 import "./index.css";
 
+
+
+
+
+
+
+
 const App = () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
   const { chatId } = useChatStore();
 
@@ -41,6 +80,7 @@ const App = () => {
 
   return (
     <div className="container" data-theme={theme}>
+
       {currentUser ? (
         <>
           <button onClick={handleToggleTheme}></button>

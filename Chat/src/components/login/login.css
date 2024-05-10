@@ -22,6 +22,44 @@
     gap:20px
 }
 
+
+
+
+
+
+.icon {
+    width: 100%;
+    /* height: 20px;  */
+    padding: 20px;
+    border: none;
+    background-color: #df4930;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.login .item form .icon img {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+/* .login .item form img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+} */
+
+
+
+
+
+
+
+
+
 .login .item form input{
     padding: 20px;
     border: none;

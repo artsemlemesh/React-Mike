@@ -1,10 +1,14 @@
 import { useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth, db } from "../../lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import upload from "../../lib/upload";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const [avatar, setAvatar] = useState({
@@ -12,7 +16,7 @@ const Login = () => {
     url: "",
   });
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleAvatar = (e) => {
     if (e.target.files[0]) {
@@ -25,26 +29,25 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
 
     const formData = new FormData(e.target);
 
-    const {email, password } = Object.fromEntries(formData);
-   
-    try{
-        
-        await signInWithEmailAndPassword(auth,email,password)
-    } catch(err){
-        console.log(err)
-        toast.error(err.message)
+    const { email, password } = Object.fromEntries(formData);
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
     } finally {
-        setLoading(false)
+      setLoading(false);
     }
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     const formData = new FormData(e.target);
 
     const { username, email, password } = Object.fromEntries(formData);
@@ -76,18 +79,27 @@ const Login = () => {
       console.log(err);
       toast.error(err.message);
     } finally {
-        setLoading(false)
+      setLoading(false);
     }
+  };
+
+  const google = () => {
+    console.log("hey google");
   };
 
   return (
     <div className="login">
       <div className="item">
         <h2>Welcome back,</h2>
+        <GoogleLogin clientId="26362118492-g10uh0lndtaen3gakn4mgpe7npr7vnen.apps.googleusercontent.com"/>
         <form onSubmit={handleLogin}>
           <input type="text" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
-          <button disabled={loading}>{loading ? 'Loading' : 'Sign in'}</button>
+          <button disabled={loading}>{loading ? "Loading" : "Sign in"}</button>
+          <div className="icon" onClick={google}>
+            {/* Google */}
+            <img  src="./google.png" alt="hey" />
+          </div>
         </form>
       </div>
       <div className="separator"></div>
@@ -108,7 +120,7 @@ const Login = () => {
           <input type="text" placeholder="Username" name="username" />
           <input type="text" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
-          <button disabled={loading}> {loading ? 'Loading' : 'Sign up'}</button>
+          <button disabled={loading}> {loading ? "Loading" : "Sign up"}</button>
         </form>
       </div>
     </div>
