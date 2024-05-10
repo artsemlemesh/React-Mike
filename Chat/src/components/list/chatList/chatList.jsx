@@ -5,6 +5,7 @@ import { useUserStore } from "../../../lib/userStore";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import { useChatStore } from "../../../lib/chatStore";
+import useOutsideClick from "../../../functions/useOutsideClick";
 
 const ChatList = () => {
   const [chats, setChats] = useState([]);
@@ -21,28 +22,9 @@ const ChatList = () => {
   const ref = useRef();//to store a reference to a DOM element
   //
 
-  //define function for clicking outside the area
-  function useOutsideClick(ref, handler) {
-    useEffect(() => {
-      function listener(e) {
-        if (!ref.current || ref.current.contains(e.target)) {
-          return; //ignore clicks inside the specified element
-        }
-        handler(e); // if outside the designated area- calls handler
-      }
 
-      document.addEventListener("mousedown", listener);
-      document.addEventListener("touchstart", listener);
-      return () => {
-        //remove after using, clean memory
-        document.removeEventListener("mousedown", listener);
-        document.removeEventListener("touchstart", listener);
-      };
-    }, [handler, ref]);
-  }
-
-  
-  useOutsideClick(ref, ()=> setShowContent(false)); //CALL THE FUNC, ALSO ADD PROPS LATER
+  //imported from external file
+  useOutsideClick (ref, ()=> setShowContent(false)); //CALL THE FUNC, ALSO ADD PROPS LATER
 /////
 
 

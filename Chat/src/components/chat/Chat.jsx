@@ -13,6 +13,8 @@ import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
+import Photos from "../photos/Photos";
+import useOutsideClick from "../../functions/useOutsideClick";
 
 
 
@@ -28,8 +30,12 @@ const Chat = () => {
     url: "",
   });
 
+  //3 lines for closing popup with photos in Chat component
+  const [showPhotos, setShowPhotos] = useState(false)
+  const ref = useRef();
+  useOutsideClick (ref, ()=> setShowPhotos(false))
 
-  
+
 
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
     useChatStore();
@@ -146,9 +152,12 @@ const Chat = () => {
         <div className="icons">
           <img src="./phone.png" alt="" />
           <img src="./video.png" alt="" />
-          <img src="./info.png" alt="" />
-
+          <img 
+          src={showPhotos ? './minus.png' : "./info.png"} 
+          alt=""
+          onClick={() => setShowPhotos((prev) => !prev)} 
           
+           />
         </div>
       </div>
       <div className="center">
@@ -228,6 +237,7 @@ const Chat = () => {
           Send
         </button>
       </div>
+      { showPhotos && <div ref={ref} ><Photos data={chat} /> </div>}
     </div>
     );
 };

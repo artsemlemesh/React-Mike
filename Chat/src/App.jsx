@@ -10,7 +10,6 @@ import { useUserStore } from "./lib/userStore";
 import { useChatStore } from "./lib/chatStore";
 import useLocalStorage from "./components/localStorage/useLocalStorage";
 import "./index.css";
-import { ChatProvider } from "./components/chat-detail-context/passPictures";
 
 const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
