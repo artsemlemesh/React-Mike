@@ -46,6 +46,7 @@ export default function GitProfileFinder() {
         />
         <button onClick={handleSubmit}>Search</button>
       </div>
+      {/* need ternary, because data loads later than User component and it throws an error */}
       {userData !== null ?<User user={userData}/> : null }        {/* displays user component or null */}
 
     </div>
