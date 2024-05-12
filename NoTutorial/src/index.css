@@ -1,0 +1,15 @@
+.navb{
+  display: flex;
+  justify-content: center;
+}
+
+.navlinkdiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navlinkdiv a{
+
+ color: red;
+  text-decoration: none;
+}
