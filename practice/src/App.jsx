@@ -1,19 +1,20 @@
 import { createContext, useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
 import Home from "./pages/home.jsx";
 import Fav from "./pages/favorite.jsx";
 import Detail from "./pages/detail.jsx";
 import Navbar from "./components/navbar.jsx";
 
-
 export const SmthContext = createContext();
 
-
-
 function App() {
-
-  const [hey, setHey] = useState(false)
-
+  const [hey, setHey] = useState(false);
 
   const router = createBrowserRouter([
     {
@@ -32,11 +33,19 @@ function App() {
 
   return (
     <div>
-      <SmthContext.Provider value={[hey, setHey]}>
-      <Navbar />
-      
-      <RouterProvider router={router} />
-      </SmthContext.Provider>
+      {/* <BrowserRouter>
+        <Routes> */}
+          <SmthContext.Provider value={[hey, setHey]}>
+            <Navbar />
+            {/* <Route path='/' element={<Home/>}/>
+            <Route path='/fav' element={<Fav/>}/>
+            <Route path='/item/:id' element={<Detail/>}/> */}
+
+
+            <RouterProvider router={router} />
+          </SmthContext.Provider>
+        {/* </Routes>
+      </BrowserRouter> */}
     </div>
   );
 }
