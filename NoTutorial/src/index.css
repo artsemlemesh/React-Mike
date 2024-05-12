@@ -1,6 +1,11 @@
 .navb{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.stat{
+  display: flex;
+  justify-content: flex-end;
 }
 
 .navlinkdiv {
