@@ -17,3 +17,11 @@
     height: 100vh;
     background-color: var(--background);
 }
+
+.active{
+    color: #fff700
+}
+
+.inactive{
+    color: #000;
+}
