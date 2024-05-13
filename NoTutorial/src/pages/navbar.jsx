@@ -18,7 +18,7 @@ const Navbar = () => {
             <StatusBar />
           </div>
           <div className="btn">
-            <button onClick={changeTheme}>change theme</button>
+            <button >change theme</button>
           </div>
         </h1>
 
