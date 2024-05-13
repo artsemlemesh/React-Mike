@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import User from "../components/one-user";
 
+
 const One = () => {
   const [user, setUser] = useState("artsemlemesh");
   const [userData, setUserData] = useState(null);
@@ -9,7 +10,7 @@ const One = () => {
     try {
       const request = await fetch(`https://api.github.com/users/${user}`);
       const data = await request.json();
-      console.log(data)
+      console.log(data);
       if (data) {
         setUserData(data);
       }
@@ -18,21 +19,19 @@ const One = () => {
     }
   }
 
-
-  useEffect(()=> {
-    fetchUser()
-
-  }, [])
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <>
-    <div>
-      <input value={user} onChange={(e) => setUser(e.target.value)} />
-      <button onClick={() => fetchUser()}>search</button>
-    </div>
-    <div>
-        {userData !== null ? <User data={userData}/> : null}
-    </div>
+      <div >
+        <div>
+          <input value={user} onChange={(e) => setUser(e.target.value)} />
+          <button onClick={() => fetchUser()}>search</button>
+        </div>
+        <div>{userData !== null ? <User data={userData} /> : null}</div>
+      </div>
     </>
   );
 };

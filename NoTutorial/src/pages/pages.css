@@ -1,0 +1,19 @@
+:root {
+    --background: #fff;
+    --text-primary: #000;
+    --button-bg: #000;
+    --button-text: #fff;
+  }
+  
+  [data-theme='dark'] {
+    --background: #000;
+    --text-primary: #fff;
+    --button-bg: #fff;
+    --button-text: #000;
+  }
+
+.one{
+    width: 100lvw;
+    height: 100vh;
+    background-color: var(--background);
+}
