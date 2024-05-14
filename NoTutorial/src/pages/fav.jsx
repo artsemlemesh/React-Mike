@@ -31,6 +31,7 @@ const Fav = () => {
   return(
   <div>
     <div className="content">
+      <h1>load more data func</h1>
       {products ? products.map((item, index)=>(
         <div key={index}><img src={item.thumbnail}/>
         <p>{item.title}</p></div>
