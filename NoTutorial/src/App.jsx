@@ -15,6 +15,7 @@ import Navbar from "./pages/navbar";
 import One from "./pages/one";
 import Two from "./pages/two";
 import Three from "./pages/three";
+import WeatherApp from "./pages/weather";
 
 const App = () => {
  
@@ -28,6 +29,8 @@ const App = () => {
         <Route path="/fav" element={<Fav />} />
         <Route path="/item/:id" element={<Detail />} />
         <Route path="/about" element={<About />} />
+        <Route path="/weather" element={<WeatherApp />} />
+
         
         <Route path="/one" element={<One />} />
         <Route path="/two" element={<Two />} />

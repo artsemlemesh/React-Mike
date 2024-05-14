@@ -33,6 +33,7 @@ const Navbar = () => {
           <NavLink to={"/fav"}>Favorites</NavLink>
           <NavLink to={"/about"}>About</NavLink>
           <NavLink to={"/"}>Home</NavLink>
+          <NavLink to={"/weather"}>Weather</NavLink>
         </div>
         {links.map((item, index) => (
           <NavLink key={index} to={`/${item}`}>
