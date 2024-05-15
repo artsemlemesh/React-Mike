@@ -1,9 +1,7 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import NewTodoForm from "../simple-todo-component/NewTodoForm"
-import TodoList from "../simple-todo-component/todolist"
-
-
+import { useEffect } from "react";
+import { useState } from "react";
+import NewTodoForm from "../simple-todo-component/NewTodoForm";
+import TodoList from "../simple-todo-component/todolist";
 
 // const Four = () => {
 
@@ -35,7 +33,6 @@ import TodoList from "../simple-todo-component/todolist"
 //         })
 //     }
 
-
 //     function deleteTodo(id){
 //         setTodo(currentItem=>{
 //             return currentItem.filter(todo=> todo.id !== id)
@@ -54,44 +51,49 @@ import TodoList from "../simple-todo-component/todolist"
 
 // export default Four
 
-
-
 const Four = () => {
-    const [todos, setTodos] = useState(()=>{
-        const localValue = localStorage.getItem('ITEM')
-        if(localValue == null ) return []
-    })
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEM");
+    if (localValue == null) return [];
+    return JSON.parse(localValue);
+  });
 
-    useEffect(() => {
-        localStorage.setItem('ITEM', JSON.stringify(todos))
-    }, [todos])
+  useEffect(() => {
+    localStorage.setItem("ITEM", JSON.stringify(todos));
+  }, [todos]);
 
+  function addTodo(title) {
+    setTodos((currItem) => {
+      return [
+        ...currItem,
+        { id: crypto.randomUUID(), title, completed: false },
+      ];
+    });
+  }
 
-    function addTodo(title){
-        setTodos((currItem)=>{
-            return [...currItem, {id: crypto.randomUUID(), title, completed: false}]
-        })
-    }
+  function toggleTodo(id, completed) {
+    setTodos((currItem) => {
+      return currItem.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed };
+        }
+        return todo;
+      });
+    });
+  }
 
-    function toggleTodo(id, completed){
-        setTodos((currItem) => {
-            return currItem.map(todo=>{
-                if(todo.id === id){
-                    return {...todo, completed}
-                }
-                return todo
-            })
-        })
-    }
+  function deleteTodo(id) {
+    setTodos((currItem) => {
+      return currItem.filter((todo) => todo.id !== id);
+    });
+  }
 
-    function deleteTodo(id){
-        setTodos((currItem)=>{
-            return currItem.filter(todo=>todo.id) !== id
-        })
-    }
+  return (
+    <div>
+      <NewTodoForm onSubmit={addTodo} />
 
-
-
-
-}
-    export default Four
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+    </div>
+  );
+};
+export default Four;
