@@ -16,6 +16,7 @@ import One from "./pages/one";
 import Two from "./pages/two";
 import Three from "./pages/three";
 import WeatherApp from "./pages/weather";
+import Four from "./pages/four";
 
 const App = () => {
  
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/one" element={<One />} />
         <Route path="/two" element={<Two />} />
         <Route path="/three" element={<Three />} />
+        <Route path="/four" element={<Four />} />
       </Routes>
       
     </BrowserRouter>

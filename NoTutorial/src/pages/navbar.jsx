@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { GlobalCont } from "../context/context";
 // import useLS from "../components/navbarCustomHook";
 
-const links = ["one", "two", "three"];
+const links = ["one", "two", "three", 'four'];
 
 const Navbar = () => {
   const { handleTheme, theme } = useContext(GlobalCont);
