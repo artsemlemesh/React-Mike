@@ -59,24 +59,44 @@ const Four = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetchTodos();
+    async function fetchTodos(){
+      const res = await fetch(`http://127.0.0.1:8000/api/notes`)
+      const data = res.json()
+      setTodos(data)
+      console.log(todos)
+    }
+    fetchTodos()
   }, []);
 
-  const apiUrl = 'http://127.0.0.1:8000';
-const endpoint = '/api/notes';
+  const apiUrl = "http://127.0.0.1:8000";
+  const endpoint = "/api/notes";
 
-  const fetchTodos = async () => {
-    try {
-      const response = await axios.get(apiUrl + endpoint);
-      console.log(response, 'RESPONSE')
-      setTodos(response.data);
-      
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const fetchTodos = async () => {
+  //   try {
+  //     const response = await axios.get(apiUrl + endpoint);
+  //     console.log(response, 'RESPONSE')
+  //     setTodos(response.data);
 
-  console.log(todos, "todos");
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+  // const fetchTodos = () => {
+  //   api
+  //     .get("/api/notes/")
+  //     .then((res) => res.data)
+  //     .then((data) => {
+  //       setTodos(data);
+  //       console.log(data);
+  //     }).catch((e)=>alert(e));
+  // };
+
+
+   
+
+
+
 
   // useEffect(() => {
   //   localStorage.setItem("items", JSON.stringify(todos));
@@ -91,7 +111,6 @@ const endpoint = '/api/notes';
     });
   }
 
-  
   // const addTodo = async (title) => {
   //   api.post('/api/notes/', {title, content: ''})
   //   .then((res)=> {
@@ -106,14 +125,9 @@ const endpoint = '/api/notes';
   //     console.error('error', e)
   //     alert('failed to create')
   //   }
-    
-  //   ) 
+
+  //   )
   //   }
-     
-
-  
-
-  
 
   function toggleTodo(id, completed) {
     setTodos((currItem) => {
