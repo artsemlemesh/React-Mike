@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react"
 
 import { useState } from "react"
-
+import './style.css'
 
 
 // const NewTodoForm = ({onSubmit}) => {
@@ -45,37 +45,35 @@ import { useState } from "react"
 
 
 
-
-
 const NewTodoForm = ({onSubmit}) => {
     const [newItem, setNewItem] = useState('')
 
     function handleSubmit(e){
         e.preventDefault()
-
-        if(newItem === '') return
+        if(newItem === '') return 
 
         onSubmit(newItem)
-
         setNewItem('')
     }
+    
 
 
-
-    return (<div>
+    return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="form">todo</label>
+            <label htmlFor="here">new todo: </label>
             <input
-                id='form'
+                className="inp"
+                id="here"
                 value={newItem}
-                onChange={(e)=> setNewItem(e.target.value)}
+                onChange={(e)=>setNewItem(e.target.value)}
             />
-            <button type="submit"> click!</button>
+            <button className="subbut" type="submit">save</button>
 
         </form>
-    </div>)
-
+    )
 
 
 }
-export default  NewTodoForm
+
+
+export default NewTodoForm

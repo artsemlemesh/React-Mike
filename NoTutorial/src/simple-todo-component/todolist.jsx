@@ -1,4 +1,5 @@
 import TodoItem from "./todoitem";
+import './style.css'
 
 // const TodoList = ({todo, completedTodo, deleteTodo}) => {
 
@@ -19,7 +20,7 @@ import TodoItem from "./todoitem";
 const TodoList = ({ todos, toggleTodo, deleteTodo }) => {
   return (
     <ul>
-      {/* {todos.length === 0 && "no todos"} */}
+      {todos.length === 0 && "no todos"}
       {todos.map((todo) => {
         return (
           <TodoItem

@@ -1,4 +1,4 @@
-
+import './style.css'
 
 
 
@@ -23,22 +23,24 @@
 
 
 
-
-const TodoItem = ({id, completed, title, toggleTodo, deleteTodo})=>{
-
+const TodoItem = ({id, completed, title, toggleTodo, deleteTodo}) => {
 
 
 
+    return (
+        <li>
+            <label>
+                <input
+                type="checkbox" checked={completed}
+                    onChange={e=>toggleTodo(id, e.target.checked)}
+                />
+                {title}
 
-return (<li>
-    <input type="checkbox" checked={completed}
-    onChange={e=>toggleTodo(e.target.value)}/>
-    {title}
-    <button onClick={()=> deleteTodo(id)}>del</button>
-    fsd
-</li>)
-
-
+            </label>
+            <button onClick={()=> deleteTodo(id)}>delete</button>
+        </li>
+    )
 
 }
+
 export default TodoItem

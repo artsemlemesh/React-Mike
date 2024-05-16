@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import NewTodoForm from "../simple-todo-component/NewTodoForm";
 import TodoList from "../simple-todo-component/todolist";
+import "../simple-todo-component/style.css";
 
 // const Four = () => {
 
@@ -53,13 +54,14 @@ import TodoList from "../simple-todo-component/todolist";
 
 const Four = () => {
   const [todos, setTodos] = useState(() => {
-    const localValue = localStorage.getItem("ITEM");
-    if (localValue == null) return [];
-    return JSON.parse(localValue);
+    const localVal = localStorage.getItem("items");
+    if (localVal == null) return [];
+
+    return JSON.parse(localVal);
   });
 
   useEffect(() => {
-    localStorage.setItem("ITEM", JSON.stringify(todos));
+    localStorage.setItem("items", JSON.stringify(todos));
   }, [todos]);
 
   function addTodo(title) {
@@ -89,10 +91,19 @@ const Four = () => {
   }
 
   return (
-    <div>
-      <NewTodoForm onSubmit={addTodo} />
+    <div className="container">
+      <div className="top">
+        <NewTodoForm onSubmit={addTodo} />
+      </div>
 
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <h1 className="title">my todos</h1>
+      <div className="bottom">
+        <TodoList
+          todos={todos}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+        />
+      </div>
     </div>
   );
 };
