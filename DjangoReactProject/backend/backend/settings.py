@@ -54,16 +54,16 @@ MIDDLEWARE = [
     ]
 
 
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWS_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True #crucial thing, else nothing works
+# CORS_ALLOWS_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000"
+# CORS_ORIGIN_WHITELIST = [
+#     "https://example.com",
+#     "https://sub.example.com",
+#     "http://localhost:8080",
+#     "http://127.0.0.1:9000"
     
-]
+# ]
 
 ROOT_URLCONF = "backend.urls"
 

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import Book from './components/Book';
+import SendBook from './components/SendBook';
 
 function App() {
   const [books, setBooks] = useState([])
@@ -39,15 +41,16 @@ function App() {
       <h1>DjangoReact</h1>
     </header>
     <div className="book-list">
+      
       {books.map((book,index) => {
-   return (
-     <div key={index} className="book-item">
-       <h2>{book.name}</h2>
-       <p>{book.author}</p>
-       <p>{book.description}</p>
-    </div>
+   return (<div key={index}>
+     <Book book={book} key={index}/>
+     
+     </div>
+     
    )}
 )}
+  {<SendBook />}
     </div>
   </div>
   )
