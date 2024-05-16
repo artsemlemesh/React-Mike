@@ -3,6 +3,9 @@ import { useState } from "react";
 import NewTodoForm from "../simple-todo-component/NewTodoForm";
 import TodoList from "../simple-todo-component/todolist";
 import "../simple-todo-component/style.css";
+import "../../api";
+import api from "../../api";
+import axios from "axios";
 
 // const Four = () => {
 
@@ -53,16 +56,31 @@ import "../simple-todo-component/style.css";
 // export default Four
 
 const Four = () => {
-  const [todos, setTodos] = useState(() => {
-    const localVal = localStorage.getItem("items");
-    if (localVal == null) return [];
-
-    return JSON.parse(localVal);
-  });
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(todos));
-  }, [todos]);
+    fetchTodos();
+  }, []);
+
+  const apiUrl = 'http://127.0.0.1:8000';
+const endpoint = '/api/notes';
+
+  const fetchTodos = async () => {
+    try {
+      const response = await axios.get(apiUrl + endpoint);
+      console.log(response, 'RESPONSE')
+      setTodos(response.data);
+      
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  console.log(todos, "todos");
+
+  // useEffect(() => {
+  //   localStorage.setItem("items", JSON.stringify(todos));
+  // }, [todos]);
 
   function addTodo(title) {
     setTodos((currItem) => {
@@ -72,6 +90,30 @@ const Four = () => {
       ];
     });
   }
+
+  
+  // const addTodo = async (title) => {
+  //   api.post('/api/notes/', {title, content: ''})
+  //   .then((res)=> {
+  //     if(res.status === 201){
+  //       alert('created')
+  //       setTodos((currTodos)=> [...currTodos, {id: res.data.id, title,completed: false}])
+  //     }else{
+  //       alert('failed')
+  //     }
+  //   })
+  //   .catch((e)=> {
+  //     console.error('error', e)
+  //     alert('failed to create')
+  //   }
+    
+  //   ) 
+  //   }
+     
+
+  
+
+  
 
   function toggleTodo(id, completed) {
     setTodos((currItem) => {
