@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { GlobalCont } from "../context/context";
 
 function CreateNote() {
+
+    const {completed} = useContext(GlobalCont)
+
   const [note, setNote] = useState({
+    id: crypto.randomUUID(),
     title: "",
     content: "",
-
+    completed: false,
   });
   const [errors, setErrors] = useState(null);
 
@@ -17,6 +22,11 @@ function CreateNote() {
     }));
     setErrors(null);
   };
+
+
+  
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

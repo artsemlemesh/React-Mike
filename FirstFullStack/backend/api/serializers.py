@@ -6,7 +6,7 @@ from .models import Note
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ['id','username', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields = ['title', 'content',] # 'created_at', 'author'
+        fields = ['id','title', 'content', 'created_at'] # , 'author'
         # extra_kwargs = {'author': {'read_only': True}} also check later
 
         

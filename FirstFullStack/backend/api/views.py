@@ -25,6 +25,8 @@ class NoteListCreate(generics.ListCreateAPIView):
 class NoteDelete(generics.DestroyAPIView):
     serializer_class = UserSerializer
 
+    def get_queryset(self):
+        return Note.objects.all()
     # def get_queryset(self):
     #     user = self.request.user
     #     return Note.objects.filter(author=user)

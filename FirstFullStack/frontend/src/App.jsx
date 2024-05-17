@@ -17,7 +17,7 @@ function App() {
     <NavBar/>
     <Routes>
       <Route path='/' element={<Func/>}/>
-      <Route path='create-note/' element={<CreateNote />}/>
+      <Route path='create-note/' element={<CreateNote  />}/>
     </Routes>
     
     </BrowserRouter>
