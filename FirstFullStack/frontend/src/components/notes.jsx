@@ -1,27 +1,32 @@
 import { useContext } from "react";
 import { GlobalCont } from "../context/context";
+import '../index.css'
+
 
 const Note = (props) => {
   const { note } = props;
- const {completed, deleteNote, setCompleted} = useContext(GlobalCont)
+  const { completed, deleteNote, setCompleted } = useContext(GlobalCont);
 
-    const formattedDate = new Date(note.created_at).toLocaleDateString('en-US')
+  const formattedDate = new Date(note.created_at).toLocaleDateString("en-US");
 
-    
   return (
-    <div>
+    <div className="notes">
       <li>
-        <label><input
-        type="checkbox" checked={completed}
-        onChange={e => {setCompleted(!completed)}}
-        />
-        <h1>{note.title}</h1>
-        <h2>{note.content}</h2>
+        <label className="label">
+          <input
+            type="checkbox"
+            checked={completed}
+            onChange={(e) => {
+              setCompleted(!completed);
+            }}
+          />
+          <h1>{note.title}</h1>
+          <h2>{note.content}</h2>
 
-        <h2>{formattedDate}</h2>
         </label>
-        <button onClick={()=> deleteNote(note.id)}>delete</button>
-        
+        <h2>{formattedDate}</h2>
+
+        <button onClick={() => deleteNote(note.id)}>delete</button>
       </li>
     </div>
   );
