@@ -3,7 +3,7 @@ import { GlobalCont } from "../context/context";
 
 const Note = (props) => {
   const { note } = props;
- const {completed, deleteNote} = useContext(GlobalCont)
+ const {completed, deleteNote, setCompleted} = useContext(GlobalCont)
 
     const formattedDate = new Date(note.created_at).toLocaleDateString('en-US')
 
@@ -13,6 +13,7 @@ const Note = (props) => {
       <li>
         <label><input
         type="checkbox" checked={completed}
+        onChange={e => {setCompleted(!completed)}}
         />
         <h1>{note.title}</h1>
         <h2>{note.content}</h2>
