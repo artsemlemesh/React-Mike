@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function SendBook({ onBookCreated }) { // Optional prop for handling success
+function SendBook({  }) { // Optional prop for handling success
 
   const [book, setBook] = useState({ name: "", author: "", description: "" });
   const [errors, setErrors] = useState(null); // State for potential errors
@@ -27,11 +27,12 @@ function SendBook({ onBookCreated }) { // Optional prop for handling success
       const newBook = response.data; // Assuming response contains the newly created book data
 
       // Handle successful creation (optional)
-      if (onBookCreated) {
-        onBookCreated(newBook); // Call the callback function from App.js (if provided)
-      } else {
-        console.log("Book created successfully:", newBook); // Default success message
-      }
+      // if (onBookCreated) {
+      //   onBookCreated(newBook); // Call the callback function from App.js (if provided)
+      // } else {
+      //   console.log("Book created successfully:", newBook); // Default success message
+      // }
+      console.log("Book created successfully:", newBook)
       setBook({ name: "", author: "", description: "" }); // Reset form after success
     } catch (error) {
       console.error("Error creating book:", error);
