@@ -2,6 +2,19 @@ import { useEffect, useState } from 'react'
 import Book from './components/Book';
 import SendBook from './components/SendBook';
 
+
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  Router,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
+import SingularBook from './components/SingularBook';
+import NavBar from './components/nav';
+
+
 function App() {
   const [books, setBooks] = useState([])
 
@@ -15,27 +28,13 @@ function App() {
      .catch(err => setErrors(err));
     }
     fetchBooks();
- },[])
+ },[books])
 
 
-
-
-//   useEffect (() => {
-//     setBooks([
-//          {
-//            "name":"Otostopçunun Galaksi Rehberi", 
-//            "author":    "Douglas Adams", 
-//            "description": "Lorem ipsum"
-//          },
-//          {
-//            "name":"Hikayeler", 
-//            "author":    "Edgar Allan Poe", 
-//            "description": "Lorem ipsum sit door amet"
-//          }
-//       ])
-// },[])
 
   return (
+
+    
     <div className="App">
     <header className="App-header">
       <h1>DjangoReact</h1>
@@ -53,7 +52,33 @@ function App() {
   {<SendBook />}
     </div>
   </div>
+
+ 
+
   )
 }
 
-export default App
+// export default App
+
+
+
+export default function Landing(){
+
+  return(
+    
+<BrowserRouter>
+<NavBar/>
+  <Routes>
+
+
+  <Route path='books/:id' element={<SingularBook />}/>
+  <Route path='books/' element={<Book  />}/>
+  <Route path='/' element={<App/>}/>
+  <Route path='/create-book' element={<SendBook/>}/>
+
+
+
+</Routes>
+</BrowserRouter>
+  )
+}

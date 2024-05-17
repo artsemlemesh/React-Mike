@@ -12,3 +12,11 @@ class BooksSerializer(serializers.ModelSerializer):
         if len(value) > 300:
             raise serializers.ValidationError("This is too long")
         return value
+    
+
+
+class BookSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model = Books
+        fields = ['name','author','description']
+        

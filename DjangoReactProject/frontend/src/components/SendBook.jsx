@@ -1,46 +1,77 @@
-import axios from 'axios'
-import { useState } from 'react';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-function SendBook(props){
-    const [book, setBook] = useState(
-      { name : "", author: "", description: ""}
-    );
+function SendBook({ onBookCreated }) { // Optional prop for handling success
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setBook(prevBook => ({
-            ...prevBook,
-            [name]: value
-        }));
-    };
+  const [book, setBook] = useState({ name: "", author: "", description: "" });
+  const [errors, setErrors] = useState(null); // State for potential errors
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setBook((prevBook) => ({
+      ...prevBook,
+      [name]: value,
+    }));
+    setErrors(null); // Clear errors on user input change
+  };
 
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      axios.defaults.xsrfCookieName ='csrftoken';
-      axios.defaults.xsrfHeaderName ='X-CSRFToken';
+//   useEffect(()=>{
+//     handleSubmit
+//   }, [book])
 
-    //   const csrfToken = document.cookie.match(/csrftoken=([^ ;]+)/)[1];
-    //     console.log(csrfToken, 'hey')
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      axios.post('http://127.0.0.1:8000/create-book', book, {headers: {"X-CSRFToken": 'csrftoken'} })
-      .then(function (response) {
-        console.log(response)
-    })
-    .catch(function (error) {
-        console.log(error)
-     })
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/create-book/", book);
+      const newBook = response.data; // Assuming response contains the newly created book data
+
+      // Handle successful creation (optional)
+      if (onBookCreated) {
+        onBookCreated(newBook); // Call the callback function from App.js (if provided)
+      } else {
+        console.log("Book created successfully:", newBook); // Default success message
+      }
+      setBook({ name: "", author: "", description: "" }); // Reset form after success
+    } catch (error) {
+      console.error("Error creating book:", error);
+      setErrors(error.message || "An error occurred while creating the book."); // Handle errors gracefully
     }
-    return(
-     <div className="book-create">
-       <form onSubmit={handleSubmit}>
-         <input type="text" name="name" value={book.name} onChange={handleChange} />
-         <input type="text" name="author" value={book.author} onChange={handleChange} />
-         <textarea name="description" value={book.description} onChange={handleChange} ></textarea>
-         <button> Save </button>
-       </form>
-     </div>
-    )
-  }
+  };
 
-export default SendBook
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Create New Book</h2>
+      {errors && <p className="error-message">{errors}</p>} {/* Display errors if any */}
+      <label htmlFor="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value={book.name}
+        onChange={handleChange}
+        required
+      />
+      <label htmlFor="author">Author:</label>
+      <input
+        type="text"
+        id="author"
+        name="author"
+        value={book.author}
+        onChange={handleChange}
+        required
+      />
+      <label htmlFor="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        value={book.description}
+        onChange={handleChange}
+        required
+      />
+      <button type="submit">Create Book</button>
+    </form>
+  );
+}
+
+export default SendBook;

@@ -45,25 +45,25 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     ]
 
 
 CORS_ALLOW_ALL_ORIGINS = True #crucial thing, else nothing works
-# CORS_ALLOWS_CREDENTIALS = True
+CORS_ALLOWS_CREDENTIALS = True
 
-# CORS_ORIGIN_WHITELIST = [
-#     "https://example.com",
-#     "https://sub.example.com",
-#     "http://localhost:8080",
-#     "http://127.0.0.1:9000"
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:5173",
+    # "http://127.0.0.1:9000"
     
-# ]
+]
+
+
 
 ROOT_URLCONF = "backend.urls"
 
