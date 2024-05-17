@@ -109,15 +109,11 @@ a {
 .notes {
     margin: 20px;
     padding: 10px;
-    /* border: 2px solid red; */
-    /* border-radius: 15px; */
-    /* width: 50%; */
+  
 }
 
 .label {
     display: flex;
-    /* justify-content: flex-start; */
     align-items: baseline;
-    /* align-content: space-around; */
     gap:20px;
 }
