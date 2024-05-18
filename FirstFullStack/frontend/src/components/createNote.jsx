@@ -3,8 +3,7 @@ import axios from "axios";
 import { GlobalCont } from "../context/context";
 
 function CreateNote() {
-
-    const {completed} = useContext(GlobalCont)
+  const { completed, fetchNotes } = useContext(GlobalCont);
 
   const [note, setNote] = useState({
     id: crypto.randomUUID(),
@@ -23,11 +22,6 @@ function CreateNote() {
     setErrors(null);
   };
 
-
-  
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,6 +33,11 @@ function CreateNote() {
       console.log("three");
 
       setNote(newNote);
+      fetchNotes(); //updates notes after creation of new
+      setNote({
+        title: "",
+        content: "",
+      }); //cleans up after posting a note
     } catch (e) {
       console.error(e, "error creating new note");
     }
