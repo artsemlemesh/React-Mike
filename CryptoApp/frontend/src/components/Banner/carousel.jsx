@@ -6,6 +6,7 @@ import { makeStyles } from "@mui/styles"
 import { Link } from "react-router-dom"
 import { numberWithCommas } from "../CoinsTable"
 import AliceCarousel from 'react-alice-carousel'
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 
 const Carousel = () => {
@@ -86,7 +87,8 @@ const Carousel = () => {
 
     return (
         <div className={classes.carousel}>
-            
+
+
             <AliceCarousel
                mouseTracking
                infinite

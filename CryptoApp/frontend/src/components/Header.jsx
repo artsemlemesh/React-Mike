@@ -66,3 +66,5 @@ const myStyles = makeStyles ((theme) => ({
     )
 
   }
+
+  export default Header;

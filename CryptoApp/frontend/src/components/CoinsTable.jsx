@@ -102,12 +102,12 @@ export default function CoinsTable() {
         <TextField
           label="Search For a Crypto Currency.."
           variant="outlined"
-          style={{ marginBottom: 20, width: "100%" }}
+          style={{ marginBottom: 20, width: "100%",  }}
           onChange={(e) => setSearch(e.target.value)}
         />
         <TableContainer component={Paper}>
           {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold" }} />
+            <LinearProgress style={{ backgroundColor: "gold",  }} />
           ) : (
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
@@ -145,6 +145,7 @@ export default function CoinsTable() {
                           style={{
                             display: "flex",
                             gap: 15,
+                            color: 'white'
                           }}
                         >
                           <img
@@ -154,12 +155,13 @@ export default function CoinsTable() {
                             style={{ marginBottom: 10 }}
                           />
                           <div
-                            style={{ display: "flex", flexDirection: "column" }}
+                            style={{ display: "flex", flexDirection: "column", }}
                           >
                             <span
                               style={{
                                 textTransform: "uppercase",
                                 fontSize: 22,
+                                // color: 'gold'
                               }}
                             >
                               {row.symbol}
