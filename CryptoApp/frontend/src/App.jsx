@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles";
 
 import "./App.css";
 import HomePage from "./pages/HomePage";
+import CoinPage from "./pages/CoinPage";
 
 const myStyles = makeStyles(() => ({
   App: {
@@ -17,11 +18,13 @@ function App() {
   const classes = myStyles();
 
   return (
+    
     <BrowserRouter>
       <div className={classes.App}>
         <Routes>
         {/* <Header/> */}
         <Route path="/" element={<HomePage/> } exact />
+        <Route path="/coins/:id" element={<CoinPage /> } exact />
         </Routes>
       </div>
     </BrowserRouter>
