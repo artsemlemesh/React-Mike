@@ -5,20 +5,42 @@
     font-family: sans-serif;
     box-sizing: border-box;
 }
+
+
+:root{
+    --background-nav: #fff;
+    --background: #fff;
+    --text-primary: #000;
+    --button-bg: #fed700;
+    --button-text: #fff;
+    --product-bg-color: #fff
+}
+
+[data-theme='dark']{
+    --background-nav: #352e2e;
+    --background: #000;
+    --text-primary: #fff;
+    --button-bg: #fff;
+    --button-text: #000;
+    --product-bg-color:rgb(75, 75, 67)
+
+}
+
 .about
 {
     width: 100%;
+    background-color: var(--background);
 }
 .about .about_banner
 {
-    background: #f9f9ff;
+    background: var(--background);
     padding: 40px 50px;
     text-align: center;
 }
 .about .about_banner p
 {
     font-size: 16px;
-    color: #232323;
+    color: var(--text-primary);
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
@@ -45,7 +67,7 @@
     font-size: 32px;
     text-transform: uppercase;
     font-weight: 600;
-    color: #232323;
+    color: var(--text-primary);
 }
 .about .about_info .left p
 {
@@ -85,7 +107,7 @@
 {
     font-size: 22px;
     text-transform: uppercase;
-    color: #232323;
+    color: var(--text-primary);
     letter-spacing: 1px;
 }
 .about .about_info .right .container .contant

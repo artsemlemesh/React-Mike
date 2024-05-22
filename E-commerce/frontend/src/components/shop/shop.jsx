@@ -6,7 +6,7 @@ import { GlobalContext } from "../../GlobalContext"
 
 const Shop = () => {
 
-    const {shop, filter, allCategoryFilter, addToCart} = useContext(GlobalContext)
+    const {shop, filter, allCategoryFilter, addToCart, theme} = useContext(GlobalContext)
 
     const [showDetail, setShowDetail] = useState(false)
     const [detail, setDetail] = useState({})
@@ -45,7 +45,7 @@ const Shop = () => {
         </div>
       )}
 
-<div className="shop">
+<div className="shop" data-theme={theme}>
         <h2># Shop</h2>
         <p>Home . Shop</p>
         <div className="container">

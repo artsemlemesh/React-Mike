@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './about.css'
 import { BsDatabase, BsClipboardData} from 'react-icons/bs';
 import { AiOutlineUsergroupAdd} from 'react-icons/ai';
+import { GlobalContext } from '../../GlobalContext';
 const About = () => {
+
+  const {theme} = useContext(GlobalContext)
   return (
     <>
-    <div className='about'>
+    <div className='about' data-theme={theme}>
         <div className='about_banner'>
             <p>Home.About</p>
             <h2>About Us</h2>
