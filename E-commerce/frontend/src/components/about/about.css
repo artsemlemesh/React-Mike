@@ -7,23 +7,16 @@
 }
 
 
+
+
 :root{
-    --background-nav: #fff;
     --background: #fff;
     --text-primary: #000;
-    --button-bg: #fed700;
-    --button-text: #fff;
-    --product-bg-color: #fff
 }
 
 [data-theme='dark']{
-    --background-nav: #352e2e;
     --background: #000;
     --text-primary: #fff;
-    --button-bg: #fff;
-    --button-text: #000;
-    --product-bg-color:rgb(75, 75, 67)
-
 }
 
 .about
