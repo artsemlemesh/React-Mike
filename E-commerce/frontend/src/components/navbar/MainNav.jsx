@@ -6,24 +6,28 @@ import UserMenu from './userMenu'
 import UserProfile from './userProfile'
 import Navigation from './Navigation'
 import './nav.css'
+import { useContext } from 'react'
+import { GlobalContext } from '../../GlobalContext'
 
-const Nav = ({search, setSearch, searchproduct}) => {
-    const {loginWithRedirect, logout, user, isAuthenticated} = useAuth0()
-
+const Nav = () => {
+    const {search, setSearch, searchProduct, handleTheme, theme, loginWithRedirect, logout, user, isAuthenticated} = useContext(GlobalContext)
 
     return (
         <>
         <Header/>
-        <div className='mid_header'>
+        <div className='mid_header' data-theme={theme}>
             <div className='logo'>
-                <img src='' alt='logo'/>
+                <img src='' alt='logo'/> {/* paste logo */}
             </div>
-            <SearchBox search={search} setSearch={setSearch} searchproduct={searchproduct} />
-            <UserMenu isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout}/>
+            <SearchBox search={search} setSearch={setSearch} searchProduct={searchProduct}/>
+            <button onClick={handleTheme}>hey</button>
+            {/* isAuthenticated, loginWithRedirect, logout */}
+            <UserMenu isAuthenticated={isAuthenticated} loginWithRedirect={loginWithRedirect} logout={logout} />
         </div>
         <div className='last_header'>
+        {/* isAuthenticated, user */}
             <UserProfile isAuthenticated={isAuthenticated} user={user}/>
-            {/* <Navigation/> */}
+            <Navigation/>
             <div className='offer'>
                 <p>flat 10% over all iphone</p>
             </div>

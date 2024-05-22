@@ -1,0 +1,139 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+.about
+{
+    width: 100%;
+}
+.about .about_banner
+{
+    background: #f9f9ff;
+    padding: 40px 50px;
+    text-align: center;
+}
+.about .about_banner p
+{
+    font-size: 16px;
+    color: #232323;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.about .about_banner h2
+{
+    font-size: 52px;
+    color: #62bdfc;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+.about .about_info
+{
+    max-width: 100%;
+    padding: 20px 30px;
+    display: flex;
+}
+.about .about_info .left
+{
+    max-width: 50%;
+}
+.about .about_info .left h3
+{
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #232323;
+}
+.about .about_info .left p
+{
+    color: #777777;
+    margin-top: 15px;
+    margin-right: 20%;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+.about .about_info .left .box_container
+{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.about .about_info .left .box_container .box
+{
+    padding: 20px 30px;
+    border: 1px solid #8a8a8a;
+    border-radius: 5px;
+}
+.about .about_info .left .box_container .box .icon
+{
+    color: #62bdfc;
+    font-size: 22px;
+}
+.about .about_info .right
+{
+    margin-left: 5%;
+    max-width: 50%;
+}
+.about .about_info .right .container
+{
+    width: 100%;
+}
+.about .about_info .right .container h3
+{
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #232323;
+    letter-spacing: 1px;
+}
+.about .about_info .right .container .contant
+{
+    margin-top: 10px;
+}
+.about .about_info .right .container .contant h3
+{
+    font-size: 12px;
+    color: #8a8a8a;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+.about .about_info .right .container .contant .box
+{
+    width: 200%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 15px;
+    margin-top: 10px;
+    padding: 3px 3px;
+    border-radius: 10px;
+    border: 1px solid #777777;
+}
+.about .about_info .right .container .contant .box .fieldAE
+{
+   width:85%;
+   background: #62bdfc;
+   height: 100%;
+   border-radius: 10px;
+}
+.about .about_info .right .container .contant .box .fieldP
+{
+   width:80%;
+   background: #62bdfc;
+   height: 100%;
+   border-radius: 10px;
+}
+.about .about_info .right .container .contant .box .fieldI
+{
+   width:70%;
+   background: #62bdfc;
+   height: 100%;
+   border-radius: 10px;
+}
+.about .about_info .right .container .contant .box .fieldS
+{
+   width:90%;
+   background: #62bdfc;
+   height: 100%;
+   border-radius: 10px;
+}

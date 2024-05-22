@@ -1,6 +1,10 @@
 import { CiUser } from "react-icons/ci";
-import './nav.css'
-const UserProfile = ({ isAuthenticated, user }) => (
+import "./nav.css";
+import { useContext } from "react";
+import { GlobalContext } from "../../GlobalContext";
+
+// const { isAuthenticated, user } = useContext(GlobalContext);
+const UserProfile = ({isAuthenticated, user}) => (
   <div className="user_profile">
     <div className="icon">
       <CiUser />
@@ -18,4 +22,4 @@ const UserProfile = ({ isAuthenticated, user }) => (
   </div>
 );
 
-export default UserProfile
+export default UserProfile;
