@@ -36,7 +36,7 @@ const Shop = () => {
             </div>
             <div className="info">
               <h4># {detail.cat}</h4>
-              <h2>{detail.Name}</h2>
+              <h2>{detail.name}</h2>
               <p>{detail.description}</p>
               <h3>${detail.price}</h3>
               <button onClick={() => addToCart(detail)}>Add To Cart</button>
@@ -92,7 +92,7 @@ const Shop = () => {
                       </div>
                     </div>
                     <div className="detail">
-                      <h3>{product.Name}</h3>
+                      <h3>{product.name}</h3>
                       <p>${product.price}</p>
                       <button onClick={() => addToCart(product)}>Add To Cart</button>
                     </div>

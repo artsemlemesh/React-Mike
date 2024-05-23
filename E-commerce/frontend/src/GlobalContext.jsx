@@ -3,6 +3,9 @@ import Homeproduct from "./components/home_product";
 import useLS from "./custom_hook.jsx/navbarDarkTheme";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
+
+
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {

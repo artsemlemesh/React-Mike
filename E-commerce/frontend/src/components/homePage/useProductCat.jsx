@@ -9,7 +9,7 @@ const useProductCategory = () => {
     const [featuredProduct, setFeaturedProduct] = useState([])
     const [topProduct, setTopProduct] = useState([])
     const [trendingProduct, setTrendingProduct] = useState([])
-    const [allProducts, setAllProducts] = useState([]);  // Store all products here
+    const [allProducts, setAllProducts] = useState([]);  
 
 
     useEffect(()=> {
