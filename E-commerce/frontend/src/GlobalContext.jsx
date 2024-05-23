@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Homeproduct from "./components/home_product";
 import useLS from "./custom_hook.jsx/navbarDarkTheme";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -6,13 +6,94 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 
+
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
-  const [cart, setCart] = useState([]);
-  const [shop, setShop] = useState(Homeproduct);
+  // If the cart is being erased from local storage on refresh, it likely means the cart state is being initialized to an empty array on every refresh. To avoid this issue, you need to ensure that the cart state is initialized from local storage if it exists.
+  const [cart, setCart] = useState(()=>{ //then after refreshing it will return currently stored value
+    const savedCart = localStorage.getItem('cart')
+    return savedCart ? JSON.parse(savedCart) : []
+  });
+  const [shop, setShop] = useState([]);
   const [search, setSearch] = useState("");
   const [theme, setTheme] = useLS('theme', 'day') //for dark theme
+
+
+  //added extra
+  const [newProduct, setNewProduct] = useState([])
+  const [featuredProduct, setFeaturedProduct] = useState([])
+  const [topProduct, setTopProduct] = useState([])
+  const [trendingProduct, setTrendingProduct] = useState([])
+  const [allProducts, setAllProducts] = useState([]);  
+  //
+
+
+
+
+
+ 
+
+  //also new
+  useEffect(()=> {
+
+    const fetchProducts = async () => {
+        try{
+            const response = await fetch('http://127.0.0.1:8000/products/')
+            if(!response.ok){
+                throw new Error('Network error was not ok')
+            }
+            const data = await response.json()
+            setAllProducts(data)
+
+            
+
+            // localStorage.setItem('cart', allProducts)
+            // localStorage.getItem('cart')
+            categorizeProducts(data);
+
+            
+        }catch(e){
+            console.error('fetch error: ', e)
+        }
+    }
+
+    const savedCart = localStorage.getItem('cart')
+            if (savedCart) {
+              setCart(JSON.parse(savedCart))
+            }
+
+
+
+    const categorizeProducts = (products) =>{
+        setNewProduct(products.filter(product => product.type === 'new'))
+        setFeaturedProduct(products.filter(product => product.type === 'featured'))
+        setTopProduct(products.filter(product => product.type === 'top'))
+        setTrendingProduct(products)
+
+    }
+    fetchProducts()
+}, [])
+
+
+useEffect(()=>{
+  localStorage.setItem('cart', JSON.stringify(cart))
+}, [cart])
+
+
+const filterCategory = (category) => {
+    if(category === 'all'){
+        setTrendingProduct(allProducts)
+
+    } else {
+        setTrendingProduct(allProducts.filter(product => product.type === category))
+    }
+}
+
+//
+
+
+
 
 
 
@@ -23,13 +104,17 @@ export default function GlobalState({ children }) {
 
 
   const filter = (x) => {
-    const category = Homeproduct.filter((product) => {
-      return product.cat === x;
+    const category = allProducts.filter((product) => {
+      return product.category === x;
     });
     setShop(category);
   };
+
+
+
   const allCategoryFilter = () => {
-    setShop(Homeproduct);
+    setShop(allProducts);
+
   };
 
   const searchLength = (search || []).length === 0;
@@ -37,9 +122,9 @@ export default function GlobalState({ children }) {
   const searchProduct = () => {
     if (searchLength) {
       alert("search something");
-      setShop(Homeproduct);
+      setShop(allProducts);
     } else {
-      const searchFilter = Homeproduct.filter((x) => {
+      const searchFilter = allProducts.filter((x) => {
         return x.cat === search;
       });
       setShop(searchFilter);
@@ -47,16 +132,27 @@ export default function GlobalState({ children }) {
   };
 
   const addToCart = (product) => {
+    
+
     const exists = cart.find((x) => {
       return x.id === product.id;
     });
     if (exists) {
       alert("this product is already in the cart");
     } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
+      const newCart = [...cart, {...product, quantity: 1}]
+      setCart(newCart)
+      localStorage.setItem('cart', JSON.stringify(newCart))
+      // setCart([...cart, { ...product, quantity: 1 }]);
       alert("added to the cart");
     }
   };
+
+
+  
+
+
+
   console.log(cart);
 
   return (
@@ -73,6 +169,12 @@ export default function GlobalState({ children }) {
         theme,
         setCart,
         cart,
+        newProduct,
+        featuredProduct,
+        topProduct,
+        trendingProduct,
+        filterCategory,
+        allProducts
       }}
     >
       {children}

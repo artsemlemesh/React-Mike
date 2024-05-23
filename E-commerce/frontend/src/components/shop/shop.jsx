@@ -6,7 +6,7 @@ import { GlobalContext } from "../../GlobalContext"
 
 const Shop = () => {
 
-    const {shop, filter, allCategoryFilter, addToCart, theme} = useContext(GlobalContext)
+    const {filter, allCategoryFilter, addToCart, theme, allProducts, filterCategory} = useContext(GlobalContext)
 
     const [showDetail, setShowDetail] = useState(false)
     const [detail, setDetail] = useState({})
@@ -62,7 +62,7 @@ const Shop = () => {
                   <li onClick={() => filter('watch')}># Watch</li>
                   <li onClick={() => filter('speaker')}># Speaker</li>
                   <li onClick={() => filter('electronics')}># Electronics</li>
-                  <li onClick={() => filter('headphone')}># Headphone</li>
+                  <li onClick={() => filter('headphones')}># Headphones</li>
                   <li onClick={() => filter('phone')}># Phone</li>
                 </ul>
               </div>
@@ -82,7 +82,7 @@ const Shop = () => {
             <div className="product_box">
               <h2>Shop Product</h2>
               <div className="product_container">
-                {shop.map((product) => (
+                {allProducts.map((product) => (
                   <div className="box" key={product.id}>
                     <div className="img_box">
                       <img src={product.image} alt="" />
