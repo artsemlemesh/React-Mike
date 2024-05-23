@@ -57,7 +57,7 @@ console.log(cart, 'cartMyhome')
           <div className="left_box">
             <div className="header">
               <div className="heading">
-                <h2 onClick={() => filterCategory('')}>trending product</h2>
+                <h2 onClick={() => filterCategory('all')}>trending product</h2>
               </div>
               <div className="categories">
                 <h3 onClick={() => filterCategory('new')}>New</h3>
@@ -71,14 +71,14 @@ console.log(cart, 'cartMyhome')
                 {trendingProduct.map((product) => (
                   <div className="product_box" key={product.id}>
                     <div className="img_box">
-                      <img src={product.image} alt={product.Name} />
+                      <img src={product.image} alt={product.name} />
                       <div className="icon">
                         <div className="icon_box"><AiFillEye /></div>
                         <div className="icon_box"><AiFillHeart /></div>
                       </div>
                     </div>
                     <div className="info">
-                      <h3>{product.Name}</h3>
+                      <h3>{product.name}</h3>
                       <p>${product.price}</p>
                       <button className="btn" onClick={() => addToCart(product)}>Add to cart</button>
                     </div>

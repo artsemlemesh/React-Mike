@@ -4,7 +4,7 @@ import './contact.css'
 
 const Contact = () => {
   const [user, setUser] = useState({
-    Name: "",
+    name: "",
     email: "",
     subject: "",
     Message: "",
@@ -20,8 +20,8 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { Name, email, subject, Message } = user;
-    if (!Name || !email || !subject || !Message) {
+    const { name, email, subject, Message } = user;
+    if (!name || !email || !subject || !Message) {
       alert("all fields are required");
       return;
     }
@@ -32,11 +32,11 @@ const Contact = () => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ Name, email, subject, Message }),
+        body: JSON.stringify({ name, email, subject, Message }),
       });
       if (response.ok) {
         alert("message sent");
-        setUser({ Name: "", email: "", subject: "", Message: "" });
+        setUser({ name: "", email: "", subject: "", Message: "" });
       } else {
         alert("Error occured. Message sending failed");
       }
@@ -52,13 +52,13 @@ const Contact = () => {
           <form method='POST' onSubmit={handleSubmit}>
             <div className='box'>
               <div className='label'>
-                <h4>Name</h4>
+                <h4>name</h4>
               </div>
               <div className='input'>
                 <input
                   type='text'
                   placeholder='Name'
-                  value={user.Name}
+                  value={user.name}
                   name='Name'
                   onChange={handleChange}
                   required

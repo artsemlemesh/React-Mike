@@ -63,7 +63,7 @@ console.log(cart, 'cartCart')
                 <div className='detail'>
                   <div className='info'>
                     <h4>{item.cat}</h4>
-                    <h3>{item.Name}</h3>
+                    <h3>{item.name}</h3>
                     <p>Price: ${Number(item.price).toFixed(2)}</p>
                     <p>Total: ${(Number(item.price) * item.quantity ).toFixed(2)}</p>
                   </div>
