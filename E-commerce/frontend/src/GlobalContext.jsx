@@ -37,18 +37,19 @@ export default function GlobalState({ children }) {
 
     const fetchProducts = async () => {
         try{
-            const response = await fetch('http://127.0.0.1:8000/products/')
+            const response = await fetch('http://127.0.0.1:8000/products/?page=1')
             if(!response.ok){
                 throw new Error('Network error was not ok')
             }
             const data = await response.json()
-            setAllProducts(data)
-            setShop(data)//returns all the products by default after loading the shop page
+            console.log('received products:', data.results)
+            // setAllProducts(data.results) //not sure whether this is necessary, nothing changes with it off
+            setShop(data.results)//returns all the products by default after loading the shop page
             
 
             // localStorage.setItem('cart', allProducts)
             // localStorage.getItem('cart')
-            categorizeProducts(data);
+            categorizeProducts(data.results);
 
             
         }catch(e){
