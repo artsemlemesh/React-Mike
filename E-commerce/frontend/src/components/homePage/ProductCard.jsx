@@ -6,15 +6,13 @@ const ProductCard = ({product, addToCart}) => (
     <div className="product-cart">
         <div className="img-box">
             <img src={product.image} alt={product.name}/>
-            <div className="icon">
-                <div className="icon-box"><AiFillEye/>sdf</div>
-                <div className="icon-box"><AiFillHeart/>dfg</div>
-            </div>
         </div>
         <div className='info'>
             <h3>{product.name}</h3>
             <p>$ {product.price}</p>
-            <button className='btn' onClick={()=> addToCart(product)}>Add to cart</button>
+            <button className="icon-box"><AiFillEye/></button>
+            <button className="icon-box"><AiFillHeart/></button>
+            <button className='btn' onClick={()=> addToCart(product)}><AiOutlineShoppingCart /></button>
         </div>
 
     </div>

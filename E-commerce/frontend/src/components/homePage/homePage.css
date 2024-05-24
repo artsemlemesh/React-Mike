@@ -515,7 +515,7 @@
 
 /* check the styles more */
 
-.product_type .container .box .product-cart .info .icon button {
+.product_type .container .box .product-cart .info button {
     background: none;
     outline: none;
     border: none;
@@ -528,7 +528,7 @@
     transition: 0.5s;
 }
 
-.product_type .container .box .productbox .detail .icon button:hover {
+.product_type .container .box .product-cart .info  button:hover {
     background: #f6f6f6;
     color: #232323;
 }

@@ -1,7 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import Homeproduct from "./components/home_product";
 import useLS from "./custom_hook.jsx/navbarDarkTheme";
-import { useAuth0 } from "@auth0/auth0-react";
 
 
 
