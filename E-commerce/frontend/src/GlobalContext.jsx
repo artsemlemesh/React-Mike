@@ -29,22 +29,28 @@ export default function GlobalState({ children }) {
 
 
 
-
- 
+  const [count, setCount] = useState(1)
+  const [disableBtn, setDisableBtn] = useState(false)
 
   //also new
   useEffect(()=> {
 
     const fetchProducts = async () => {
         try{
-            const response = await fetch('http://127.0.0.1:8000/products/?page=1')
+            const response = await fetch(`http://127.0.0.1:8000/products/?page=${count}`) //also changed here
             if(!response.ok){
                 throw new Error('Network error was not ok')
             }
             const data = await response.json()
             console.log('received products:', data.results)
-            // setAllProducts(data.results) //not sure whether this is necessary, nothing changes with it off
-            setShop(data.results)//returns all the products by default after loading the shop page
+            setAllProducts(data.results) //not sure whether this is necessary, nothing changes with it off
+
+            // setShop(data.results)//returns all the products by default after loading the shop page
+            setShop((prevData) =>
+              {
+                const newProducts = data.results.filter(product => !prevData.some(p=> p.id === product.id))//makes sure there is no duplicates among newly fetched products(after click -'show more')
+               return [...prevData, ...newProducts]// added this instead of the upper one
+              } )
             
 
             // localStorage.setItem('cart', allProducts)
@@ -72,7 +78,12 @@ export default function GlobalState({ children }) {
 
     }
     fetchProducts()
-}, [])
+}, [count])
+
+useEffect(()=>{
+  if (shop.length === 10) setDisableBtn(true) //can make lenght dynamic
+}, [shop])
+
 
 
 useEffect(()=>{
@@ -104,9 +115,9 @@ const filterCategory = (category) => {
 
   const myfilter = (x) => {
     console.log("Filtering by category:", x);
-    console.log("All Products:", allProducts);
+    console.log("All Products:", shop);
     
-    const category = allProducts.filter((product) => {
+    const category = shop.filter((product) => {
         console.log(`Checking product ${product.name}: category ${product.category}`);
         return product.category === x;
     });
@@ -179,7 +190,10 @@ const filterCategory = (category) => {
         topProduct,
         trendingProduct,
         filterCategory,
-        allProducts
+        allProducts,
+        count,
+        setCount,
+        disableBtn
       }}
     >
       {children}

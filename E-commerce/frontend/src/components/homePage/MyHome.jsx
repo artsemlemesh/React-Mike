@@ -23,6 +23,11 @@ const MyHome = () => {
     topProduct,
     trendingProduct,
     filterCategory,
+    count,
+    setCount,
+    shop,
+    disableBtn
+    
   } = useContext(GlobalContext);
   console.log(cart, "cartMyhome");
 
@@ -66,8 +71,8 @@ const MyHome = () => {
 
             <div className="products">
               <div className="product_container">
-                {trendingProduct.map((product) => (
-                  <div className="product_box" key={product.id}>
+                {shop.map((product, index) => (
+                  <div className="product_box" key={index}>
                     <div className="img_box">
                       <img src={product.image} alt={product.name} />
                       <div className="icon">
@@ -92,7 +97,8 @@ const MyHome = () => {
                   </div>
                 ))}
               </div>
-              <button>Show More</button>
+              <button disabled={disableBtn} onClick={()=> setCount(count + 1)}>{disableBtn? 'no more products' : 'Show More'}</button>
+                
             </div>
           </div>
 

@@ -82,8 +82,8 @@ const Shop = () => {
             <div className="product_box">
               <h2>Shop Product</h2>
               <div className="product_container">
-                {shop.map((product) => (
-                  <div className="box" key={product.id}>
+                {shop.map((product, index) => (
+                  <div className="box" key={index}>
                     <div className="img_box">
                       <img src={product.image} alt="" />
                       <div className="icon">

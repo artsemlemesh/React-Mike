@@ -6,7 +6,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class ProductPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 5
     page_size_query_param = 'page_size'
     max_page_size = 10
 
@@ -14,7 +14,6 @@ class ProductPagination(PageNumberPagination):
 class ProductListCreateView(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
     queryset = HomeProduct.objects.all()
-    # paginate_by = 3
     
     pagination_class = ProductPagination
    
