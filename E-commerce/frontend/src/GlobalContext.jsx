@@ -45,7 +45,7 @@ export default function GlobalState({ children }) {
             }
             const data = await response.json()
             setAllProducts(data)
-
+            setShop(data)//returns all the products by default after loading the shop page
             
 
             // localStorage.setItem('cart', allProducts)
@@ -103,12 +103,18 @@ const filterCategory = (category) => {
 
 
 
-  const filter = (x) => {
+  const myfilter = (x) => {
+    console.log("Filtering by category:", x);
+    console.log("All Products:", allProducts);
+    
     const category = allProducts.filter((product) => {
-      return product.category === x;
+        console.log(`Checking product ${product.name}: category ${product.category}`);
+        return product.category === x;
     });
+
+    console.log("Filtered Products:", category);
     setShop(category);
-  };
+};
 
 
 
@@ -159,7 +165,7 @@ const filterCategory = (category) => {
     <GlobalContext.Provider
       value={{
         shop,
-        filter,
+        myfilter,
         allCategoryFilter,
         search,
         setSearch,

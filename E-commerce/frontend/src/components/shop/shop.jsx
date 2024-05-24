@@ -6,7 +6,7 @@ import { GlobalContext } from "../../GlobalContext"
 
 const Shop = () => {
 
-    const {filter, allCategoryFilter, addToCart, theme, allProducts, filterCategory} = useContext(GlobalContext)
+    const {shop, myfilter, allCategoryFilter, addToCart, theme, allProducts, filterCategory} = useContext(GlobalContext)
 
     const [showDetail, setShowDetail] = useState(false)
     const [detail, setDetail] = useState({})
@@ -57,13 +57,13 @@ const Shop = () => {
               <div className="box">
                 <ul>
                   <li onClick={allCategoryFilter}># All</li>
-                  <li onClick={() => filter('tv')}># TV</li>
-                  <li onClick={() => filter('laptop')}># Laptop</li>
-                  <li onClick={() => filter('watch')}># Watch</li>
-                  <li onClick={() => filter('speaker')}># Speaker</li>
-                  <li onClick={() => filter('electronics')}># Electronics</li>
-                  <li onClick={() => filter('headphones')}># Headphones</li>
-                  <li onClick={() => filter('phone')}># Phone</li>
+                  <li onClick={() => myfilter('tv')}># TV</li>
+                  <li onClick={() => myfilter('laptop')}># Laptop</li>
+                  <li onClick={() => myfilter('watch')}># Watch</li>
+                  <li onClick={() => myfilter('speaker')}># Speaker</li>
+                  <li onClick={() => myfilter('electronics')}># Electronics</li>
+                  <li onClick={() => myfilter('headphones')}># Headphones</li>
+                  <li onClick={() => myfilter('phone')}># Phone</li>
                 </ul>
               </div>
             </div>
@@ -82,7 +82,7 @@ const Shop = () => {
             <div className="product_box">
               <h2>Shop Product</h2>
               <div className="product_container">
-                {allProducts.map((product) => (
+                {shop.map((product) => (
                   <div className="box" key={product.id}>
                     <div className="img_box">
                       <img src={product.image} alt="" />
