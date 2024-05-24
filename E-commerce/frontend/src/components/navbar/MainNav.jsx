@@ -9,16 +9,22 @@ import { useContext } from "react";
 import { GlobalContext } from "../../GlobalContext";
 
 const Nav = () => {
+
+  const { loginWithRedirect, logout, user, isAuthenticated} = useAuth0();
+
+
+
   const {
     search,
     setSearch,
     searchProduct,
     handleTheme,
     theme,
-    loginWithRedirect,
-    logout,
-    user,
-    isAuthenticated,
+
+    // loginWithRedirect,
+    // logout,
+    // user,
+    // isAuthenticated,
   } = useContext(GlobalContext);
 
   return (

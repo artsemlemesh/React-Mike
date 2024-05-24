@@ -131,7 +131,7 @@ const filterCategory = (category) => {
       setShop(allProducts);
     } else {
       const searchFilter = allProducts.filter((x) => {
-        return x.cat === search;
+        return x.category === search;
       });
       setShop(searchFilter);
     }
