@@ -31,7 +31,7 @@ const MyHome = () => {
   } = useContext(GlobalContext);
   console.log(cart, "cartMyhome");
 
-  const ProductSection = ({ products }) => (
+  const ProductSection = ({title, products }) => (
     <div className="box">
       <div className="header">
         <h2>{title}</h2>

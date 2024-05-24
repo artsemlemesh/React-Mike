@@ -55,7 +55,7 @@ export default function GlobalState({ children }) {
 
             // localStorage.setItem('cart', allProducts)
             // localStorage.getItem('cart')
-            categorizeProducts(data.results);
+            categorizeProducts(shop);
 
             
         }catch(e){
@@ -81,7 +81,7 @@ export default function GlobalState({ children }) {
 }, [count])
 
 useEffect(()=>{
-  if (shop.length === 10) setDisableBtn(true) //can make lenght dynamic
+  if (shop.length === 100) setDisableBtn(true) //can make lenght dynamic
 }, [shop])
 
 
