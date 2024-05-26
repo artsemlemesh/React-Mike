@@ -237,7 +237,6 @@ export default function GlobalState({ children }) {
       const newCart = [...cart, { ...product, quantity: 1 }];
       setCart(newCart);
       localStorage.setItem("cart", JSON.stringify(newCart));
-      // setCart([...cart, { ...product, quantity: 1 }]);
       alert("added to the cart");
     }
   };

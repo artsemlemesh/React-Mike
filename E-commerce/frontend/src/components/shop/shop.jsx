@@ -11,9 +11,7 @@ const Shop = () => {
     allCategoryFilter,
     addToCart,
     theme,
-   
     showDetailPage,
-    
   } = useContext(GlobalContext);
 
   return (

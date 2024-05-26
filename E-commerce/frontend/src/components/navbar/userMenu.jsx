@@ -3,7 +3,6 @@ import { CiLogout } from "react-icons/ci";
 import "./nav.css";
 import { useContext } from "react";
 import { GlobalContext } from "../../GlobalContext";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const UserMenu = () => {
   const { isAuthenticated, loginWithRedirect, logout } =

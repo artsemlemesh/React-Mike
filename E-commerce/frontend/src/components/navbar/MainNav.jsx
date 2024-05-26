@@ -9,26 +9,8 @@ import { useContext } from "react";
 import { GlobalContext } from "../../GlobalContext";
 
 const Nav = () => {
-  // const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
 
-  const {
-    search,
-    setSearch,
-    searchProduct,
-    handleTheme,
-    theme,
-    handleChange,
-    searchParam,
-    showDropdown,
-    trendingProduct,
-    isAuthenticated,
-    user,
-
-    // loginWithRedirect,
-    // logout,
-    // user,
-    // isAuthenticated,
-  } = useContext(GlobalContext);
+  const { handleTheme, theme } = useContext(GlobalContext);
 
   return (
     <>
@@ -54,12 +36,10 @@ const Nav = () => {
           </label>
         </div>
 
-        {/* isAuthenticated, loginWithRedirect, logout */}
         <UserMenu />
       </div>
       <div className="last_header">
-        {/* isAuthenticated, user */}
-        <UserProfile  />
+        <UserProfile />
         <Navigation />
         <div className="offer">
           <p>flat 10% over all iphone</p>
