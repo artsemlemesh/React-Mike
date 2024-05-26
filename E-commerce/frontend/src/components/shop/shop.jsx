@@ -6,7 +6,7 @@ import { GlobalContext } from "../../GlobalContext"
 
 const Shop = () => {
 
-    const {shop, myfilter, allCategoryFilter, addToCart, theme, allProducts, filterCategory} = useContext(GlobalContext)
+    const {shop, myfilter, allCategoryFilter, addToCart, theme, allProducts, filterCategory, trendingProduct} = useContext(GlobalContext)
 
     const [showDetail, setShowDetail] = useState(false)
     const [detail, setDetail] = useState({})

@@ -71,7 +71,7 @@ const MyHome = () => {
 
             <div className="products">
               <div className="product_container">
-                {shop.map((product, index) => (
+                {trendingProduct.map((product, index) => (
                   <div className="product_box" key={index}>
                     <div className="img_box">
                       <img src={product.image} alt={product.name} />
