@@ -26,6 +26,11 @@ export default function GlobalState({ children }) {
   const [disableBtn, setDisableBtn] = useState(false);
 
   const [totCount, setTotCount] = useState(0)
+
+
+  const [searchParam, setSearchParam] = useState('')
+  const [filteredProd, setFilteredProd] = useState([])
+
   //also new
   useEffect(() => {
     const fetchProducts = async () => {
@@ -164,9 +169,46 @@ export default function GlobalState({ children }) {
       const searchFilter = allProducts.filter((x) => {
         return x.category === search;
       });
-      setShop(searchFilter);
+      setTrendingProduct(searchFilter);
+      console.log(searchFilter, 'filter')
     }
   };
+
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+//search new func
+  const handleChange = (e) => {
+    const query = e.target.value.toLowerCase()
+    setSearchParam(query)
+    if(query.length > 1){
+      
+      const filteredData = 
+      allProducts.filter((item) => item.category === query)
+      setTrendingProduct(filteredData)
+      console.log(filteredData, 'filteredData')
+      console.log(shop, 'shop')
+
+      setShowDropdown(true)
+    }
+
+  }
+
+  console.log(trendingProduct, 'TP')
+  useEffect(() => {
+    console.log(shop, 'SHOP');
+  }, [shop]);
+  
+  
+
+  // useEffect(()=>{
+
+
+    
+  // }, [filteredData])
+
+
+
 
   const addToCart = (product) => {
     const exists = cart.find((x) => {
@@ -208,6 +250,9 @@ export default function GlobalState({ children }) {
         count,
         setCount,
         disableBtn,
+        handleChange,
+        searchParam,
+        showDropdown,
       }}
     >
       {children}

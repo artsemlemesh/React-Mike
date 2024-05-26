@@ -59,7 +59,7 @@ function App() {
 
     {/* <GitHub/> */}
 
-    {/* <SearchAutoComplete/> */}
+    <SearchAutoComplete/>
 
     {/* <TicTacToe/> */}
 

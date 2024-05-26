@@ -20,6 +20,10 @@ const Nav = () => {
     searchProduct,
     handleTheme,
     theme,
+    handleChange,
+    searchParam,
+    showDropdown,
+    trendingProduct
 
     // loginWithRedirect,
     // logout,
@@ -38,6 +42,10 @@ const Nav = () => {
           search={search}
           setSearch={setSearch}
           searchProduct={searchProduct}
+          handleChange={handleChange}
+          searchParam={searchParam}
+          showDropdown={showDropdown}
+          trendingProduct={trendingProduct}
         />
         {/* <button onClick={handleTheme}>hey</button> */}
 
