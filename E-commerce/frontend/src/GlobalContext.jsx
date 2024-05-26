@@ -25,6 +25,7 @@ export default function GlobalState({ children }) {
   const [count, setCount] = useState(1);
   const [disableBtn, setDisableBtn] = useState(false);
 
+  const [totCount, setTotCount] = useState(0)
   //also new
   useEffect(() => {
     const fetchProducts = async () => {
@@ -37,6 +38,8 @@ export default function GlobalState({ children }) {
         }
         const data = await response.json();
         const newProd = data.results;
+    
+
         setAllProducts((prevProd) =>
           removeDuplicates([...prevProd, ...newProd])
         ); //not sure whether this is necessary, nothing changes with it off
@@ -44,6 +47,11 @@ export default function GlobalState({ children }) {
         setShop((prevData) => removeDuplicates([...prevData, ...newProd]));
 
         categorizeProducts(newProd);
+        // console.log('total', data.totalCount)
+        console.log(data.totalCount)
+
+        setTotCount(data.totalCount)
+        console.log(totCount, 'totalcount')
       } catch (e) {
         console.error("fetch error: ", e);
       }
@@ -57,13 +65,24 @@ export default function GlobalState({ children }) {
     fetchProducts();
   }, [count]);
 
+
+  //  since the number of products fetched might not always match the total number of products available in the database (due to pagination or other factors), comparing shop.length directly to totCount might not be the best approach.
   useEffect(() => {
-    if (shop.length === 100) setDisableBtn(true); //can make lenght dynamic
-  }, [shop]);
+    const percentageFetched = (shop.length / totCount) * 100;
+    if (percentageFetched >= 90) {
+      setDisableBtn(true);
+    }
+  }, [shop, totCount]);
+  // , percentageFetched calculates the percentage of products fetched compared to the total count. If this percentage exceeds a certain threshold (e.g., 90%), it disables the button.
+  
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    console.log(totCount, 'totalcount');
+  }, [totCount]);
 
   //created bcz returned error- two obj have the same key
   const removeDuplicates = (array) => {
