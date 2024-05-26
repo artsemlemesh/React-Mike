@@ -1,51 +1,26 @@
-import { useContext, useState } from "react"
-import { AiFillEye, AiFillHeart, AiOutlineClose } from "react-icons/ai"
-import './shop.css'
-import { GlobalContext } from "../../GlobalContext"
-
+import { useContext, useState } from "react";
+import { AiFillEye, AiFillHeart, AiOutlineClose } from "react-icons/ai";
+import "./shop.css";
+import { GlobalContext } from "../../GlobalContext";
+import ProductDetail from "./productDetail";
 
 const Shop = () => {
+  const {
+    shop,
+    myfilter,
+    allCategoryFilter,
+    addToCart,
+    theme,
+   
+    showDetailPage,
+    
+  } = useContext(GlobalContext);
 
-    const {shop, myfilter, allCategoryFilter, addToCart, theme, allProducts, filterCategory, trendingProduct} = useContext(GlobalContext)
+  return (
+    <>
+      <ProductDetail />
 
-    const [showDetail, setShowDetail] = useState(false)
-    const [detail, setDetail] = useState({})
-
-
-    const showDetailPage = (product) => {
-        setDetail(product)
-        setShowDetail(true)
-
-    }
-
-    const closeDetailPage = () => {
-        setShowDetail(false)
-    }
-
-    return (
-
-        <>
-        {showDetail && (
-        <div className="product_detail">
-          <button className="close_btn" onClick={closeDetailPage}>
-            <AiOutlineClose />
-          </button>
-          <div className="container">
-            <div className="img_box">
-              <img src={detail.image} alt="" />
-            </div>
-            <div className="info">
-              <h4># {detail.cat}</h4>
-              <h2>{detail.name}</h2>
-              <p>{detail.description}</p>
-              <h3>${detail.price}</h3>
-              <button onClick={() => addToCart(detail)}>Add To Cart</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-<div className="shop" data-theme={theme}>
+      <div className="shop" data-theme={theme}>
         <h2># Shop</h2>
         <p>Home . Shop</p>
         <div className="container">
@@ -57,13 +32,13 @@ const Shop = () => {
               <div className="box">
                 <ul>
                   <li onClick={allCategoryFilter}># All</li>
-                  <li onClick={() => myfilter('tv')}># TV</li>
-                  <li onClick={() => myfilter('laptop')}># Laptop</li>
-                  <li onClick={() => myfilter('watch')}># Watch</li>
-                  <li onClick={() => myfilter('speaker')}># Speaker</li>
-                  <li onClick={() => myfilter('electronics')}># Electronics</li>
-                  <li onClick={() => myfilter('headphones')}># Headphones</li>
-                  <li onClick={() => myfilter('phone')}># Phone</li>
+                  <li onClick={() => myfilter("tv")}># TV</li>
+                  <li onClick={() => myfilter("laptop")}># Laptop</li>
+                  <li onClick={() => myfilter("watch")}># Watch</li>
+                  <li onClick={() => myfilter("speaker")}># Speaker</li>
+                  <li onClick={() => myfilter("electronics")}># Electronics</li>
+                  <li onClick={() => myfilter("headphones")}># Headphones</li>
+                  <li onClick={() => myfilter("phone")}># Phone</li>
                 </ul>
               </div>
             </div>
@@ -94,7 +69,9 @@ const Shop = () => {
                     <div className="detail">
                       <h3>{product.name}</h3>
                       <p>${product.price}</p>
-                      <button onClick={() => addToCart(product)}>Add To Cart</button>
+                      <button onClick={() => addToCart(product)}>
+                        Add To Cart
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -103,10 +80,8 @@ const Shop = () => {
           </div>
         </div>
       </div>
+    </>
+  );
+};
 
-
-        </>
-    )
-}
-
-export default Shop
+export default Shop;

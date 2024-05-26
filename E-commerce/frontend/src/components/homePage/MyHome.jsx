@@ -10,13 +10,12 @@ import {
   BiLogoYoutube,
 } from "react-icons/bi";
 import { AiFillEye, AiFillHeart } from "react-icons/ai";
+import ProductDetail from "../shop/productDetail";
 
 const MyHome = () => {
-
   const {
     addToCart,
     theme,
-    title,
     cart,
     newProduct,
     featuredProduct,
@@ -25,19 +24,19 @@ const MyHome = () => {
     filterCategory,
     count,
     setCount,
-    shop,
-    disableBtn
-    
+    disableBtn,
+    showDetailPage,
+ 
   } = useContext(GlobalContext);
   console.log(cart, "cartMyhome");
 
-  const ProductSection = ({title, products }) => (
+  const ProductSection = ({ title, products }) => (
     <div className="box">
       <div className="header">
         <h2>{title}</h2>
       </div>
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} addToCart={addToCart} />
+        <ProductCard key={product.id} product={product}  />
       ))}
     </div>
   );
@@ -62,6 +61,7 @@ const MyHome = () => {
               <div className="heading">
                 <h2 onClick={() => filterCategory("all")}>trending product</h2>
               </div>
+              <ProductDetail />
               <div className="categories">
                 <h3 onClick={() => filterCategory("new")}>New</h3>
                 <h3 onClick={() => filterCategory("featured")}>Featured</h3>
@@ -77,8 +77,9 @@ const MyHome = () => {
                       <img src={product.image} alt={product.name} />
                       <div className="icon">
                         <div className="icon_box">
-                          <AiFillEye />
+                          <AiFillEye onClick={() => showDetailPage(product)} />
                         </div>
+
                         <div className="icon_box">
                           <AiFillHeart />
                         </div>
@@ -97,8 +98,9 @@ const MyHome = () => {
                   </div>
                 ))}
               </div>
-              <button disabled={disableBtn} onClick={()=> setCount(count + 1)}>{disableBtn? 'no more products' : 'Show More'}</button>
-                
+              <button disabled={disableBtn} onClick={() => setCount(count + 1)}>
+                {disableBtn ? "no more products" : "Show More"}
+              </button>
             </div>
           </div>
 

@@ -3,8 +3,10 @@ import "./nav.css";
 import { useContext } from "react";
 import { GlobalContext } from "../../GlobalContext";
 
-// const { isAuthenticated, user } = useContext(GlobalContext);
-const UserProfile = ({isAuthenticated, user}) => (
+const UserProfile = () => {
+  const { isAuthenticated, user } = useContext(GlobalContext);
+
+  return(
   <div className="user_profile">
     <div className="icon">
       <CiUser />
@@ -20,6 +22,6 @@ const UserProfile = ({isAuthenticated, user}) => (
       )}
     </div>
   </div>
-);
+)}
 
 export default UserProfile;

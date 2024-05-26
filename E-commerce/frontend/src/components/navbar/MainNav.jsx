@@ -9,10 +9,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../GlobalContext";
 
 const Nav = () => {
-
-  const { loginWithRedirect, logout, user, isAuthenticated} = useAuth0();
-
-
+  // const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
 
   const {
     search,
@@ -23,7 +20,9 @@ const Nav = () => {
     handleChange,
     searchParam,
     showDropdown,
-    trendingProduct
+    trendingProduct,
+    isAuthenticated,
+    user,
 
     // loginWithRedirect,
     // logout,
@@ -38,19 +37,16 @@ const Nav = () => {
         <div className="logo">
           <img src="" alt="logo" /> {/* paste logo */}
         </div>
-        <SearchBox
-          search={search}
-          setSearch={setSearch}
-          searchProduct={searchProduct}
-          handleChange={handleChange}
-          searchParam={searchParam}
-          showDropdown={showDropdown}
-          trendingProduct={trendingProduct}
-        />
+        <SearchBox />
         {/* <button onClick={handleTheme}>hey</button> */}
 
         <div className="switch">
-          <input onClick={handleTheme} type="checkbox" className="checkbox" id="checkbox" />
+          <input
+            onClick={handleTheme}
+            type="checkbox"
+            className="checkbox"
+            id="checkbox"
+          />
           <label htmlFor="checkbox" className="checkbox-label">
             <i className="fas fa-moon"></i>
             <i className="fas fa-sun"></i>
@@ -59,15 +55,11 @@ const Nav = () => {
         </div>
 
         {/* isAuthenticated, loginWithRedirect, logout */}
-        <UserMenu
-          isAuthenticated={isAuthenticated}
-          loginWithRedirect={loginWithRedirect}
-          logout={logout}
-        />
+        <UserMenu />
       </div>
       <div className="last_header">
         {/* isAuthenticated, user */}
-        <UserProfile isAuthenticated={isAuthenticated} user={user} />
+        <UserProfile  />
         <Navigation />
         <div className="offer">
           <p>flat 10% over all iphone</p>

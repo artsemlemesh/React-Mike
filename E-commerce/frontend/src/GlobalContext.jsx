@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import useLS from "./custom_hook.jsx/navbarDarkTheme";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const GlobalContext = createContext(null);
 
@@ -30,6 +31,9 @@ export default function GlobalState({ children }) {
 
   const [searchParam, setSearchParam] = useState('')
   const [filteredProd, setFilteredProd] = useState([])
+
+
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
 
   //also new
   useEffect(() => {
@@ -208,6 +212,19 @@ export default function GlobalState({ children }) {
   // }, [filteredData])
 
 
+  const [showDetail, setShowDetail] = useState(false)
+  const [detail, setDetail] = useState({})
+
+
+  const showDetailPage = (product) => {
+      setDetail(product)
+      setShowDetail(true)
+
+  }
+
+  const closeDetailPage = () => {
+      setShowDetail(false)
+  }
 
 
   const addToCart = (product) => {
@@ -253,6 +270,15 @@ export default function GlobalState({ children }) {
         handleChange,
         searchParam,
         showDropdown,
+        showDetailPage,
+        closeDetailPage,
+        showDetail,
+        detail,
+        setShowDetail,
+        isAuthenticated,
+        loginWithRedirect,
+        logout,
+        user
       }}
     >
       {children}
