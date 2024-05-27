@@ -62,6 +62,7 @@ const MyHome = () => {
                 <h2 onClick={() => filterCategory("all")}>trending product</h2>
               </div>
               <ProductDetail />
+              
               <div className="categories">
                 <h3 onClick={() => filterCategory("new")}>New</h3>
                 <h3 onClick={() => filterCategory("featured")}>Featured</h3>

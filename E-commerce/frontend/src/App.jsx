@@ -5,21 +5,25 @@ import Footer from "./components/footer/footer";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalContext } from "./GlobalContext";
 import MyRoute from "./components/routes/route";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
-  const { search, setSearch, searchProduct, addToCart, shop, filter, allCategoryFilter } =
+  const { addToCart, shop, filter, allCategoryFilter } =
     useContext(GlobalContext);
 
   return (
     <>
       <BrowserRouter>
-
-        <Nav
-          // search={search}
-          // setSearch={setSearch}
-          // searchproduct={searchProduct}
+        <Nav />
+        <MyRoute
+          shop={shop}
+          filter={filter}
+          allCategoryFilter={allCategoryFilter}
+          addToCart={addToCart}
         />
-        <MyRoute shop={shop} filter={filter} allCategoryFilter={allCategoryFilter} addToCart={addToCart} />
         <Footer />
+        <ToastContainer/>
       </BrowserRouter>
     </>
   );

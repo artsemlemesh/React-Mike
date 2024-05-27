@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import useLS from "./custom_hook.jsx/navbarDarkTheme";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import {ToastContainer, toast} from 'react-toastify'
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
@@ -232,12 +232,12 @@ export default function GlobalState({ children }) {
       return x.id === product.id;
     });
     if (exists) {
-      alert("this product is already in the cart");
+      toast.error("this product is already in the cart");
     } else {
       const newCart = [...cart, { ...product, quantity: 1 }];
       setCart(newCart);
       localStorage.setItem("cart", JSON.stringify(newCart));
-      alert("added to the cart");
+      toast.success("added to the cart");
     }
   };
 
