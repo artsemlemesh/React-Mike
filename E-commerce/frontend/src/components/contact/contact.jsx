@@ -27,7 +27,7 @@ const Contact = () => {
     }
 
     try {
-      const response = await fetch("url", {
+      const response = await fetch("https://e-commerse-8f3bf-default-rtdb.firebaseio.com/Message.json", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -59,7 +59,7 @@ const Contact = () => {
                   type='text'
                   placeholder='Name'
                   value={user.name}
-                  name='Name'
+                  name='name'
                   onChange={handleChange}
                   required
                 />
