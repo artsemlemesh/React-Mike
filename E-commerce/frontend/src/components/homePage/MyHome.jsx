@@ -115,7 +115,7 @@ const MyHome = () => {
                     <img src="image/T1.avif" alt="testimonial" />
                   </div>
                   <div className="info">
-                    <h3>stephan robot</h3>
+                    <h3>jessica altman</h3>
                     <h4>web designer</h4>
                     <p>
                       Duis faucibus enim vitae nunc molestie, nec facilisis arcu
@@ -157,19 +157,19 @@ const MyHome = () => {
         <div className="container">
           <div className="left_box">
             <div className="box">
-              <img src="image/Multi-Banner-1.avif" alt="banner" />
+              <img src="banner9.avif" alt="banner" />
+              <img src="banner2.avif" alt="banner" />
+
             </div>
-            <div className="box">
-              <img src="image/Multi-Banner-2.avif" alt="banner" />
-            </div>
+            
           </div>
           <div className="right_box">
             <div className="top">
-              <img src="image/Multi-Banner-3.webp" alt="banner" />
-              <img src="image/Multi-Banner-4.avif" alt="banner" />
+              <img src="banner3.webp" alt="banner" />
+              <img src="banner4.avif" alt="banner" />
             </div>
             <div className="bottom">
-              <img src="image/Multi-Banner-5.webp" alt="banner" />
+              <img src="banner5.webp" alt="banner" />
             </div>
           </div>
         </div>

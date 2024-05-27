@@ -1,4 +1,3 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import Header from "./header";
 import SearchBox from "./searchBox";
 import UserMenu from "./userMenu";
@@ -7,7 +6,6 @@ import Navigation from "./Navigation";
 import "./nav.css";
 import { useContext } from "react";
 import { GlobalContext } from "../../GlobalContext";
-
 const Nav = () => {
 
   const { handleTheme, theme } = useContext(GlobalContext);
@@ -17,7 +15,7 @@ const Nav = () => {
       <Header />
       <div className="mid_header" data-theme={theme}>
         <div className="logo">
-          <img src="" alt="logo" /> {/* paste logo */}
+          <img src="logo.svg" alt="logo" style={{width: '70px', height: '50px'}} /> {/* paste logo */}
         </div>
         <SearchBox />
         {/* <button onClick={handleTheme}>hey</button> */}
@@ -42,7 +40,7 @@ const Nav = () => {
         <UserProfile />
         <Navigation />
         <div className="offer">
-          <p>flat 10% over all iphone</p>
+          <p>13% discount for Iphone</p>
         </div>
       </div>
     </>
