@@ -253,6 +253,7 @@
 {
     width: 100%;
     display: flex;
+    margin-top: 70px;
 }
 .product_detail .container .img_box
 {

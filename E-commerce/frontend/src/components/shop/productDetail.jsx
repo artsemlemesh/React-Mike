@@ -16,17 +16,17 @@ const ProductDetail = () => {
       <>
         {showDetail && (
           <div ref={ref} className="product_detail">
-            <button className="close_btn" onClick={closeDetailPage}>
+            {/* <button className="close_btn" onClick={closeDetailPage}>
               <AiOutlineClose />
-            </button>
+            </button> */}
             <div className="container">
               <div className="img_box">
-                <img src={detail.image} alt="" />
+                <img src={detail.image} alt="img" />
               </div>
               <div className="info">
-                <h4># {detail.cat}</h4>
+                <h4># {detail.category}</h4>
                 <h2>{detail.name}</h2>
-                <p>{detail.description}</p>
+                <p>{detail.type}</p>
                 <h3>${detail.price}</h3>
                 <button onClick={() => addToCart(detail)}>Add To Cart</button>
               </div>

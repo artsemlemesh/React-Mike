@@ -36,8 +36,7 @@
   padding: 10px 10px;
   outline: none;
   background: none;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 5px;
   width: 250px;
   border: none;
   background: #f6f7f8;
