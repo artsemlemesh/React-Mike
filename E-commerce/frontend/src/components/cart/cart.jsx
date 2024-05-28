@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../GlobalContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import "./cart.css";
 
 const Cart = () => {
   const { cart, setCart, theme } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
   console.log(cart, "cartCart");
 
@@ -40,6 +41,10 @@ const Cart = () => {
     0
   );
 
+  const handleCheckout = () => {
+    navigate('/checkout', { state: { totalPrice: totalPrice.toFixed(2) } });
+  };
+
   return (
     <div className="cart" data-theme={theme}>
       <h3>Your cart</h3>
@@ -73,7 +78,7 @@ const Cart = () => {
                     <button onClick={() => decreaseQuantity(item)}>-</button>
                   </div>
                   <div className="icon">
-                    <button onClick={() => removeProduct(item)}>
+                    <button  onClick={() => removeProduct(item)}>
                       <AiOutlineClose />
                     </button>
                   </div>
@@ -85,8 +90,7 @@ const Cart = () => {
             <div className="total">
               <h4>Sub Total: ${totalPrice.toFixed(2)}</h4>
             </div>
-            <button>Checkout</button>
-           
+            <button onClick={handleCheckout}>Checkout</button>
           </div>
         </>
       )}

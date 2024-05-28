@@ -4,6 +4,7 @@ import Shop from "../shop/shop"
 import Cart from "../cart/cart"
 import Contact from "../contact/contact"
 import About from "../about/about"
+import PaymentForm from "../cart/payment"
 
 
 
@@ -14,6 +15,7 @@ const MyRoute = () => {
     return (
         
         <Routes>
+            <Route path='/checkout' element={<PaymentForm />}/>
             <Route path='/' element={<MyHome />}/>
             <Route path='/shop' element={<Shop/>}/>
             <Route path="/cart" element={<Cart />}/>

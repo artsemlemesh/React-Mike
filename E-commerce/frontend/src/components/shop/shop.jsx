@@ -60,8 +60,8 @@ const Shop = () => {
                     <div className="img_box">
                       <img src={product.image} alt="" />
                       <div className="icon">
-                        <AiFillHeart />
-                        <AiFillEye onClick={() => showDetailPage(product)} />
+                        <li><AiFillHeart /></li>
+                        <li><AiFillEye onClick={() => showDetailPage(product)} /></li>
                       </div>
                     </div>
                     <div className="detail">

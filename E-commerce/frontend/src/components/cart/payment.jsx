@@ -1,72 +1,95 @@
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { toast } from 'react-toastify';
+import './PaymentForm.css'; 
 
+const PaymentForm = () => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const location = useLocation();
+  const { totalPrice } = location.state || { totalPrice: 0 };
 
-//   import React, { useState, useEffect, useRef } from 'react';
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
 
-// const SquarePaymentForm = ({ appId, locationId, accessToken }) => {
-//   const [loading, setLoading] = useState(true);
-//   const card = useRef(null);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-//   useEffect(() => {
-//     const script = document.createElement('script');
-//     script.src = "https://web.squarecdn.com/v1/square.js";
-//     script.async = true;
-//     script.onload = () => {
-//       setLoading(false);
-//       initializeCard();
-//     };
-//     document.body.appendChild(script);
+    if (!stripe || !elements) {
+      return;
+    }
 
-//     return () => {
-//       document.body.removeChild(script);
-//     };
-//   }, [appId, locationId, accessToken]);
+    const cardElement = elements.getElement(CardElement);
 
-//   const initializeCard = async () => {
-//     if (!window.Square) {
-//       console.error('Square SDK not loaded correctly!');
-//       return;
-//     }
-//     try {
-//       const payments = window.Square.payments(appId, locationId);
-//       card.current = await payments.card();
-//       await card.current.attach('#card-container');
-//     } catch (error) {
-//       console.error('Initializing Square card failed:', error);
-//     }
-//   };
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+      billing_details: {
+        name,
+        email,
+        address: {
+          line1: address,
+        },
+      },
+    });
 
-//   const handlePaymentSubmit = async (event) => {
-//     event.preventDefault();
-//     if (!card.current) {
-//       console.log('Card component not ready');
-//       return;
-//     }
-//     try {
-//       const result = await card.current.tokenize();
-//       if (result.status === 'OK') {
-//         console.log('Token:', result.token);
-//         // Handle the token here, e.g., send it to your server to process the payment
-//         alert('Payment successful!');
-//       } else {
-//         console.error('Error tokenizing card:', result.errors);
-//         alert('Payment failed!');
-//       }
-//     } catch (error) {
-//       console.error('Failed to tokenize card:', error);
-//       alert('Payment failed!');
-//     }
-//   };
+    if (error) {
+      console.log('[error]', error);
+      toast.error('Payment failed. Please try again.');
+    } else {
+      console.log('[PaymentMethod]', paymentMethod);
+      toast.success('Payment successful!');
+      // Here, I would send the paymentMethod.id and totalPrice to a server to process the payment
+    }
+  };
 
-//   if (loading) {
-//     return <div>Loading...</div>;
-//   }
+  return (
+    <form onSubmit={handleSubmit} className="payment-form">
+      <h2>Payment Details</h2>
+      <div className="form-group">
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="address">Address</label>
+        <input
+          id="address"
+          type="text"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="card-element">Credit or Debit Card</label>
+        <CardElement id="card-element" />
+      </div>
+      <div className="form-group">
+        <h3>Total: ${totalPrice}</h3>
+      </div>
+      <button id='btn' type="submit" disabled={!stripe}>
+        Pay ${totalPrice}
+      </button>
+    </form>
+  );
+};
 
-//   return (
-//     <form onSubmit={handlePaymentSubmit}>
-//       <div id="card-container" style={{ minHeight: '50px' }}></div>
-//       <button type="submit" disabled={loading}>Pay</button>
-//     </form>
-//   );
-// };
-
-// export default SquarePaymentForm;
+export default PaymentForm;
