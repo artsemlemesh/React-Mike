@@ -9,21 +9,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const { addToCart, shop, filter, allCategoryFilter } =
-    useContext(GlobalContext);
-
   return (
     <>
       <BrowserRouter>
         <Nav />
-        <MyRoute
-          shop={shop}
-          filter={filter}
-          allCategoryFilter={allCategoryFilter}
-          addToCart={addToCart}
-        />
+        <MyRoute />
         <Footer />
-        <ToastContainer/>
+        <ToastContainer />
       </BrowserRouter>
     </>
   );

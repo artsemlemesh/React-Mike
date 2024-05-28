@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './contact.css'
-
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [user, setUser] = useState({
@@ -22,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
     const { name, email, subject, Message } = user;
     if (!name || !email || !subject || !Message) {
-      alert("all fields are required");
+      toast.error("all fields are required");
       return;
     }
 
@@ -35,13 +35,13 @@ const Contact = () => {
         body: JSON.stringify({ name, email, subject, Message }),
       });
       if (response.ok) {
-        alert("message sent");
+        toast.success("message sent");
         setUser({ name: "", email: "", subject: "", Message: "" });
       } else {
-        alert("Error occured. Message sending failed");
+        toast.error("Error occured. Message sending failed");
       }
     } catch (e) {
-      alert("Error occured. Message sending failed");
+      toast.error("Error occured. Message sending failed");
     }
   };
   return (
