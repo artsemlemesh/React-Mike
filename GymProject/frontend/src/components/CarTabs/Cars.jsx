@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Cars = ({ tabs }) => {
+const Cars = ({ tabs, fields }) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
   function handleOnClick(getCurrIndex) {
@@ -31,28 +31,31 @@ const Cars = ({ tabs }) => {
           
           {/* Second Column */}
           <div className="flex items-center justify-center bg-gray-300 rounded p-4">
-            <img src={tabs[currentTabIndex].image} alt="Tab Content" className="rounded" />
+            <img src={tabs[currentTabIndex].image} alt={tabs[currentTabIndex].image} className="rounded" />
           </div>
           
           {/* Third Column */}
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white">
-              <thead>
-                <tr>
-                  <th className="py-2 px-4 border-b">Column 1</th>
-                  <th className="py-2 px-4 border-b">Column 2</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Array.from({ length: 7 }).map((_, rowIndex) => (
-                  <tr key={rowIndex}>
-                    <td className="py-2 px-4 border-b">Data {rowIndex + 1}</td>
-                    <td className="py-2 px-4 border-b">Data {rowIndex + 1}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <div className="flex">
+      <table className="min-w-full bg-white border-collapse">
+        <thead>
+          <tr className="bg-gray-200">
+            <th className="py-3 px-4 border-b text-center text-xl font-semibold text-gray-700" colSpan={2}>
+              $30/rent per day
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {fields.map((field, rowIndex) => (
+            <tr key={rowIndex} className="hover:bg-gray-100">
+              <td className="py-2 px-4 border-b text-gray-600">{field.label}</td>
+              <td className="py-2 px-4 border-b text-gray-600">
+                {tabs[currentTabIndex].details.find(detail => detail.attribute1 === field.key)?.attribute2}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
           
         </div>
       </div>
