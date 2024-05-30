@@ -12,10 +12,10 @@ const Cars = ({ tabs, fields }) => {
     <>
       <h1>Cars</h1>
       <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid  md:grid-cols-12 sm:grid-cols-1 gap-4">
           
           {/* First Column */}
-          <div className="flex flex-col space-y-2">
+          <div className="flex col-span-3  flex-col space-y-2">
             {tabs.map((tabItem, index) => (
               <div
                 key={index}
@@ -24,19 +24,19 @@ const Cars = ({ tabs, fields }) => {
                 }`}
                 onClick={() => handleOnClick(index)}
               >
-                {tabItem.image}
+                {tabItem.title }
               </div>
             ))}
           </div>
           
           {/* Second Column */}
-          <div className="flex items-center justify-center bg-gray-300 rounded p-4">
+          <div className="flex col-span-6 items-center justify-center bg-gray-300 rounded p-4">
             <img src={tabs[currentTabIndex].image} alt={tabs[currentTabIndex].image} className="rounded" />
           </div>
           
           {/* Third Column */}
           <div className="flex">
-      <table className="min-w-full bg-white border-collapse">
+      <table className="min-w-full col-span-3 bg-white border-collapse">
         <thead>
           <tr className="bg-gray-200">
             <th className="py-3 px-4 border-b text-center text-xl font-semibold text-gray-700" colSpan={2}>

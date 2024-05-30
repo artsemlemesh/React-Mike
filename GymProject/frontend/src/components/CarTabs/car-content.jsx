@@ -20,7 +20,7 @@ const CarContent = () => {
 
     const tabs = [
         {
-          // title: "Car 1",
+          title: "Car 1",
           image: "1.jpeg",
           details: [
             { attribute1: "Model", attribute2: "Model 1" },
