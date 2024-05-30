@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { FaUser, FaEnvelope, FaCalendarAlt, FaCalendarCheck, FaCar} from 'react-icons/fa'
 
 
 const RentForm = () => {
@@ -28,13 +29,15 @@ const RentForm = () => {
 
     return(
         <>
-        <div className="max-w-sm mx-auto bg-white p-8 border border-gray-300 rounded shadow-md">
-            <h2 className="text-2xl mb-4 text-center">Car Booking Form</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label className="block text-gray-700 mb-2" htmlFor="name">
+        <div className="w-4/5 mx-auto bg-white p-8">
+            <h2 className="text-2xl mb-4 text-center">Book a car</h2>
+            <form onSubmit={handleSubmit} className="flex flex-wrap">
+                <div className="w-full md:w-1/3 p-2">
+                    <div className="flex items-center mb-2"><FaUser className="text-gray-700 mr-2"/>
+                    <label className="block text-gray-700 mr-2" htmlFor="name">
                         Name
                     </label>
+                    </div>
                     <input
                         type="text"
                         id='name'
@@ -45,10 +48,14 @@ const RentForm = () => {
                         required
                     />
                 </div>
-                <div className="mb-4">
+                <div className="w-full md:w-1/3 p-2">
+                <div className="flex items-center mb-2"><FaEnvelope className="text-gray-700 mr-2"/>
+
                     <label className="block text-gray-700 mb-2" htmlFor="email">
                         Email
                     </label>
+                    </div>
+
                     <input
                         type="email"
                         id='email'
@@ -59,10 +66,14 @@ const RentForm = () => {
                         required
                     />
                 </div>
-                <div className="mb-4">
+                <div className="w-full md:w-1/3 p-2">
+                <div className="flex items-center mb-2"><FaCalendarAlt className="text-gray-700 mr-2"/>
+
                     <label className="block text-gray-700 mb-2" htmlFor="pickUp">
                     pickUp Date
                     </label>
+                    </div>
+
                     <input
                         type="date"
                         id='pickUp'
@@ -73,10 +84,14 @@ const RentForm = () => {
                         required
                     />
                 </div>
-                <div className="mb-4">
+                <div className="w-full md:w-1/3 p-2">
+                <div className="flex items-center mb-2"><FaCalendarCheck className="text-gray-700 mr-2"/>
+
                     <label className="block text-gray-700 mb-2" htmlFor="dropOff">
                     dropOff Date
                     </label>
+                    </div>
+
                     <input
                         type="date"
                         id='dropOff'
@@ -87,16 +102,20 @@ const RentForm = () => {
                         required
                     />
                 </div>
-                <div className="mb-4">
+                <div className="w-full md:w-1/3 p-2">
+                <div className="flex items-center mb-2"><FaCar className="text-gray-700 mr-2"/>
+
                     <label className="block text-gray-700 mb-2" htmlFor="carModel">
                     carModel 
                     </label>
+                    </div>
+
                     <select
                         id='carModel'
                         name='carModel'
                         value={formData.carModel}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-3 py-2 border rounded "
                         required
                     >
                         <option value=''>Select a car model</option>
@@ -106,9 +125,11 @@ const RentForm = () => {
                         <option value='Convertible'>Convertible</option>
                         </select>
                 </div>
-                <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded">
+                <div className="w-full md:w-1/3 p-2 flex items-end ">
+                <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded ">
                     Book Now
                 </button>
+                </div>
             </form>
         </div>
         </>
