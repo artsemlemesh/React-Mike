@@ -1,11 +1,4 @@
-import { useState } from "react";
-
 const FAQ = ({ title, content, isOpen, onClick }) => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggleAccordion = () => {
-  //   setIsOpen(!isOpen);
-  // };
-
   return (
     <>
       <div className="border-b border-gray-200">
