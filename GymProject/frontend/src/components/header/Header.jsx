@@ -5,7 +5,7 @@ import {FaHandshake} from 'react-icons/fa'
 const Header = () => {
   return (
     <>
-      <div className="flex items-center justify-between p-4">
+      <div className="flex flex-col sm:flex-row items-center justify-between p-4">
         <FaHandshake size={50} className="mb-4 text-yellow-500"/>
         <NavLinks />
         <RegButton />
