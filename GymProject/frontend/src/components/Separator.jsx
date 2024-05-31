@@ -1,10 +1,15 @@
 import { MdDirectionsCar, MdAttachMoney, MdVerified } from "react-icons/md";
 import { GiCoins } from "react-icons/gi";
+import { useContext } from "react";
+import { GlobalContext } from "../GlobalContext";
 
 const Separator = () => {
+
+    const {sectionRefs} = useContext(GlobalContext)
+
   return (
     <>
-      <div className="max-w mx-auto p-6  bg-black text-center">
+      <div ref={sectionRefs.current[0]} className="max-w mx-auto p-6  bg-black text-center">
         <h1 className="text-white font-bold ">
           Save big with out affordable car rental
         </h1>
@@ -17,10 +22,10 @@ const Separator = () => {
         <div>
           <img src="car.png" alt="car"/>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 max-w-4xl mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
-          <div className="md:col-span-3 my-auto">
+        <div ref={sectionRefs.current[1]} className="grid grid-cols-1 md:grid-cols-5 gap-10 max-w-4xl mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
+          <div  className="md:col-span-3 my-auto">
             <div className="font-semibold text-gray-600">Why Choose Us</div>
-            <div className="font-bold text-4xl my-3 text-gray-800">
+            <div  className="font-bold text-4xl my-3 text-gray-800">
               Best valued deals you will ever find
             </div>
             <div className="text-gray-700 mb-6">

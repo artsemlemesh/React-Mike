@@ -1,26 +1,32 @@
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../GlobalContext";
 
 const Nav = () => {
+    const {scrollToSection, sectionRefs} = useContext(GlobalContext)
+
+
   const getLinkClass = (isActive) =>
     isActive
       ? "text-blue-500 font-semibold no-underline decoration-2 underline-offset-4"
       : "text-gray-800 hover:text-gray-600 no-underline font-medium";
 
+
   return (
     <>
       <div className="flex justify-between border-b border-gray-300 bg-white p-4 shadow-md">
   <div className="flex space-x-4">
-    <NavLink to="/" className={({ isActive }) => getLinkClass(isActive)}>
+    <NavLink onClick={() => scrollToSection(0)} to="/" className={({ isActive }) => getLinkClass(isActive)}>
       About
     </NavLink>
-    <NavLink to="/home" className={({ isActive }) => getLinkClass(isActive)}>
+    <NavLink onClick={() => scrollToSection(1)} to="/" className={({ isActive }) => getLinkClass(isActive)}>
       Home
     </NavLink>
     <NavLink to="/sdf" className={({ isActive }) => getLinkClass(isActive)}>
       Contact
     </NavLink>
+    
   </div>
 </div>
     </>

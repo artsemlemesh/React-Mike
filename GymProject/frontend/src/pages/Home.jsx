@@ -27,14 +27,12 @@ const Home = () => {
       window.removeEventListener("scroll", () => {});
     };
   });
-  console.log(scrollPercent)
 
   return (
     <>
       <div className="fixed top-0 left-0 w-full  ">
         <div className="bg-green-500 h-1" style={{width: `${scrollPercent}%`}}></div>
       </div>
-      <h1>home</h1>
       {/* <TopSlider/> */}
       {/* <InfoHome/> */}
       {/* <RentForm/> */}
