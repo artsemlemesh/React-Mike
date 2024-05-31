@@ -15,7 +15,7 @@ const Separator = () => {
       </div>
       <div>
         <div>
-          <img />
+          <img src="car.png" cka/>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 max-w-4xl mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
           <div className="md:col-span-3 my-auto">
@@ -40,8 +40,8 @@ const Separator = () => {
                 <div className="font-bold text-lg text-gray-800">
                   Cross country drive
                 </div>
-                <div className="text-gray-600">
-                  corporis quisquam perspiciatis consectetur soluta, laboriosam
+                <div className="text-gray-600 px-2">
+                  Corporis quisquam perspiciatis consectetur soluta, laboriosam
                   qui suscipit, necessitatibus illo accusantium ut! Non labore,
                   suscipit nobis ipsam possimus
                 </div>
@@ -51,8 +51,8 @@ const Separator = () => {
               <GiCoins size={150} className="text-yellow-500" />
               <div className="flex flex-col space-y-1">
                 <div className="font-bold text-lg text-gray-800">All inclusive pricing</div>
-                <div className="text-gray-800">
-                  corporis quisquam perspiciatis consectetur soluta, laboriosam
+                <div className="text-gray-800 px-2">
+                  Corporis quisquam perspiciatis consectetur soluta, laboriosam
                   qui suscipit, necessitatibus illo accusantium ut! Non labore,
                   suscipit nobis ipsam possimus
                 </div>
@@ -62,8 +62,8 @@ const Separator = () => {
               <MdVerified size={150} className="text-red-500"/>
               <div className="flex flex-col space-y-1">
                 <div className="font-bold text-lg text-gray-800">No hidden charges</div>
-                <div className="text-gray-800">
-                  corporis quisquam perspiciatis consectetur soluta, laboriosam
+                <div className="text-gray-800 px-2">
+                  Corporis quisquam perspiciatis consectetur soluta, laboriosam
                   qui suscipit, necessitatibus illo accusantium ut! Non labore,
                   suscipit nobis ipsam possimus
                 </div>
