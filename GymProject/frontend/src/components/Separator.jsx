@@ -5,7 +5,7 @@ import { GlobalContext } from "../GlobalContext";
 
 const Separator = () => {
 
-    const {sectionRefs} = useContext(GlobalContext)
+    const {scrollToTop, sectionRefs, isVisible} = useContext(GlobalContext)
 
   return (
     <>

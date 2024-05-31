@@ -1,12 +1,12 @@
-import { createContext, createRef, useRef } from "react";
+import { createContext, createRef, useEffect, useRef, useState } from "react";
 
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
-    // const sections = [1, 2, 3, 4, 5]
   const sectionRefs = useRef([1, 2, 3, 4, 5].map(() => createRef()));
-    // const ref = useRef()
-  function scrollToSection(index) {
+  const [isVisible, setIsVisible] = useState(false)
+  
+  const scrollToSection =(index) => {
     let pos = sectionRefs.current[index].current.getBoundingClientRect().top;
 
     window.scrollTo({
@@ -14,9 +14,30 @@ export default function GlobalState({ children }) {
       behavior: "smooth",
     });
   }
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0, behavior: 'smooth'
+    })
+  }
+  const toggleVisibility = () => {
+        if(window.scrollY > 300){
+            setIsVisible(true)
+        }else{
+            setIsVisible(false)
+        }
+  }
+
+  useEffect(()=> {
+    window.addEventListener('scroll', toggleVisibility)
+    return () => {
+        window.removeEventListener('scroll', toggleVisibility)
+    }
+  }, [])
+
+  
 
   return (
-    <GlobalContext.Provider value={{ scrollToSection, sectionRefs }}>
+    <GlobalContext.Provider value={{scrollToTop, scrollToSection, sectionRefs, isVisible }}>
       {children}
     </GlobalContext.Provider>
   );
