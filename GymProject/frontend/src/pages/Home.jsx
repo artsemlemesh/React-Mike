@@ -35,7 +35,7 @@ const Home = () => {
       <div className="fixed top-0 left-0 w-full  ">
         <div className="bg-green-500 h-1" style={{width: `${scrollPercent}%`}}></div>
       </div>
-      {/* <TopSlider/> */}
+      <TopSlider/>
       <InfoHome/>
       <RentForm/>
       <Separator />

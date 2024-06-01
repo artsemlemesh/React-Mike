@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { createContext, createRef, useEffect, useRef, useState } from "react";
 
 export const GlobalContext = createContext(null);
@@ -5,7 +6,8 @@ export const GlobalContext = createContext(null);
 export default function GlobalState({ children }) {
   const sectionRefs = useRef([1, 2, 3, 4, 5].map(() => createRef()));
   const [isVisible, setIsVisible] = useState(false)
-  
+  const {loginWithRedirect, logout, user, isAuthenticated} = useAuth0()
+
   const scrollToSection =(index) => {
     let pos = sectionRefs.current[index].current.getBoundingClientRect().top;
 
@@ -37,7 +39,7 @@ export default function GlobalState({ children }) {
   
 
   return (
-    <GlobalContext.Provider value={{scrollToTop, scrollToSection, sectionRefs, isVisible }}>
+    <GlobalContext.Provider value={{scrollToTop, scrollToSection, sectionRefs, isVisible, isAuthenticated, loginWithRedirect, logout, user }}>
       {children}
     </GlobalContext.Provider>
   );
