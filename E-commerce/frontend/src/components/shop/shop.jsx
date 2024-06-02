@@ -1,3 +1,7 @@
+{/* <div className="shop" data-theme={theme}> */}
+
+
+
 import { useContext, useState } from "react";
 import { AiFillEye, AiFillHeart, AiOutlineClose } from "react-icons/ai";
 import "./shop.css";
@@ -83,3 +87,5 @@ const Shop = () => {
 };
 
 export default Shop;
+
+

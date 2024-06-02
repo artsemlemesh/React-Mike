@@ -210,8 +210,8 @@
 }
 .shop .container .right_box .product_box .product_container .box .detail button
 {
-    margin-top: 10px;
-    margin-left: 30%;
+    /* margin-top: 10px; */
+    margin-left: 25%;
     padding: 10px 20px;
     border: none;
     outline: none;
