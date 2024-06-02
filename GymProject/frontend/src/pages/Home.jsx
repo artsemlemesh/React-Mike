@@ -36,10 +36,10 @@ const Home = () => {
         <div className="bg-green-500 h-1" style={{width: `${scrollPercent}%`}}></div>
       </div>
       <TopSlider/>
-      <InfoHome/>
-      <RentForm/>
-      <Separator />
-      <Items />
+      {/* <InfoHome/> */}
+      {/* <RentForm/> */}
+      {/* <Separator /> */}
+      {/* <Items /> */}
 
       {/* <CarContent/> */}
 
