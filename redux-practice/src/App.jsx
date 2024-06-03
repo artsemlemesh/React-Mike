@@ -25,6 +25,13 @@ function App() {
   }
 
 
+  // const handleTodoA = () => dispatch => {
+  //   setTimeout(() => {
+  //     dispatch(addTodo(newT))
+  //   }, 1000)
+  //   console.log('hey')
+  // }
+
   const handleAddTodo = () => {
     dispatch(addTodo(newT))
     setNewT('')

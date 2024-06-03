@@ -9,11 +9,11 @@ const  userSlice = createSlice({
         data: null
     },
     reducers: {
-        login: (state, action) => {
+        login: (state, action) => {//we put action bcz this reducer does need to know what else data it should be adding to the login
             state.isAuth = true,
             state.data = action.payload
         },
-        logout: (state) => {
+        logout: (state) => {// no data no action
             state.isAuth = false,
             state.data = null
         }
