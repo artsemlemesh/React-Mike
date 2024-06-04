@@ -20,6 +20,7 @@ const postSlice = createSlice({
             id: nanoid(),
             title,
             content,
+            user: userId
           },
         }
       },
