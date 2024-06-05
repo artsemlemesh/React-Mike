@@ -7,12 +7,15 @@ import { PostAuthor } from './PostAuthor'
 import { ReactionButtons } from './ReactionButtons'
 import { TimeAgo } from './TimeAgo'
 
+import { selectPostById } from './postsSlice'
+
+
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params
 
-    const post = useSelector(state => //if we have the right post object in the store, useSelector will return that
-        state.posts.find(post=>post.id === postId)
-    )
+    const post = useSelector(state => selectPostById(state, postId)) //if we have the right post object in the store, useSelector will return that
+        
+    
     //state.posts is an array of all post objects, so we can use Array.find() 
 
 
@@ -31,8 +34,8 @@ export const SinglePostPage = ({ match }) => {
         <p className="post-content">{post.content}</p>
         <Link to={`/editPost/${post.id}`} className='button'>Edit post</Link>
         <PostAuthor userId={post.userId}/>
-        <ReactionButtons post={post}/>
         <TimeAgo timestamp={post.date} />
+        <ReactionButtons post={post}/>
 
       </article>
     </section>

@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import { PostAuthor } from './PostAuthor'
 import { ReactionButtons } from './ReactionButtons'
 import { TimeAgo } from './TimeAgo'
+import { selectAllPosts } from './postsSlice'
 
-export const PostsList = () => {
-    const posts = useSelector(state=> state.posts)
+
+export const PostsList = () => {//is trying to read posts from state.posts, assuming that field is an array
+    
+    const posts = useSelector(selectAllPosts) //before = state=> state.posts
     const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))//here we sort posts, new first
 
     const renderedPosts = orderedPosts.map(post=> (//changed posts for orderedposts
@@ -15,8 +18,9 @@ export const PostsList = () => {
             <Link to={`/posts/${post.id}`} className='button muted-button'>
                 View post
             </Link>
-            <PostAuthor userId={post.user}/>
             <ReactionButtons post={post}/>
+            <PostAuthor userId={post.user}/>
+
             <TimeAgo timestamp={post.date} />
         </article>
     ))
