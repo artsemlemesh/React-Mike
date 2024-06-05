@@ -31,47 +31,34 @@ const PostExcerpt = ({post}) => {
 
 
 export const PostsList = () => {//is trying to read posts from state.posts, assuming that field is an array
-    const dispatch = useDispatch()
-    const posts = useSelector(selectAllPosts) //before = state=> state.posts
+    const dispatch = useDispatch()//dispatch actions
+    const posts = useSelector(selectAllPosts) //retrieve all posts from Redux store via selectAllPosts selector
     
-    const postStatus = useSelector(state=> state.posts.status)
+    const postStatus = useSelector(state=> state.posts.status)//retrieves current status of the post fetching process
     const error = useSelector(state=> state.posts.error)
-    useEffect(()=> {
+
+    useEffect(()=> {//when idle dispatches fetchPosts, this ensures posts are fetched only when necessary, such as on component mount or when the post status resets to idle
         if (postStatus === 'idle') {
             dispatch(fetchPosts())
         }
     }, [postStatus, dispatch])
 
-    let content
-    if(postStatus === 'loading'){
+    let content//to store JSX based on the post fetch status
+    if(postStatus === 'loading'){//spinner if loading
         content = <Spinner text='Loading...'/>
-    } else if (postStatus === 'succeeded'){
+    } else if (postStatus === 'succeeded'){//copies(slice) and sorts posts array in descending order
         const orderedPosts = posts
-        .slice()
+        .slice()//state immutability must be maintained, so we copy the array
         .sort((a, b) => b.date.localeCompare(a.date))
 
         content = orderedPosts.map(post => (
             <PostExcerpt key={post.id} post={post}/>
         ))
-    } else if (postStatus === 'failed') {
+    } else if (postStatus === 'failed') {//displays error if failed
         content = <div>{error}</div>
     }
 
-    // const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date))//here we sort posts, new first
 
-    // const renderedPosts = orderedPosts.map(post=> (//changed posts for orderedposts
-    //     <article className='post-excerpt' key={post.id}>
-    //         <h3>{post.title}</h3>
-    //         <p className='post-content'>{post.content.substring(0, 100)}</p>
-    //         <Link to={`/posts/${post.id}`} className='button muted-button'>
-    //             View post
-    //         </Link>
-    //         <ReactionButtons post={post}/>
-    //         <PostAuthor userId={post.user}/>
-
-    //         <TimeAgo timestamp={post.date} />
-    //     </article>
-    // ))
 
     return (
         <section className='posts-list'>
