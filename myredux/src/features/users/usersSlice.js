@@ -13,11 +13,18 @@ const usersSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {},
-    extraReducers(builder) {
-        builder.addCase(fetchUsers.fulfilled, (state, action) => {
+    extraReducers(builder) {//allows the slice to respond to actions defined outside of the slice, useful for handling actions from createAsyncThunk
+        builder.addCase(fetchUsers.fulfilled, (state, action) => {//fetchUsers is defined outside the slice
             return action.payload
         })
     }
 })
 
 export default usersSlice.reducer
+
+
+export const selectAllUsers = state => state.users
+
+export const selectUserById = (state, userId) => 
+    state.users.find(user => user.id === userId)
+

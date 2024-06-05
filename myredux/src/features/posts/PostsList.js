@@ -29,6 +29,7 @@ const PostExcerpt = ({post}) => {
 }
 
 
+
 export const PostsList = () => {//is trying to read posts from state.posts, assuming that field is an array
     const dispatch = useDispatch()
     const posts = useSelector(selectAllPosts) //before = state=> state.posts

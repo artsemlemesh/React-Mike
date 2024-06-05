@@ -1,6 +1,8 @@
-import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, nanoid, createAsyncThunk, createSelector, createEntityAdapter } from '@reduxjs/toolkit'
 import { sub } from 'date-fns'
 import { client } from '../../api/client'
+
+
 
 const initialState = //should be an object rather than array like before
   {
@@ -9,6 +11,8 @@ const initialState = //should be an object rather than array like before
     error: null,
   }
 
+
+  
 
 //createAsyncThunk(one, two) one-prefix for the generated action types
 //two - 'payload creator' callback func that should return/reject Promise
@@ -93,3 +97,8 @@ export default postSlice.reducer
 export const selectAllPosts = (state) => state.posts.posts
 export const selectPostById = (state, postId) =>
   state.posts.posts.find((post) => post.id === postId)
+
+export const selectPostsByUser = createSelector(
+    [selectAllPosts, (state, userId) => userId],
+    (posts, userId) => posts.filter(post => post.user === userId)
+  )
