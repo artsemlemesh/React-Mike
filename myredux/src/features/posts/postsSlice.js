@@ -1,12 +1,31 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit'
 import { sub } from 'date-fns'
+import { client } from '../../api/client'
 
-const initialState = [
+const initialState = //should be an object rather than array like before
   {
     posts: [],
-  status: 'idle',
-  error: null},
-]
+    status: 'idle',
+    error: null,
+  }
+
+
+//createAsyncThunk(one, two) one-prefix for the generated action types
+//two - 'payload creator' callback func that should return/reject Promise
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+  const response = await client.get('/fakeApi/posts')
+  return response.data
+})
+
+export const addNewPost = createAsyncThunk(
+    'posts/addNewPost',
+    async initialPost => {
+        const response = await client.post('/fakeApi/posts', initialPost)
+        return response.data
+    }
+)
+
+
 
 const postSlice = createSlice({
   name: 'posts',
@@ -32,7 +51,7 @@ const postSlice = createSlice({
             title,
             content,
             user: userId,
-            reactions: {thumbsUp: 0, hooray: 0, heart: 0, rocket: 0, eyes: 0}
+            reactions: { thumbsUp: 0, hooray: 0, heart: 0, rocket: 0, eyes: 0 },
           },
         }
       },
@@ -47,13 +66,30 @@ const postSlice = createSlice({
       }
     },
   },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchPosts.pending, (state, action) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        // Add any fetched posts to the array
+        state.posts = state.posts.concat(action.payload)
+      })
+      .addCase(fetchPosts.rejected, (state, action) => {
+        state.status = 'failed'
+        state.error = action.error.message
+      })
+      .addCase(addNewPost.fulfilled, (state, action) => {
+        state.posts.push(action.payload)
+      })
+  },
 })
 
 export const { postAdded, postUpdated, reactionAdded } = postSlice.actions
 
 export default postSlice.reducer
 
-
-export const selectAllPosts = state => state.posts.posts
-export const selectPostById = (state, postId) => 
-    state.posts.posts.find(post => post.id === postId)
+export const selectAllPosts = (state) => state.posts.posts
+export const selectPostById = (state, postId) =>
+  state.posts.posts.find((post) => post.id === postId)
