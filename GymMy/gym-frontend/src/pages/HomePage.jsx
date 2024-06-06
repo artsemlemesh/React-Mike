@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
 
@@ -12,12 +13,12 @@ const HomePage = () => {
           <p className="font-bold text-sm uppercase">Services</p>
           <p className="text-3xl font-bold">Hello world</p>
           <p className="text-2xl mb-10 leading-none">Join our team</p>
-          <a
-            href="#"
+          <Link
+            to='/contact'
             className="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-700"
           >
             Contact us
-          </a>
+          </Link>
         </div>
       </div>
 

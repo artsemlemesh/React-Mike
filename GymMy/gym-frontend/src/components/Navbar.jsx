@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 const navItems = [
-  { name: 'Home', path: '/', exact: true },
+  { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Membership Plans', path: '/membership-plans' },
   { name: 'Class Schedule', path: '/class-schedule' },

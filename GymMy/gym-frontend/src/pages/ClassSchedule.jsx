@@ -1,3 +1,5 @@
+import SingleClass from "../components/SingleClass";
+
 const ClassSchedule = () => {
     const schedule = [
       {
@@ -64,7 +66,10 @@ const ClassSchedule = () => {
                   </div>
                 </div>
               </div>
+
             ))}
+                          <SingleClass/>
+
           </div>
         </div>
       </>
