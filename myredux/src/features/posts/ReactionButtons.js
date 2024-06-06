@@ -14,6 +14,8 @@ const reactionEmoji = {
 export const ReactionButtons = ({ post }) => {
   const dispatch = useDispatch()
 
+
+  //uses Object.entries to convert  reactionEmoji object to an array of key-value pairs and maps over this array, each element is a tuple (name) (emoji)
   const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji]) => {
     return (
       <button

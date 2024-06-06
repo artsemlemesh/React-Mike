@@ -5,21 +5,24 @@ import { useHistory } from 'react-router-dom'
 import { postUpdated, selectPostById } from './postsSlice'
 
 export const EditPostForm = ({ match }) => {
-  const { postId } = match.params
+  const { postId } = match.params//contains url params, destructure postId
 
-  const post = useSelector(state =>
+  // console.log(match, 'postId')
+  const post = useSelector(state =>//accesses Redux store and retrieve the post to be edited
     selectPostById(state, postId))
   
-
+//local state variables
   const [title, setTitle] = useState(post.title)
   const [content, setContent] = useState(post.content)
 
   const dispatch = useDispatch()
   const history = useHistory()
 
+  //change handlers
   const onTitleChanged = e => setTitle(e.target.value)
   const onContentChanged = e => setContent(e.target.value)
 
+  //if post changed dispatches action
   const onSavePostClicked = () => {
     if (title && content) {
       dispatch(postUpdated({ id: postId, title, content }))
