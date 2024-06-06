@@ -1,7 +1,15 @@
+import LoginForm from "../features/auth/LoginForm";
+import { AddPostForm } from "../features/posts/AddPostForm";
+import PostsList from "../features/posts/PostList";
 
 const About = () => {
   return (
-    <div>hello from about</div>
+    <div>
+      <AddPostForm/>
+      <PostsList/>
+    <LoginForm/>
+
+    </div>
 )
 };
 
