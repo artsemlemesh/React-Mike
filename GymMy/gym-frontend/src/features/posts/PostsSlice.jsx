@@ -9,18 +9,23 @@ const initialState = {
 };
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch("http://127.0.0.1:8000/posts/");
+  const response = await fetch("http://127.0.0.1:8000/posts/")
   const data = await response.json();
   return data;
+
 });
 
 //NEED TO SET UP BACKEND FOR ADD AND FETCH, also add user
 export const addNewPost = createAsyncThunk(
   "posts/addNewPost",
-  async (initialPost) => {
+  async (formData) => {
     const response = await axios.post(
       "http://127.0.0.1:8000/posts/",
-      initialPost
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },}
     );
     return response.data;
   }

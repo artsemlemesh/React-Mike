@@ -24,11 +24,11 @@ const PostsList = () => {
     // const orderedPosts = posts
     // .slice()
     // .sort((a, b) => b.date.localeCompare(a.date))
-    console.log(posts, 'POSTS')
     content = posts.map((post, index) => (
       <article key={index}>
         <h3>{post.title}</h3>
         <p>{post.content}</p>
+        <img src={post.image}/>
       </article>
     ));
   } else if (postStatus === "failed") {

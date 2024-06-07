@@ -6,6 +6,7 @@ import { postAdded, postUpdated, addNewPost } from "./postsSlice";
 export const AddPostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState(null)
   // const [userId, setUserId] = useState('')
   const [addRequestStatus, setAddRequestStatus] = useState("idle");
 
@@ -17,9 +18,10 @@ export const AddPostForm = () => {
     if (cannSave) {
       try {
         setAddRequestStatus("pending");
-        await dispatch(addNewPost({ title, content })).unwrap();
+        await dispatch(addNewPost({ title, content, image })).unwrap();
         setTitle("");
         setContent("");
+        setImage('')
       } catch (err) {
         console.error("failed to save the post: ", err);
       } finally {
@@ -30,6 +32,7 @@ export const AddPostForm = () => {
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
+  const onImageChanged = (e) => setImage(e.target.files[0]);
 
   return (
     <section>
@@ -49,6 +52,13 @@ export const AddPostForm = () => {
           name="postContent"
           value={content}
           onChange={onContentChanged}
+        />
+        <label htmlFor="postImage">Image:</label>
+        <input
+          type="file"
+          id="postImage"
+          name="postImage"
+          onChange={onImageChanged}
         />
         <button type="button" onClick={onSavePostClicked} disabled={!cannSave}>
           Save post
