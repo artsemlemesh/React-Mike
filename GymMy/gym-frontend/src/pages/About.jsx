@@ -5,8 +5,8 @@ import PostsList from "../features/posts/PostList";
 const About = () => {
   return (
     <div>
-      <AddPostForm/>
-      <PostsList/>
+      {/* <AddPostForm/> */}
+      {/* <PostsList/> */}
     <LoginForm/>
 
     </div>

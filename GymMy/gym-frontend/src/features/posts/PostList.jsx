@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "../../components/Spinner";
-import { fetchPosts } from "./postsSlice";
+// import { fetchPosts } from "./postsSlice";
+import {fetchPosts} from './postsSlice'
 
 const PostsList = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,11 @@ const PostsList = () => {
     // const orderedPosts = posts
     // .slice()
     // .sort((a, b) => b.date.localeCompare(a.date))
-
+    console.log(posts, 'POSTS')
     content = posts.map((post, index) => (
       <article key={index}>
-        <h3>{post.title}</h3>
-        <p>{post.content}</p>
+        {/* <h3>{post.title}</h3> */}
+        {/* <p>{post.content}</p> */}
       </article>
     ));
   } else if (postStatus === "failed") {
