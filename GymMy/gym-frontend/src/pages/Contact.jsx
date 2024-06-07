@@ -1,7 +1,10 @@
+import ScheduleComponent from "../features/schedule/ClassSchedule";
 
 const Contact = () => {
     return (
-      <div>hello from Contact</div>
+      <div>hello from Contact
+        <ScheduleComponent/>
+      </div>
   )
   };
   

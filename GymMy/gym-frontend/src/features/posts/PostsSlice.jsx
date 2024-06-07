@@ -9,36 +9,19 @@ const initialState = {
 };
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  console.log("before");
-  const response = await fetch("http://127.0.0.1:8000/posts/", {
-    method: "GET",
-    credentials: "include", // Include cookies for authentication
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-//   if (!response.ok) {
-//     throw new Error("Network response was not ok");
-//   }
-  
+  const response = await fetch("http://127.0.0.1:8000/posts/");
   const data = await response.json();
   return data;
-  console.log(data, 'data')
-//   console.log(response, "resp");
-//   return response.data;
 });
 
 //NEED TO SET UP BACKEND FOR ADD AND FETCH, also add user
 export const addNewPost = createAsyncThunk(
   "posts/addNewPost",
   async (initialPost) => {
-    console.log("hel");
     const response = await axios.post(
       "http://127.0.0.1:8000/posts/",
-      initialPost,
-      { withCredentials: true }
+      initialPost
     );
-    // console.log(response, 'post.response')
     return response.data;
   }
 );

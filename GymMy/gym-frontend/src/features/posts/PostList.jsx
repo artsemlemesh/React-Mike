@@ -27,8 +27,8 @@ const PostsList = () => {
     console.log(posts, 'POSTS')
     content = posts.map((post, index) => (
       <article key={index}>
-        {/* <h3>{post.title}</h3> */}
-        {/* <p>{post.content}</p> */}
+        <h3>{post.title}</h3>
+        <p>{post.content}</p>
       </article>
     ));
   } else if (postStatus === "failed") {
