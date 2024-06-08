@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "../../components/Spinner";
-// import { fetchPosts } from "./postsSlice";
-import {fetchPosts} from './postsSlice'
+import { fetchPosts } from "./postsSlice";
 
 const PostsList = () => {
   const dispatch = useDispatch();
@@ -16,29 +15,37 @@ const PostsList = () => {
     }
   }, [postStatus, dispatch]);
 
-  let content; //store JSX based on the post fetch status
+  let content;
 
   if (postStatus === "loading") {
     content = <Spinner text="Loading..." />;
   } else if (postStatus === "succeeded") {
-    // const orderedPosts = posts
-    // .slice()
-    // .sort((a, b) => b.date.localeCompare(a.date))
     content = posts.map((post, index) => (
-      <article key={index}>
-        <h3>{post.title}</h3>
-        <p>{post.content}</p>
-        <img src={post.image}/>
-      </article>
+      <div key={index} className="col-span-1 lg:col-span-2 max-w-full rounded overflow-hidden shadow-lg mb-8 flex flex-col">
+        {post.image && (
+          <img className="w-full h-96 object-cover" src={post.image} alt={post.title} />
+        )}
+        <div className="px-6 py-4 flex-grow">
+          <div className="font-bold text-2xl mb-2">{post.title}</div>
+          <p className="text-gray-700 text-base mb-4">{post.content}</p>
+        </div>
+        <div className="px-6 py-4">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+            Purchase It
+          </button>
+        </div>
+      </div>
     ));
   } else if (postStatus === "failed") {
     content = <div>{error}</div>;
   }
-// console.log(content, 'content')
+
   return (
     <section>
-      <h2>Posts</h2>
-      {content}
+      <h2 className="text-3xl font-bold mb-8">Posts</h2>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {content}
+      </div>
     </section>
   );
 };

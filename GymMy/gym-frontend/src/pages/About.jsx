@@ -6,9 +6,7 @@ import ScheduleComponent from "../features/schedule/ClassSchedule";
 const About = () => {
   return (
     <div>
-      {/* <AddPostForm/> */}
-      {/* <PostsList/> */}
-    <LoginForm/>
+    
     <ScheduleComponent/>
 
 

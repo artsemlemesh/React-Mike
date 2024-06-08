@@ -23,7 +23,7 @@ export const addNewPost = createAsyncThunk(
       "http://127.0.0.1:8000/posts/",
       formData,
       {
-        headers: {
+        headers: {//important for image upload, or throws an error without it
           "Content-Type": "multipart/form-data",
         },}
     );
