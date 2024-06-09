@@ -13,6 +13,7 @@ class Classes(models.Model):
     description = models.TextField(blank=True)
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
     duration = models.DurationField(help_text='Duration of the class')
+    image = models.ImageField(upload_to='image', blank=True)
 
     def __str__(self):
         return self.name

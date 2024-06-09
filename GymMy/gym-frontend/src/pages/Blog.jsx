@@ -7,7 +7,7 @@ const Blog = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-2/3 md:pr-8">
-          <AddPostForm/>
+          {/* <AddPostForm/> */}
           <PostsList/>
 
           </div>

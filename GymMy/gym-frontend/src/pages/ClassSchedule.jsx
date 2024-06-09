@@ -1,25 +1,26 @@
 import SingleClass from "../components/SingleClass";
+import Days from "../features/schedule/Days";
 
 const ClassSchedule = () => {
-    const schedule = [
-      {
-        day: "Monday",
-        classes: [
-          { time: "6:00 AM - 7:00 AM", name: "Yoga" },
-          { time: "8:00 AM - 9:00 AM", name: "HIIT" },
-          { time: "5:00 PM - 6:00 PM", name: "Strength Training" },
-        ],
-      },
-      {
-        day: "Tuesday",
-        classes: [
-          { time: "6:00 AM - 7:00 AM", name: "Pilates" },
-          { time: "8:00 AM - 9:00 AM", name: "Yoga" },
-          { time: "5:00 PM - 6:00 PM", name: "HIIT" },
-        ],
-      },
-      // Add more days and classes as needed
-    ];
+    // const schedule = [
+    //   {
+    //     day: "Monday",
+    //     classes: [
+    //       { time: "6:00 AM - 7:00 AM", name: "Yoga" },
+    //       { time: "8:00 AM - 9:00 AM", name: "HIIT" },
+    //       { time: "5:00 PM - 6:00 PM", name: "Strength Training" },
+    //     ],
+    //   },
+    //   {
+    //     day: "Tuesday",
+    //     classes: [
+    //       { time: "6:00 AM - 7:00 AM", name: "Pilates" },
+    //       { time: "8:00 AM - 9:00 AM", name: "Yoga" },
+    //       { time: "5:00 PM - 6:00 PM", name: "HIIT" },
+    //     ],
+    //   },
+    //   // Add more days and classes as needed
+    // ];
   
     return (
       <>
@@ -34,15 +35,17 @@ const ClassSchedule = () => {
   
         {/* class schedule table */}
         <div className="container mx-auto px-4 py-8">
-          <header className="bg-gray-200 py-12">
+          {/* <header className="bg-gray-200 py-12">
             <div className="max-w-6xl mx-auto text-center">
               <h1 className="text-4xl font-bold text-gray-800">Class Schedule</h1>
               <p className="mt-4 text-gray-600">
                 Stay fit and healthy with our variety of classes.
               </p>
             </div>
-          </header>
-          <div className="flex flex-wrap -mx-2 mt-8">
+          </header> */}
+          <Days/>
+          
+          {/* <div className="flex flex-wrap -mx-2 mt-8">
             {schedule.map((daySchedule) => (
               <div
                 key={daySchedule.day}
@@ -70,7 +73,7 @@ const ClassSchedule = () => {
             ))}
                           <SingleClass/>
 
-          </div>
+          </div> */}
         </div>
       </>
     );

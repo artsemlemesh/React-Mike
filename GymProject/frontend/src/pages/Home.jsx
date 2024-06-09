@@ -41,7 +41,7 @@ const Home = () => {
       {/* <Separator /> */}
       {/* <Items /> */}
 
-      {/* <CarContent/> */}
+      <CarContent/>
 
       {isVisible&& (<button className="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-full shadow-lg animate-bounce" onClick={scrollToTop}>scroll to top</button>)}
 
