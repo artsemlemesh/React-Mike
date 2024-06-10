@@ -1,4 +1,5 @@
 import React from 'react';
+import Trainers from '../components/Trainers';
 
 const About = () => {
   return (
@@ -36,33 +37,8 @@ const About = () => {
           </div>
         </div>
       </section>
-      
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold mb-4">Meet Our Trainers</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="rounded overflow-hidden shadow-lg bg-white">
-            <img src="/path/to/trainer1.jpg" alt="Trainer 1" className="h-48 w-full object-cover"/>
-            <div className="px-6 py-4">
-              <h3 className="font-bold text-xl mb-2">John Doe</h3>
-              <p className="text-gray-700 text-base">John is a certified personal trainer with over 10 years of experience in helping clients achieve their fitness goals.</p>
-            </div>
-          </div>
-          <div className="rounded overflow-hidden shadow-lg bg-white">
-            <img src="/path/to/trainer2.jpg" alt="Trainer 2" className="h-48 w-full object-cover"/>
-            <div className="px-6 py-4">
-              <h3 className="font-bold text-xl mb-2">Jane Smith</h3>
-              <p className="text-gray-700 text-base">Jane specializes in yoga and pilates, with a focus on flexibility, balance, and core strength.</p>
-            </div>
-          </div>
-          <div className="rounded overflow-hidden shadow-lg bg-white">
-            <img src="/path/to/trainer3.jpg" alt="Trainer 3" className="h-48 w-full object-cover"/>
-            <div className="px-6 py-4">
-              <h3 className="font-bold text-xl mb-2">Michael Brown</h3>
-              <p className="text-gray-700 text-base">Michael is a former athlete who brings a wealth of knowledge in strength training and conditioning.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Trainers/>
+     
       
       <section>
         <h2 className="text-3xl font-bold mb-4">Testimonials</h2>
