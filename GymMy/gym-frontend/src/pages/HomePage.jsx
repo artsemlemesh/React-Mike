@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
 import ButtonsHome from "../components/ButtonsHome";
 import Gallery from "../components/PhotoGallery";
+import BMIComponent from "../components/BMIComponent";
 // import imageUrl from 'ho'
 
 
@@ -31,6 +32,7 @@ const HomePage = () => {
 
   <ButtonsHome/>
     <Gallery/>
+    <BMIComponent/>
     </div>
   );
 };
