@@ -72,7 +72,7 @@ const Footer = () => {
                     <div className='box'>
                         <h3>contact us</h3>
                         <ul>
-                            <li>4005, Silver Business PointIndia</li>
+                            <li>4005, Silver Business </li>
                             <li>+(012)99999999</li>
                             <li>info@gmail.com</li>
                         </ul>
