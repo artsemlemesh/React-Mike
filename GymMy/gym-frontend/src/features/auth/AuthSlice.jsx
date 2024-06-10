@@ -23,7 +23,8 @@ export const loginUser = createAsyncThunk(
     }
 
     const data = await response.json();
-    console.log(data, 'data');
+    console.log(data.message, 'message');
+    console.log(data.username, 'username');
     return data;
   }
 );
@@ -53,7 +54,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.user = action.payload;
+        state.user = action.payload.user;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";

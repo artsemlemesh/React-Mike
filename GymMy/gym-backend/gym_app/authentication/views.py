@@ -1,8 +1,8 @@
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
 import json
-
 
 @csrf_exempt
 def login_view(request):
@@ -13,7 +13,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return JsonResponse({'message': 'Logged in successfully'})
+            return JsonResponse({'message': 'Logged in successfully', 'user': {'username': user.username}})#includes user in response in console
         else:
             return JsonResponse({'error': 'Invalid credentials'}, status=400)
     return JsonResponse({'error': 'Invalid request'}, status=400)
