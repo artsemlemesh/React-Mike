@@ -25,6 +25,7 @@ export const loginUser = createAsyncThunk(
     const data = await response.json();
     console.log(data.message, 'message');
     console.log(data.username, 'username');
+    console.log(data, 'just data');
     return data;
   }
 );

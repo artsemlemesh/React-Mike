@@ -8,7 +8,8 @@ export const store = configureStore({
     reducer: {
         posts: postsReducer,
         auth: authReducer,
-        schedule: scheduleReducer
+        schedule: scheduleReducer,
+
     }
 })
 

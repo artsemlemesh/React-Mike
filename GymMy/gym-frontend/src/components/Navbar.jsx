@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser, logoutUser } from "../features/auth/authSlice";
 import LoginForm from "../features/auth/LoginForm";
 
+//make it dynamic
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
@@ -11,6 +12,7 @@ const navItems = [
   { name: "Membership Plans", path: "/membership-plans" },
   { name: "Class Schedule", path: "/class-schedule" },
   { name: "Contact", path: "/contact" },
+  { name: "Dashboard", path: "/dashboard" },
 ];
 
 const NavBar = () => {

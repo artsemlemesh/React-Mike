@@ -19,11 +19,7 @@ const initialState = {
   },
 };
 
-import Cookies from "js-cookie";
 
-// const getCsrfToken = () => {
-//     return Cookies.get('csrftoken');
-// };
 
 export const fetchInstructors = createAsyncThunk(
   "schedule/fetchInstructors",
@@ -48,6 +44,7 @@ export const fetchSchedules = createAsyncThunk(
   async () => {
     const response = await fetch("http://127.0.0.1:8000/schedule/");
     const data = await response.json();
+    console.log(data, 'fetchSchedules')
     return data;
   }
 );
