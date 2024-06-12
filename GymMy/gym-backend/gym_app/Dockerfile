@@ -14,11 +14,12 @@ RUN apt-get update && apt-get install -y \
 # Copy the requirements file into the container at /app
 COPY requirements.txt /app/
 
-# Debug: print the contents of requirements.txt
-RUN cat requirements.txt
+# Upgrade pip and install wheel
+RUN pip install --upgrade pip
+RUN pip install wheel
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python dependencies
+RUN pip install -r requirements.txt
 
 # Copy the rest of the application code into the container at /app
 COPY . /app/

@@ -2,24 +2,23 @@ version: '3.8'
 
 services:
   backend:
-    build: 
+    build:
       context: ./gym-backend/gym_app
       dockerfile: Dockerfile
     command: gunicorn gym_app.wsgi:application --bind 0.0.0.0:8000
-    volumes:
-      - ./gym-backend/gym_app:/app
-      - ./.venv:/app/.venv
     ports:
       - "8000:8000"
+    volumes:
+      - ./gym-backend/gym_app:/app
     environment:
-      - DEBUG=1
+      - DJANGO_SETTINGS_MODULE=gym_app.settings
 
   frontend:
-    build: 
+    build:
       context: ./gym-frontend
       dockerfile: Dockerfile
     command: npm start
+    ports:
+      - "5173:5173"
     volumes:
       - ./gym-frontend:/app
-    ports:
-      - "3000:3000"
