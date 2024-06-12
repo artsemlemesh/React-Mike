@@ -1,8 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useState } from "react";
+
+
+
 
 const initialState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem('user')) || null,
   status: "idle",
   error: null,
 };
@@ -20,13 +24,16 @@ export const loginUser = createAsyncThunk(
     });
     if (!response.ok) {
       throw new Error("Login failed");
+  
     }
 
     const data = await response.json();
+    localStorage.setItem('user', JSON.stringify(data.user))
     console.log(data.message, 'message');
     console.log(data.username, 'username');
     console.log(data, 'just data');
     return data;
+
   }
 );
 
@@ -38,8 +45,9 @@ export const logoutUser = createAsyncThunk("auth/logout", async () => {
   if(!response.ok){
     throw new Error('Logout failed')
   }
+  localStorage.removeItem('user')
 
-  return {}
+  return null
 });
 
 const authSlice = createSlice({

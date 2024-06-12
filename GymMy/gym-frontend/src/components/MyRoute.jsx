@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import ClassSchedule from "../pages/ClassSchedule";
 import MembershipPlans from "../pages/MemberPlan";
@@ -7,6 +7,7 @@ import Contact from "../pages/Contact";
 import Blog from "../pages/Blog";
 import Dashboard from "../pages/DashBoard";
 import EnrolledClasses from "./EnrolledClasses";
+import ProtectedRoute from "./ProtectedRoute";
 
 const MyRoute = () => {
   return (
@@ -17,9 +18,23 @@ const MyRoute = () => {
       <Route path="/class-schedule" element={<ClassSchedule />} />
       <Route path="/membership-plans" element={<MembershipPlans />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/dashboard/*" element={<Dashboard />} />
-      <Route path="/dashboard/enrolled-classes" element={<EnrolledClasses />} />
-
+     
+     
+      <Route
+        path="/dashboard/*"
+        element={
+          <ProtectedRoute>
+            {" "}
+            <Dashboard />{" "}
+          </ProtectedRoute>
+        }
+      >
+      <Route index element={<Navigate to='enrolled-classes' replace/>}/>
+      <Route path="enrolled-classes" element={<EnrolledClasses/>}/>
+      {/* <Route path='profile' element={<Profile/>}/> */}
+      {/* <Route path='settings' element={<Settings/>}/> */}
+      {/* <Route path="/dashboard/enrolled-classes" element={<EnrolledClasses />} /> */}
+        </Route>
     </Routes>
   );
 };

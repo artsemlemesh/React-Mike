@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Navigate, Outlet, Route, Routes } from "react-router-dom";
 import EnrolledClasses from "../components/EnrolledClasses";
 // import HomePage from "./HomePage";
 
@@ -41,12 +41,14 @@ const Dashboard = () => {
       {/* main content */}
 
       <div className="flex-1 p-6">
-        <Routes>
+        <Outlet/>
+        {/* <Routes>
+        <Route path="/dashboard" element={<Navigate to="/dashboard/enrolled-classes" replace />} />
           <Route
             path="/dashboard/enrolled-classes"
             element={<EnrolledClasses />}
           />
-        </Routes>
+        </Routes> */}
       </div>
     </div>
   );
