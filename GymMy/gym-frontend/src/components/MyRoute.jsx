@@ -8,6 +8,7 @@ import Blog from "../pages/Blog";
 import Dashboard from "../pages/DashBoard";
 import EnrolledClasses from "./EnrolledClasses";
 import ProtectedRoute from "./ProtectedRoute";
+import Profile from "../features/users/UserProfile";
 
 const MyRoute = () => {
   return (
@@ -21,17 +22,19 @@ const MyRoute = () => {
      
      
       <Route
-        path="/dashboard/*"
+        path="/dashboard/*" // indicates that this route can match any path that starts with /dashboard/
         element={
-          <ProtectedRoute>
+          <ProtectedRoute> {/* to ensure that only auth users can access the dashboard */}
             {" "}
             <Dashboard />{" "}
           </ProtectedRoute>
         }
       >
-      <Route index element={<Navigate to='enrolled-classes' replace/>}/>
+      <Route index element={<Navigate to='enrolled-classes' replace/>}/> 
+      {/* index-renders when the parent route matches but none of the child routes do */}
+      {/* replace - replaces the current entry in the history stack instead of adding new one. this is useful to  prevent the user from using the back button to navigate to the previous URL */}
       <Route path="enrolled-classes" element={<EnrolledClasses/>}/>
-      {/* <Route path='profile' element={<Profile/>}/> */}
+      <Route path='profile' element={<Profile/>}/>
       {/* <Route path='settings' element={<Settings/>}/> */}
       {/* <Route path="/dashboard/enrolled-classes" element={<EnrolledClasses />} /> */}
         </Route>

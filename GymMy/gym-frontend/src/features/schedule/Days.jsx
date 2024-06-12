@@ -8,7 +8,6 @@ const Days = () => {
   const dispatch = useDispatch();
   const schedules = useSelector((state) => state.schedule.schedules);
 
-  console.log(schedules, 'CLASS SCHEDULE')
   useEffect(() => {
     dispatch(fetchSchedules());
   }, [dispatch]);

@@ -25,8 +25,7 @@ const EnrolledClasses = () => {
   const enrolledClasses = schedules.filter((schedule) =>
     schedule.enrolled_participants.includes(user.id)
   );
-  console.log(enrolledClasses, "enrClasses");
-  console.log(user, "USER.ID");
+ 
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-6">Enrolled Classes</h2>

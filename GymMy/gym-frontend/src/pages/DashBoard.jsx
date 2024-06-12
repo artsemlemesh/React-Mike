@@ -42,13 +42,7 @@ const Dashboard = () => {
 
       <div className="flex-1 p-6">
         <Outlet/>
-        {/* <Routes>
-        <Route path="/dashboard" element={<Navigate to="/dashboard/enrolled-classes" replace />} />
-          <Route
-            path="/dashboard/enrolled-classes"
-            element={<EnrolledClasses />}
-          />
-        </Routes> */}
+        {/* outlet is a placeholder in my parent route component where the nested route components will be rendered. acts as a dynamic part of the paretn route */}
       </div>
     </div>
   );

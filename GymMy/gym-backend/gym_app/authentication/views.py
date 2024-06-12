@@ -3,6 +3,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 import json
+from rest_framework.decorators import api_view
+from .serializers import UserSerializer
+from rest_framework.response import Response
+from rest_framework import status
 
 @csrf_exempt
 def login_view(request):
@@ -22,3 +26,11 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return JsonResponse({'message': 'Logged out successfully'})
+
+
+@api_view(['GET'])
+def user_profile(request):
+    user = request.user
+    serializer = UserSerializer(user)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
