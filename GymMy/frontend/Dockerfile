@@ -1,5 +1,5 @@
 # Use an official node image as a parent image.
-FROM node:14
+FROM node:16
 
 # Set the working directory.
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Expose the port the app runs on.
-EXPOSE 3000
+EXPOSE 3001
 
 # Run the application.
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
