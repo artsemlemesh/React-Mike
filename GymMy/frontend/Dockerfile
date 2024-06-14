@@ -1,5 +1,6 @@
 # Use an official node image as a parent image.
-FROM node:16
+# For ARM64 architecture
+FROM --platform=linux/arm64/v8 node:18-alpine AS build
 
 # Set the working directory.
 WORKDIR /app
