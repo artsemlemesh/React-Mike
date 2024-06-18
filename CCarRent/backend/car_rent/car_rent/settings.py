@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'bookings', #booking form app
     'rest_framework',
     'whitenoise',
-    df
+    
 ]
 
 MIDDLEWARE = [
