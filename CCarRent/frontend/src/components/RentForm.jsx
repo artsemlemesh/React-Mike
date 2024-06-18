@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { FaUser, FaEnvelope, FaCalendarAlt, FaCalendarCheck, FaCar } from 'react-icons/fa';
+import {addNewBooking} from '../features/bookings/bookingSlice'
+import { useDispatch } from "react-redux";
+
+
 
 const RentForm = ({ addBooking }) => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    pickUp: '',
-    dropOff: '',
-    carModel: '',
+      email: '',
+      pick_up_date: '',
+      drop_off_date: '',
+      car_model: '',
   });
+
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,21 +24,25 @@ const RentForm = ({ addBooking }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
-    addBooking(formData);
+     dispatch(addNewBooking(formData))
+    // if (addBooking){
+    //   addBooking(formData)
+    // }
+    // addBooking(formData);
     setFormData({
       name: '',
       email: '',
-      pickUp: '',
-      dropOff: '',
-      carModel: '',
+      pick_up_date: '',
+      drop_off_date: '',
+      car_model: '',
     });
   };
 
   return (
     <div className="w-4/5 mx-auto bg-white p-8">
-      <h2 className="text-2xl mb-4 text-center">Book a car</h2>
+      <h2 className="text-2xl mb-4 text-center">Book a Car</h2>
       <form onSubmit={handleSubmit} className="flex flex-wrap">
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
@@ -71,15 +81,15 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaCalendarAlt className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mb-2" htmlFor="pickUp">
+            <label className="block text-gray-700 mb-2" htmlFor="pick_up_date">
               Pick-Up Date
             </label>
           </div>
           <input
             type="date"
-            id="pickUp"
-            name="pickUp"
-            value={formData.pickUp}
+            id="pick_up_date"
+            name="pick_up_date"
+            value={formData.pick_up_date}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
             required
@@ -88,15 +98,15 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaCalendarCheck className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mb-2" htmlFor="dropOff">
+            <label className="block text-gray-700 mb-2" htmlFor="drop_off_date">
               Drop-Off Date
             </label>
           </div>
           <input
             type="date"
-            id="dropOff"
-            name="dropOff"
-            value={formData.dropOff}
+            id="drop_off_date"
+            name="drop_off_date"
+            value={formData.drop_off_date}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
             required
@@ -105,14 +115,14 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaCar className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mb-2" htmlFor="carModel">
+            <label className="block text-gray-700 mb-2" htmlFor="car_model">
               Car Model
             </label>
           </div>
           <select
-            id="carModel"
-            name="carModel"
-            value={formData.carModel}
+            id="car_model"
+            name="car_model"
+            value={formData.car_model}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
             required
@@ -133,5 +143,6 @@ const RentForm = ({ addBooking }) => {
     </div>
   );
 };
+
 
 export default RentForm;
