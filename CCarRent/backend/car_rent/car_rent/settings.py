@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     
 ]
 
+# user: demo
+
+# pass: ^A4pM1cJ
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

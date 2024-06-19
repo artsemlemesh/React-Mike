@@ -1,28 +1,3 @@
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: [
-//     "./index.html",
-//     "./src/**/*.{js,ts,jsx,tsx}",
-//   ],
-//   theme: {
-//     extend: {
-//       colors:{
-//         'custom-blue': '#1E40AF',
-//         'custom-red': '#EF4444',
-//       }
-//     },
-//   },
-//   plugins: [],
-// }
-
-
-
-
-
-
-
-
-
 // tailwind.config.js
 const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette").default;
 
@@ -34,10 +9,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        'custom-blue': '#1E40AF',
-        'custom-red': '#EF4444',
-      },
       animation: {
         aurora: "aurora 60s linear infinite",
       },
@@ -66,5 +37,3 @@ function addVariablesForColors({ addBase, theme }) {
     ":root": newVars,
   });
 }
-
-
