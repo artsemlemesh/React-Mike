@@ -9,10 +9,23 @@ import TopSlider from "../components/UI/TopSlider";
 import { GlobalContext } from "../GlobalContext";
 import { WobbleCard } from "../components/Aceternity/WobbleCard";
 import { FaCar, FaPhoneAlt, FaRoad } from "react-icons/fa";
+import { InfiniteMovingCards } from "../components/Aceternity/InfiniteCards";
+
 
 const Home = () => {
   const [scrollPercent, setScrollPercent] = useState(0);
   const { scrollToTop, sectionRefs, isVisible } = useContext(GlobalContext);
+
+  const items = [
+    { quote: "This service is amazing! I loved every bit of it.", name: "Alice Johnson", title: "CEO, TechCorp" },
+    { quote: "Outstanding experience. Highly recommended.", name: "Bob Smith", title: "CTO, Innovatech" },
+    { quote: "The team was professional and delivered great results.", name: "Carol White", title: "Manager, FinBank" },
+    { quote: "A wonderful experience from start to finish.", name: "David Brown", title: "Director, HealthPlus" },
+    { quote: "Exceptional quality and customer service.", name: "Emily Davis", title: "Owner, ShopEasy" },
+    { quote: "I couldn't be happier with the service provided.", name: "Frank Wilson", title: "Founder, GreenTech" }
+  ];
+  
+
 
   const handleScrollPercent = () => {
     const howMuchScrolled =
@@ -31,6 +44,10 @@ const Home = () => {
       window.removeEventListener("scroll", () => {});
     };
   });
+
+
+
+
 
   return (
     <>
@@ -88,10 +105,19 @@ const Home = () => {
       </div>
 
       <RentForm />
+
+     
       <Separator />
       <Items />
 
       <CarContent />
+      <InfiniteMovingCards
+        items={items}
+        direction="left"
+        speed="fast"
+        pauseOnHover={true}
+        className="custom-class"
+      />
 
       {isVisible && (
         <button

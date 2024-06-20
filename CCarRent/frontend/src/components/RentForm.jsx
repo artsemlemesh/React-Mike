@@ -2,7 +2,8 @@ import { useState } from "react";
 import { FaUser, FaEnvelope, FaCalendarAlt, FaCalendarCheck, FaCar } from 'react-icons/fa';
 import {addNewBooking} from '../features/bookings/bookingSlice'
 import { useDispatch } from "react-redux";
-
+import Label from "./newForm/Label";
+import Input from "./newForm/InputForm";
 
 
 const RentForm = ({ addBooking }) => {
@@ -47,11 +48,11 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaUser className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mr-2" htmlFor="name">
+            <Label className="block text-gray-700 mr-2" htmlFor="name">
               Name
-            </label>
+            </Label>
           </div>
-          <input
+          <Input
             type="text"
             id="name"
             name="name"
@@ -64,11 +65,11 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaEnvelope className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mb-2" htmlFor="email">
+            <Label className="block text-gray-700 mb-2" htmlFor="email">
               Email
-            </label>
+            </Label>
           </div>
-          <input
+          <Input
             type="email"
             id="email"
             name="email"
@@ -81,11 +82,11 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaCalendarAlt className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mb-2" htmlFor="pick_up_date">
+            <Label className="block text-gray-700 mb-2" htmlFor="pick_up_date">
               Pick-Up Date
-            </label>
+            </Label>
           </div>
-          <input
+          <Input
             type="date"
             id="pick_up_date"
             name="pick_up_date"
@@ -98,11 +99,11 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaCalendarCheck className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mb-2" htmlFor="drop_off_date">
+            <Label className="block text-gray-700 mb-2" htmlFor="drop_off_date">
               Drop-Off Date
-            </label>
+            </Label>
           </div>
-          <input
+          <Input
             type="date"
             id="drop_off_date"
             name="drop_off_date"
@@ -115,9 +116,9 @@ const RentForm = ({ addBooking }) => {
         <div className="w-full md:w-1/3 p-2">
           <div className="flex items-center mb-2">
             <FaCar className="text-gray-700 mr-2" />
-            <label className="block text-gray-700 mb-2" htmlFor="car_model">
+            <Label className="block text-gray-700 mb-2" htmlFor="car_model">
               Car Model
-            </label>
+            </Label>
           </div>
           <select
             id="car_model"
