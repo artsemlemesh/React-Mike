@@ -8,11 +8,11 @@ export function LinkPreviewDemo() {
       
       <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl mx-auto mb-10">
         You can reach out to me via{"  "}
-        <LinkPreview  url="https://google.com" className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-blue-500 to-green-500">
+        <LinkPreview isStatic={true}  imageSrc='email.png' url="http://localhost:3000/email" className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-blue-500 to-green-500">
           Email
         </LinkPreview>
         ,{" "}
-        <LinkPreview url="https://framer.com/motion" className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-orange-500 to-yellow-500">
+        <LinkPreview url="https://github.com/artsemlemesh" className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-orange-500 to-yellow-500">
           Github
         </LinkPreview>{" "}
         or

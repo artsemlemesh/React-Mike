@@ -42,7 +42,7 @@ const RentForm = ({ addBooking }) => {
   };
 
   return (
-    <div className="w-4/5 mx-auto bg-white p-8">
+    <div className="w-3/5 mx-auto bg-white p-8">
       <h2 className="text-2xl mb-4 text-center">Book a Car</h2>
       <form onSubmit={handleSubmit} className="flex flex-wrap">
         <div className="w-full md:w-1/3 p-2">

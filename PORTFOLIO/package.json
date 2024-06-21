@@ -12,6 +12,7 @@
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.0",
     "clsx": "^2.1.1",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^11.2.11",
     "next": "^14.2.4",
     "qss": "^3.0.0",

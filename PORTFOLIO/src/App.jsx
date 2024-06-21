@@ -17,119 +17,14 @@ import { Button } from "./components/Button";
 import MySkills from "./components/MySkills";
 import { LinkPreviewDemo } from "./components/ContactMeComp";
 import { FaArrowLeft } from "react-icons/fa";
+import ContactMe from "./components/ContactEmailMy";
 
-const SkeletonOne = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Car rent</p>
-      <p className="font-normal text-base text-white">
-        website for renting cars
-      </p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Tech used: React, Redux, TailwindCSS, JS, OAuth2
-      </p>
-
-      <div className="flex flex-row space-x-4 p-8">
-        <a
-          to="/target-page-1"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          Source code
-        </a>
-        <a
-          to="/target-page-2"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          See Live
-        </a>
-      </div>
-    </div>
-  );
-};
-const SkeletonTwo = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Car rent</p>
-      <p className="font-normal text-base text-white">
-        website for renting cars
-      </p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Tech used: React, Redux, TailwindCSS, JS, OAuth2
-      </p>
-
-      <div className="flex flex-row space-x-4 p-8">
-        <a
-          to="/target-page-1"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          Source code
-        </a>
-        <a
-          to="/target-page-2"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          See Live
-        </a>
-      </div>
-    </div>
-  );
-};
-const SkeletonThree = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Car rent</p>
-      <p className="font-normal text-base text-white">
-        website for renting cars
-      </p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Tech used: React, Redux, TailwindCSS, JS, OAuth2
-      </p>
-
-      <div className="flex flex-row space-x-4 p-8">
-        <a
-          to="/target-page-1"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          Source code
-        </a>
-        <a
-          to="/target-page-2"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          See Live
-        </a>
-      </div>
-    </div>
-  );
-};
-const SkeletonFour = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Car rent</p>
-      <p className="font-normal text-base text-white">
-        website for renting cars
-      </p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Tech used: React, Redux, TailwindCSS, JS, OAuth2
-      </p>
-
-      <div className="flex flex-row space-x-4 p-8">
-        <a
-          to="/target-page-1"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          Source code
-        </a>
-        <a
-          to="/target-page-2"
-          className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
-        >
-          See Live
-        </a>
-      </div>
-    </div>
-  );
-};
+import {
+  SkeletonOne,
+  SkeletonTwo,
+  SkeletonThree,
+  SkeletonFour,
+} from "./components/skeletons/Skeleton";
 
 const cards = [
   {
@@ -137,7 +32,6 @@ const cards = [
     content: <SkeletonOne />,
     className: "md:col-span-2",
     thumbnail: "1.png",
-    // "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
@@ -189,9 +83,6 @@ function App() {
 
       {/* Right Scrollable Side */}
       <div className="w-1/2 bg-gray-100 overflow-y-scroll  relative">
-        {/* <div className="min-h-screen p-8 flex items-center justify-center ">
-          
-        </div> */}
         <div className="min-h-screen p-8 flex items-center justify-center ">
           <div>
             <h2 className="text-2xl font-bold mb-2">About Me</h2>
@@ -199,32 +90,19 @@ function App() {
             <TextGenerateEffect words={words} />
           </div>
         </div>
-        
+
         <div className="min-h-screen p-8 flex items-center justify-center ">
-        
-        <FaArrowLeft size={40}/>
-        <TextRevealCard text="Look!" revealText="at my projects"/>
+          <FaArrowLeft size={40} />
+          <TextRevealCard text="Look!" revealText="at my projects" />
+        </div>
 
-          
-          </div>
-
-
-
-        <div className="container mx-auto p-8 items-center justify-center">
-        <FaArrowLeft size={40}/>
-          <TextRevealCard text="Look!" revealText="at my projects"/>
-          </div>
-
+        {/* <ContactMe/> */}
 
         <MySkills />
-
 
         <div className="container mx-auto p-8 items-center justify-center">
           <LinkPreviewDemo />
         </div>
-
-        
-        
       </div>
     </div>
   );

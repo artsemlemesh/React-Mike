@@ -61,7 +61,7 @@ const Home = () => {
       {/* <InfoHome /> */}
 
       <div className=" p-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="w-3/5 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <WobbleCard containerClassName="w-full" className="text-white">
             <div className="flex flex-col items-center">
               <FaCar size={80} className="mb-4 text-blue-500" />
@@ -116,7 +116,7 @@ const Home = () => {
         direction="left"
         speed="fast"
         pauseOnHover={true}
-        className="custom-class"
+        className="custom-class mx-auto"
       />
 
       {isVisible && (

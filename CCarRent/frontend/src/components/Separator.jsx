@@ -18,9 +18,9 @@ const Separator = () => {
           <span className="text-orange-300">24/7</span> support
         </div>
       </div>
-      <div>
-        <div>
-          <img src="car.png" alt="car"/>
+      <div >
+        <div >
+          <img className="mx-auto" src="car.png" alt="car"/>
         </div>
         <div ref={sectionRefs.current[1]} className="grid grid-cols-1 md:grid-cols-5 gap-10 max-w-4xl mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
           <div  className="md:col-span-3 my-auto">
