@@ -41,7 +41,7 @@ const myStyles = makeStyles ((theme) => ({
           <Container>
             <Toolbar>
               <Typography
-                onClick={() => history.push(`/`)}
+                onClick={() => navigate(`/`)}
                 variant="h6"
                 className={classes.title}
               >
