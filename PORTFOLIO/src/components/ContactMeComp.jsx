@@ -18,7 +18,7 @@ export function LinkPreviewDemo() {
         or
         {" "}
         <LinkPreview
-          url="https://ui.aceternity.com"
+          url="https://linkedin.com/in/artsem-lemesh-664381232"
           className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
         >
            LinkedIn

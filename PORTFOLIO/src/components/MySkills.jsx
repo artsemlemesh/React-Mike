@@ -14,10 +14,15 @@ const MySkills = () => {
               <h2 className="text-xl font-semibold">frontend</h2>
             </div>
             <div className="bg-gray-100 p-4">
-              <p className="text-gray-700"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt
-            facilis quo cumque aliquam magnam tempora totam atque consequuntur
-            similique debitis aut natus quidem nobis illum praesentium autem
-            eligendi, nisi rerum.</p>
+                <ul className="text-gray-700">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JS</li>
+                  <li>React</li>
+                  <li>Redux</li>
+                  <li>TailwindCSS</li>
+                  <li>OAuth</li>
+                </ul>
             </div>
           </div>
           
@@ -30,10 +35,12 @@ const MySkills = () => {
               <h2 className="text-xl font-semibold">backend</h2>
             </div>
             <div className="bg-gray-100 p-4">
-              <p className="text-gray-700"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt
-            facilis quo cumque aliquam magnam tempora totam atque consequuntur
-            similique debitis aut natus quidem nobis illum praesentium autem
-            eligendi, nisi rerum.</p>
+            <ul className="text-gray-700">
+                  <li>Django</li>
+                  <li>Python</li>
+                  <li>Restful APIs</li>
+                  <li>MySQL</li>
+                </ul>
             </div>
           </div>
         </div>
@@ -43,10 +50,12 @@ const MySkills = () => {
               <h2 className="text-xl font-semibold">my title</h2>
             </div>
             <div className="bg-gray-100 p-4">
-              <p className="text-gray-700"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt
-            facilis quo cumque aliquam magnam tempora totam atque consequuntur
-            similique debitis aut natus quidem nobis illum praesentium autem
-            eligendi, nisi rerum.</p>
+            <ul className="text-gray-700">
+                  <li>Choreo.dev</li>
+                  <li>Python</li>
+                  <li>Restful APIs</li>
+                  <li></li>
+                </ul>
             </div>
           </div>
         </div>

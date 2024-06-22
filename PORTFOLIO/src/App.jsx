@@ -61,10 +61,10 @@ const words =
 
 function App() {
   return (
-    <div className="flex h-screen overflow-hidden relative">
+    <div className="flex h-screen  overflow-hidden relative justify-center ">
       {/* Left Static Side */}
       <AuroraBackground>
-        <div className="w-1/2 text-black flex flex-col items-center justify-center p-8">
+        <div className="w-1/2 text-black flex flex-col items-center justify-center p-8 min-w-[350px]">
           <h1 className="text-4xl font-bold mb-4">Welcome to My Portfolio</h1>
           <p className="text-lg mb-8">
             Hi, I'm [Your Name], a Full Stack Developer with a passion for
@@ -82,8 +82,8 @@ function App() {
       </AuroraBackground>
 
       {/* Right Scrollable Side */}
-      <div className="w-1/2 bg-gray-100 overflow-y-scroll  relative">
-        <div className="min-h-screen p-8 flex items-center justify-center ">
+      <div className="w-1/2 bg-gray-100 overflow-y-scroll  relative min-w-[350px]">
+        <div className="min-h-screen   p-8 flex items-center justify-center ">
           <div>
             <h2 className="text-2xl font-bold mb-2">About Me</h2>
 
