@@ -18,16 +18,13 @@ import { makeStyles } from "@mui/styles";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 import axios from "axios";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../Context";
 
 export function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
-
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 export default function CoinsTable() {
   const [coins, setCoins] = useState([]);
@@ -39,15 +36,15 @@ export default function CoinsTable() {
 
   const myStyles = makeStyles({
     row: {
-      backgroundColor: "#16171a",
+      backgroundColor: "#AD88C6",
       cursor: "pointer",
       "&:hover": {
-        backgroundColor: "#131111",
+        backgroundColor: "#7469B6",
       },
-      pagination: {
-        "& .MuiPaginationItem-root": {
-          color: "gold",
-        },
+    },
+    pagination: {
+      "& .MuiPaginationItem-root": {
+        color: "white",
       },
     },
   });
@@ -66,9 +63,9 @@ export default function CoinsTable() {
 
   const fetchCoins = async () => {
     setLoading(true);
-    console.log('before')
+    console.log("before");
     const { data } = await axios.get(CoinList(currency));
-    console.log('after')
+    console.log("after");
 
     console.log(data);
 
@@ -88,8 +85,6 @@ export default function CoinsTable() {
     );
   };
 
-
-
   return (
     <ThemeProvider theme={darkTheme}>
       <Container style={{ textAlign: "center" }}>
@@ -102,12 +97,12 @@ export default function CoinsTable() {
         <TextField
           label="Search For a Crypto Currency.."
           variant="outlined"
-          style={{ marginBottom: 20, width: "100%",  }}
+          style={{ marginBottom: 20, width: "100%" }}
           onChange={(e) => setSearch(e.target.value)}
         />
         <TableContainer component={Paper}>
           {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold",  }} />
+            <LinearProgress style={{ backgroundColor: "gold" }} />
           ) : (
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
@@ -145,7 +140,7 @@ export default function CoinsTable() {
                           style={{
                             display: "flex",
                             gap: 15,
-                            color: 'white'
+                            color: "white",
                           }}
                         >
                           <img
@@ -155,7 +150,7 @@ export default function CoinsTable() {
                             style={{ marginBottom: 10 }}
                           />
                           <div
-                            style={{ display: "flex", flexDirection: "column", }}
+                            style={{ display: "flex", flexDirection: "column" }}
                           >
                             <span
                               style={{
@@ -216,5 +211,5 @@ export default function CoinsTable() {
         />
       </Container>
     </ThemeProvider>
-  )
+  );
 }

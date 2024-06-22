@@ -67,13 +67,13 @@ export const SkeletonThree = () => {
 
       <div className="flex flex-row space-x-4 p-8">
         <a
-          to="/target-page-1"
+          href="https://github.com/artsemlemesh/React-Mike/tree/debcfb1bf31b1c42381b43d02fefd1f4a8fb45ff/CryptoApp"
           className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
         >
           Source code
         </a>
         <a
-          to="/target-page-2"
+          href="http://localhost:3004/"
           className="bg-white text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded shadow hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50"
         >
           See Live
